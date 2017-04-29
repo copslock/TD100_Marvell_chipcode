@@ -1,0 +1,1 @@
+cmd_/home/yanl/marvell.sp6/vendor/marvell/generic/bmm-lib/drv/bmm.o := /home/yanl/marvell.sp6/kernel/../prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-ld -EL    -r -o /home/yanl/marvell.sp6/vendor/marvell/generic/bmm-lib/drv/bmm.o /home/yanl/marvell.sp6/vendor/marvell/generic/bmm-lib/drv/bmm_drv.o 

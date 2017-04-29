@@ -1,0 +1,58 @@
+;
+; Copyright (c) 2000-2002 Intel Corporation.  All rights reserved.
+;
+LIBRARY         OSA
+
+EXPORTS         OSAInitialize           
+                OSARun                  
+                OSATaskCreate           
+                OSATaskDelete           
+                OSATaskChangePriority   
+                OSATaskGetPriority      
+                OSATaskSuspend          
+                OSATaskResume           
+                OSATaskSleep            
+                OSATaskYield
+				OSATaskGetCurrentRef
+                OSAFlagCreate           
+                OSAFlagDelete           
+                OSAFlagSet              
+                OSAFlagWait              
+                OSAFlagPeek              
+                OSAMsgQCreate            
+                OSAMsgQDelete            
+                OSAMsgQSend              
+                OSAMsgQRecv              
+                OSAMsgQPoll              
+                OSASemaphoreCreate       
+                OSASemaphoreDelete       
+                OSASemaphoreAcquire      
+                OSASemaphoreRelease      
+                OSASemaphorePoll         
+                OSAMutexCreate           
+                OSAMutexDelete           
+                OSAMutexLock             
+                OSAMutexUnlock           
+                OSAIsrCreate             
+                OSAIsrDelete             
+                OSAIsrEnable             
+                OSAIsrDisable            
+                OSAIsrNotify             
+                OSAGetTicks              
+                OSAGetClockRate          
+                OSATick                  
+                OSAMemPoolCreate         
+                OSAMemPoolDelete         
+                OSAMemPoolAlloc          
+                OSAMemPoolFree           
+                OSAMemPoolFixedFree           
+                OSAContextLock                         
+                OSAContextUnlock                         
+                OSATimerCreate
+                OSATimerDelete
+                OSATimerStart
+                OSATimerStop                         
+                
+
+        
+

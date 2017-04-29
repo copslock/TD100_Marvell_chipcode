@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceScreen android:summary="@string/PoweronLogSettingSum" 
+        android:title="@string/PoweronLogSetting" 
+        android:key="PoweronLogSetting">
+    </PreferenceScreen>
+    <PreferenceScreen android:summary="@string/CurrentLogSettingSum" 
+         android:title="@string/CurrentLogSetting" 
+         android:key="CurrentLogSetting">       
+    </PreferenceScreen>
+</PreferenceScreen>

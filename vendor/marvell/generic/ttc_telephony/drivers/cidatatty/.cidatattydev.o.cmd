@@ -1,0 +1,1 @@
+cmd_/home/yanl/marvell.sp6/vendor/marvell/generic/ttc_telephony/drivers/cidatatty/cidatattydev.o := arm-eabi-ld -EL    -r -o /home/yanl/marvell.sp6/vendor/marvell/generic/ttc_telephony/drivers/cidatatty/cidatattydev.o /home/yanl/marvell.sp6/vendor/marvell/generic/ttc_telephony/drivers/cidatatty/cidatatty.o 

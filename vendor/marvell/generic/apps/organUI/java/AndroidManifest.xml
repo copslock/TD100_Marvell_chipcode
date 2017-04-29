@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest android:versionCode="1" android:versionName="1.0"
+    package="com.marvell.organ" xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:label="@string/app_name" android:name=".MainItem">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/speaker" android:name=".Speaker">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/headset" android:name=".Headset">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/bluetooth" android:name=".Bluetooth">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/earpiece" android:name=".Earpiece">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/headset_forcedSpeaker" android:name=".HeadsetForcedSpeaker">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/speaker_forcedSpeaker" android:name=".SpeakerForcedSpeaker">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>	
+        <activity android:label="@string/board_mic1" android:name=".BoardMic1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/board_mic2" android:name=".BoardMic2"/>
+        <activity android:label="@string/headset_mic" android:name=".HeadsetMic">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/stream_music" android:name=".STMusic">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/stream_system" android:name=".STSystem">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/stream_ring" android:name=".STRing">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/stream_alarm" android:name=".STAlarm">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/stream_notification" android:name=".STNotification">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/stream_enforced_audible" android:name=".STEnforcedAudible">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/mp3" android:name=".FFMP3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/aac" android:name=".FFAAC">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/ogg" android:name=".FFOGG">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/midi" android:name=".FFMIDI"/>
+        <activity android:label="@string/amr" android:name=".FFAMR"/>
+        <activity android:label="@string/mp4" android:name=".FFMP4"/>
+        <activity android:label="@string/avi" android:name=".FFAVI"/>
+        <activity android:label="@string/pcm" android:name=".EFPCM"/>
+        <activity android:label="@string/amr_nb" android:name=".EFAMRNB"/>
+        <activity android:label="@string/wav" android:name=".FFWAV"/>
+        <activity android:label="@string/tone" android:name=".FFTONE"/>
+        <activity android:label="@string/rmvb" android:name=".FFRMVB"/>
+        <activity android:label="@string/aac" android:name=".EFAAC">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/stream_voice_call" android:name=".STVoiceCall"/>
+	<activity android:label="@string/stream_voip" android:name=".STVoip"/>
+        <activity android:label="@string/stream_bluetooth_sco" android:name=".STBluetoothSco"/>
+        <activity android:label="@string/stream_dtmf" android:name=".STDtmf"/>
+        <activity android:label="@string/stream_tts" android:name=".STTts"/>
+        <activity android:label="@string/stream_fm_radio" android:name=".STFMRadio"/>
+        <activity android:label="@string/application_voice_recorder" android:name=".ASVoiceRecorder"/>
+	<activity android:label="@string/application_voip_recorder" android:name=".ASVoipRecorder"/>
+        <activity android:label="@string/application_camcorder" android:name=".ASCamcorder"/>
+        <activity android:label="@string/application_asr" android:name=".ASASR"/>
+    </application>
+</manifest>

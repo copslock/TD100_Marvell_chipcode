@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.marvell.usbsetting">
+
+    <!--        
+    <PreferenceCategory
+            android:title="@string/usb_setting">
+            
+       <ListPreference
+                android:key="usb_setting"
+                android:title="@string/usb_setting"
+                android:summary="@string/usb_setting_summary"
+                android:persistent="false"
+                android:entries="@array/usb_setting_entries"
+                android:entryValues="@array/usb_setting_values" />
+
+    </PreferenceCategory>
+    -->
+
+    <PreferenceCategory
+            android:title="@string/network_setting">
+            
+        <ListPreference
+                android:key="network_setting"
+                android:title="@string/network_setting"
+                android:summary="@string/network_setting_summary"
+                android:persistent="false"
+                android:entries="@array/network_setting_entries"
+                android:entryValues="@array/network_setting_values" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+	    android:title="@string/band_setting">
+	<PreferenceScreen
+	    android:key="band_preference"
+	    android:title="@string/band_setting"
+	    android:summary="@string/band_setting_summary">
+	    <intent
+		android:action="android.intent.action.MAIN"
+	        android:targetPackage="com.marvell.usbsetting"
+		android:targetClass="com.marvell.usbsetting.ClassBandSetting"/>
+	</PreferenceScreen>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:title="@string/diag_setting">
+            
+        <ListPreference
+                android:key="diag_setting"
+                android:title="@string/diag_setting"
+                android:summary="@string/diag_setting_summary"
+                android:persistent="false"
+                android:entries="@array/diag_setting_entries"
+                android:entryValues="@array/diag_setting_values" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:title="@string/camera_setting">
+
+        <ListPreference
+                android:key="camera_setting"
+                android:title="@string/camera_setting"
+                android:summary="@string/camera_setting_summary"
+                android:persistent="false"
+                android:entries="@array/camera_setting_entries"
+                android:entryValues="@array/camera_setting_values" />
+
+    </PreferenceCategory>
+
+	<PreferenceCategory
+            android:title="@string/loopback_setting">
+
+        <ListPreference
+                android:key="loopback_setting"
+                android:title="@string/loopback_setting"
+                android:summary="@string/loopback_setting_summary"
+                android:persistent="false"
+                android:entries="@array/loopback_setting_entries"
+                android:entryValues="@array/loopback_setting_values" />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:title="@string/CBS_setting">
+        <PreferenceScreen
+                android:key="CBS_preference"
+                android:title="@string/CBS_setting"
+                android:summary="@string/CBS_setting_summary">
+                <intent
+                    android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.marvell.usbsetting"
+                    android:targetClass="com.marvell.usbsetting.CellBroadcastActivity"/>
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+</PreferenceScreen>   

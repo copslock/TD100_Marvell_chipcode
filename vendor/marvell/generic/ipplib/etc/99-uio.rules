@@ -1,0 +1,1 @@
+KERNEL=="uio|uio[0-9]",		MODE="0666"

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference android:key="button_pgsm_900" android:title="@string/PGSM_900"></CheckBoxPreference>
+    <CheckBoxPreference android:key="button_gsm_1800" android:title="@string/DCS_GSM_1800"></CheckBoxPreference>
+    <CheckBoxPreference android:key="button_gsm_1900" android:title="@string/PCS_GSM_1900"></CheckBoxPreference>
+    <CheckBoxPreference android:key="button_egsm_900" android:title="@string/EGSM_900"></CheckBoxPreference>
+    <CheckBoxPreference android:key="button_gsm_450" android:title="@string/GSM_450"></CheckBoxPreference>
+    <CheckBoxPreference android:key="button_gsm_480" android:title="@string/GSM_480"></CheckBoxPreference>
+    <CheckBoxPreference android:key="button_gsm_850"  android:title="@string/GSM_850"></CheckBoxPreference>
+</PreferenceScreen>

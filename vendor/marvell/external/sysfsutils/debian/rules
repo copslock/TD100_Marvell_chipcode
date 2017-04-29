@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+
+DEB_TAR_SRCDIR=sysfsutils-2.1.0
+
+include /usr/share/cdbs/1/rules/tarball.mk
+include /usr/share/cdbs/1/class/autotools.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/rules/simple-patchsys.mk
+
+DEB_CONFIGURE_EXTRA_FLAGS := --libdir=/lib
+DEB_DH_MAKESHLIBS_ARGS_libsysfs2 := --add-udeb="libsysfs2-udeb"
+DEB_DH_INSTALLINIT_ARGS := -- start 20 2 3 4 5 .
+
+install/libsysfs2-udeb::
+	cp -L debian/tmp/lib/libsysfs.so.? debian/$(cdbs_curpkg)/lib
+	chmod 644 $(DEB_DESTDIR)/lib/*.so
+
+binary-fixup/sysfsutils::
+	chrpath -d debian/$(cdbs_curpkg)/usr/bin/*

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <CheckBoxPreference android:key="button_umts_1" android:title="@string/UMTS_BAND_1"></CheckBoxPreference>
+  <CheckBoxPreference android:key="button_umts_2" android:title="@string/UMTS_BAND_2"></CheckBoxPreference>
+  <CheckBoxPreference android:key="button_umts_3" android:title="@string/UMTS_BAND_3"></CheckBoxPreference>
+  <CheckBoxPreference android:key="button_umts_4" android:title="@string/UMTS_BAND_4"></CheckBoxPreference>
+  <CheckBoxPreference android:key="button_umts_5" android:title="@string/UMTS_BAND_5"></CheckBoxPreference>
+  <CheckBoxPreference android:key="button_umts_6" android:title="@string/UMTS_BAND_6"></CheckBoxPreference>
+  <CheckBoxPreference android:key="button_umts_7" android:title="@string/UMTS_BAND_7"></CheckBoxPreference>
+  <CheckBoxPreference android:key="button_umts_8" android:title="@string/UMTS_BAND_8"></CheckBoxPreference>
+  <CheckBoxPreference android:key="button_umts_9" android:title="@string/UMTS_BAND_9"></CheckBoxPreference> 
+</PreferenceScreen>

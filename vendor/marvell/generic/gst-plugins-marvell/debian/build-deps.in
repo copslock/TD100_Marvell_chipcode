@@ -1,0 +1,12 @@
+@GST_LIB_DEV_DEP@
+@GST_EXTRA_BUILD_DEPENDS@
+libgstreamer-plugins-base0.10-dev (>= 0.10.22)
+autotools-dev
+cdbs (>= 0.4.20)
+type-handling (>= 0.2.14)
+debhelper (>= 5)
+pkg-config (>= 0.11.0)
+libglib2.0-dev (>= 2.12)
+gstreamer-tools (>= 0.10.14)
+lsb-release
+gstreamer0.10-plugins-base (>= 0.10.22)

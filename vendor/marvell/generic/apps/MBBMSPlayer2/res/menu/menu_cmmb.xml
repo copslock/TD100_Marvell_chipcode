@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/menu_program" android:title="@string/programlist" android:icon="@drawable/icon_program" />
+	<item android:id="@+id/menu_rescan" android:title="@string/menu_rescan" android:icon="@drawable/icon_scan" />
+	<item android:id="@+id/menu_search" android:title="@string/search" android:icon="@drawable/icon_search" />
+	<item android:id="@+id/menu_cmmb_setting" android:title="@string/setting" android:icon="@drawable/icon_setting" />
+	<item android:id="@+id/menu_ebmsg" android:title="@string/emergency" android:icon="@drawable/icon_emergency" />
+	<item android:id="@+id/menu_more" android:title="@string/more" android:icon="@drawable/icon_more" />	
+</menu>

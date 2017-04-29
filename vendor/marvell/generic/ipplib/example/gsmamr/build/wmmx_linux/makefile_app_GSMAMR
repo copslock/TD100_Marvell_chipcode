@@ -1,0 +1,56 @@
+# makefile created by Linux Automake V1.0.0
+# This makefile will build a Linux application
+
+#==============================================================================
+# Codec Name												(user update)
+#==============================================================================
+CODEC_NAME=gsmamr
+
+#==============================================================================
+# Rules.make												(user update)
+#==============================================================================
+include ../../../../example/Rules.make
+
+#==============================================================================
+# Codec Specific Flags											(user update)
+#==============================================================================
+ASFLAGS+= -mcpu=iwmmxt2
+
+#==============================================================================
+# Log file          										(user update)
+#==============================================================================
+PATH_USR_LOG=$(PATH_USR_BUILD)/wmmx_linux/log
+USR_LOG_TRACE=$(PATH_USR_LOG)/build_trace_app_$(CODEC_NAME)_linux.log
+
+#==============================================================================
+# User libraries          										(user update)
+#==============================================================================
+
+ifeq ($(USE_STATICLIB), y) 
+USR_LIBS=\
+ $(PATH_USR_LIB)/libcodecamrnbenc.a\
+ $(PATH_USR_LIB)/libcodecamrnbdec.a\
+ $(PATH_USR_LIB)/libmiscgen.a
+else
+USR_LIBS=\
+ $(PATH_USR_LIB)/libcodecamrnbenc.so\
+ $(PATH_USR_LIB)/libcodecamrnbdec.so\
+ $(PATH_USR_LIB)/libmiscgen.so
+endif
+ 
+#==============================================================================
+# Target                                                          (user update)
+#==============================================================================
+OUTPUT_TARGET=$(PATH_USR_BIN)/appgsmamr.exe
+
+#==============================================================================
+# Object files                                                   (user update)
+#==============================================================================
+OBJS_C=\
+$(PATH_USR_SRC)/gsmamrexample.o\
+$(PATH_USR_ROOT)/example/main/src/main.o 
+
+#==============================================================================
+# AppTemplate.make												(user update)
+#==============================================================================
+include ../../../../example/AppTemplate.make

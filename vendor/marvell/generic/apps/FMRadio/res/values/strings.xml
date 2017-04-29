@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/*
+ * (C) Copyright 2010 Marvell International Ltd.
+ * All Rights Reserved
+ *
+ * MARVELL CONFIDENTIAL
+ * Copyright 2008 ~ 2010 Marvell International Ltd All Rights Reserved.
+ * The source code contained or described herein and all documents related to
+ * the source code ("Material") are owned by Marvell International Ltd or its
+ * suppliers or licensors. Title to the Material remains with Marvell International Ltd
+ * or its suppliers and licensors. The Material contains trade secrets and
+ * proprietary and confidential information of Marvell or its suppliers and
+ * licensors. The Material is protected by worldwide copyright and trade secret
+ * laws and treaty provisions. No part of the Material may be used, copied,
+ * reproduced, modified, published, uploaded, posted, transmitted, distributed,
+ * or disclosed in any way without Marvell's prior express written permission.
+ *
+ * No license under any patent, copyright, trade secret or other intellectual
+ * property right is granted to or conferred upon you by disclosure or delivery
+ * of the Materials, either expressly, by implication, inducement, estoppel or
+ * otherwise. Any license under such intellectual property rights must be
+ * express and approved by Marvell in writing.
+ *
+ */-->
+<resources>
+    <string name="hello">Hello World, GestureTest!</string>
+    <string name="app_name">FM Radio</string>
+    <string name="app_title">FM Radio Receiver</string>
+    
+    <string name="dialog_radio_open">Opening FM Radio...</string>
+    <string name="dialog_radio_close">Closing FM Radio...</string>
+    
+    <string name="clear_scan">Confirm to clear and scan?</string>
+    <string name="ok">Ok</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="scan_wait">Scanning, pls wait...</string>
+    <string name="scanning">Scanning...</string>
+    
+    <string name="mute">Mute</string>
+    <string name="unmute">Unmute</string>
+    
+    <string name="stereo">stereo</string>
+    
+    <string name="speaker">Speaker</string>
+    <string name="headset">Headset</string>
+
+    <string name="record">Record</string>
+    <string name="stopRecord">Stop recording</string>
+
+
+    <string name="scan_save">Scanning and Save</string>        
+            
+    <string name="delete">Delete</string>        
+    <string name="rename">Rename</string>
+    
+    <string name="select_all">Select all</string>        
+    <string name="cancel_all">Cancel All</string>    
+          
+    <string name="done">Done</string>
+    <string name="mhz">MHz</string>
+    
+    <string name="station_name">Preset Name</string>
+    <string name="station_freq">freq</string>    
+    <string name="add_name"> Add Name </string>
+    <string name="add_setting"> add setting </string>
+    <string name="all_setting"> All setting </string>
+    <string name="headset_on"> Please plug your headset </string>
+    <string name="dialog_scan_clear"> FM is scanning </string>
+    <string name="dialog_open_failed"> Open failed </string>
+    <string name="airplane"> Close FM in Airplane mode </string>
+    <string name="inCall"> Please end the call first </string>
+    <string name="toast_record_file_path">File store path is : </string>
+    <string name="toast_record_fail">Record fail</string>
+    <string name="toast_record_no_sdcard">No sdcard, please insert sdcard.</string>
+    <string name="time">"00:00:00"</string>
+    <string name="recordTime">"Record Time is:"</string>
+    <string name="internal_error">"Internal error"</string>
+    <string name="max_filesize_reached">"Max file size reached"</string>
+    <string name="unknown_error">"Unknown error"</string>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/*
+ * (C) Copyright 2010 Marvell International Ltd.
+ * All Rights Reserved
+ *
+ * MARVELL CONFIDENTIAL
+ * Copyright 2008 ~ 2010 Marvell International Ltd All Rights Reserved.
+ * The source code contained or described herein and all documents related to
+ * the source code ("Material") are owned by Marvell International Ltd or its
+ * suppliers or licensors. Title to the Material remains with Marvell International Ltd
+ * or its suppliers and licensors. The Material contains trade secrets and
+ * proprietary and confidential information of Marvell or its suppliers and
+ * licensors. The Material is protected by worldwide copyright and trade secret
+ * laws and treaty provisions. No part of the Material may be used, copied,
+ * reproduced, modified, published, uploaded, posted, transmitted, distributed,
+ * or disclosed in any way without Marvell's prior express written permission.
+ *
+ * No license under any patent, copyright, trade secret or other intellectual
+ * property right is granted to or conferred upon you by disclosure or delivery
+ * of the Materials, either expressly, by implication, inducement, estoppel or
+ * otherwise. Any license under such intellectual property rights must be
+ * express and approved by Marvell in writing.
+ *
+ */-->
+ <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+	 <string name="callsetting_app_name">Marvell Call Setting</string>
+	 <string name="black_list_setting_title">Video call black list</string>
+	 <string name="call_forwarding_setting_title">Call forwarding</string>
+	 <string name="call_baring_setting_title">Call barring</string>
+	 <string name="call_camera_settings_title">Video call replace picture</string>
+	 <string name="call_fallback_setting_title">Call fallback</string>
+	 <string name="voice_video_call_forward">Voice and Video Call Forwarding</string>
+	 <string name="voice_call_forward_category">Voice call forwarding setting</string>
+	 <string name="voice_call_forward_title">Voice call forwarding</string>
+	 <string name="voice_call_forward_summary">Set voice call forward</string>
+	 <string name="video_call_forward_category">Video call forwarding setting</string>
+	 <string name="video_call_forward_title">Video call forwarding</string>
+	 <string name="video_call_forward_summary">Set video call forward</string>
+	 <string name="voice_video_call_barring">Voice and Video Call Barring</string>
+	 <string name="voice_call_barring_category">Voice call barring setting</string>
+	 <string name="voice_call_barring_title">Voice call barring</string>
+	 <string name="voice_call_barring_summary">Set voice call barring</string>
+	 <string name="video_call_barring_category">Video call barring setting</string>
+	 <string name="video_call_barring_title">Video call barring</string>
+	 <string name="video_call_barring_summary">Set video call barring</string>
+	 <string name="enable">Enable</string>
+	 <string name="disable">Disable</string>
+	 <string name="change_num">Update</string>
+	 <string name="remote_settings_label">Video Call Replace Picture</string>
+	 <string name="remote_settings_title">Replace picture setting</string>
+	 <string name="remote_title">Replace picture</string>
+	 <string name="remote_summary">Choose the replace picture</string>
+	 <string name="remote_image_enable_title">Enable send picture</string>
+	 <string name="remote_image_enable_summary">Enable send picture to remote when close camera</string>
+ </resources>

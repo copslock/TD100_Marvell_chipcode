@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--(C) Copyright 2010 Marvell International Ltd.
+	All Rights Reserved
+
+	MARVELL CONFIDENTIAL
+	Copyright 2008 ~ 2010 Marvell International Ltd All Rights Reserved.
+	The source code contained or described herein and all documents related to
+	the source code ("Material") are owned by Marvell International Ltd or its
+	suppliers or licensors. Title to the Material remains with Marvell International Ltd
+	or its suppliers and licensors. The Material contains trade secrets and
+	proprietary and confidential information of Marvell or its suppliers and
+	licensors. The Material is protected by worldwide copyright and trade secret
+	laws and treaty provisions. No part of the Material may be used, copied,
+	reproduced, modified, published, uploaded, posted, transmitted, distributed,
+	or disclosed in any way without Marvell's prior express written permission.
+
+	No license under any patent, copyright, trade secret or other intellectual
+	property right is granted to or conferred upon you by disclosure or delivery
+	of the Materials, either expressly, by implication, inducement, estoppel or
+	otherwise. Any license under such intellectual property rights must be
+	express and approved by Marvell in writing.-->
+	
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background">
+    
+    <LinearLayout android:layout_width="fill_parent"
+    	android:layout_height="32dip"
+    	android:background="@drawable/title_bg"
+    	android:orientation="horizontal">
+    	
+    	<ImageView android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="10dip"
+    		android:layout_gravity="center_vertical"
+    		android:src="@drawable/title_item">
+    	</ImageView>
+    	
+    	<TextView android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="5dip"
+    		android:layout_gravity="center_vertical"
+    		android:text="@string/programdetail"
+    		android:textColor="@color/solid_black"
+    		android:textSize="16sp">
+    	</TextView>
+    	
+    	<TextView android:id="@+id/tv_date"
+    		android:layout_width="wrap_content"
+    		android:layout_height="32dip"
+    		android:layout_marginLeft="100dip"
+    		android:gravity="center_vertical"
+    		android:text="@string/scheduledate"
+    		android:textColor="@color/solid_black"
+    		android:textSize="16sp">
+    	</TextView>
+    	
+    	<TextView android:id="@+id/tv_day"
+    		android:layout_width="wrap_content"
+    		android:layout_height="32dip"
+    		android:layout_marginLeft="5dip"
+    		android:gravity="center_vertical"
+    		android:text="@string/today"
+    		android:textColor="@color/solid_black"
+    		android:textSize="16sp">
+    	</TextView>
+    	
+    </LinearLayout>
+    
+    <ScrollView android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:scrollbars="none">
+    
+    	<RelativeLayout android:layout_width="fill_parent"
+    		android:layout_height="wrap_content">
+    	
+    		<ImageButton android:id="@+id/iv_detail"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:background="@drawable/detail_bg"
+    			android:src="@drawable/detail_content"
+    			android:layout_marginTop="30dip"
+    			android:layout_marginLeft="20dip">
+    		</ImageButton>
+    	
+    		<TextView android:id="@+id/tv_playbacktime"
+    			android:layout_width="wrap_content"
+    			android:layout_height="20dip"
+    			android:layout_marginTop="80dip"
+    			android:layout_toRightOf="@id/iv_detail"
+    			android:layout_marginLeft="20dip"
+    			android:text="@string/time"
+    			android:textSize="15sp"
+    			android:textColor="@color/solid_gray">
+    		</TextView>
+    	
+    		<TextView android:id="@+id/tv_playbackprogram"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:layout_marginTop="5dip"
+    			android:layout_toRightOf="@id/iv_detail"
+    			android:layout_below="@id/tv_playbacktime"
+    			android:layout_marginLeft="20dip"
+    			android:text="@string/baijia"
+    			android:textSize="17sp"
+    			android:textColor="@color/solid_white">
+    		</TextView>
+    		
+    		<TextView android:id="@+id/tv_programinfo"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:layout_below="@id/iv_detail"
+    			android:text="@string/programinfo"
+    			android:textSize="17sp"
+    			android:textColor="@color/solid_gray"
+    			android:layout_marginTop="20dip"
+    			android:layout_marginLeft="25dip">
+    		</TextView>
+    		
+    		<TextView android:id="@+id/tv_infodetail"
+    			android:layout_width="fill_parent"
+    			android:layout_height="wrap_content"
+    			android:layout_below="@id/tv_programinfo"
+    			android:text="@string/nomessage"
+    			android:textSize="17sp"
+    			android:textColor="@color/solid_gray"
+    			android:layout_marginTop="5dip"
+    			android:layout_marginLeft="25dip">
+    		</TextView>
+    	
+    	    <Button android:id="@+id/bt_viewprogram"
+		    	android:layout_width="85dip"
+		    	android:layout_height="30dip"
+		    	android:layout_marginTop="20dip"
+		    	android:layout_marginRight="20dip"
+		    	android:gravity="center"
+		    	android:layout_below="@id/tv_infodetail"
+		    	android:layout_alignParentRight="true"
+		    	android:text="@string/programview"
+		    	android:textSize="17sp"
+		    	android:textColor="@color/solid_black"
+		    	android:background="@drawable/button_bg_white">
+		    </Button>
+    
+    	</RelativeLayout>
+    
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,53 @@
+Introduction
+============
+
+The Marvell Wireless Utilities (mwu) is a collection of wifi modules that
+provide wifi services to a system.  For example, the wifidir module defined in
+the wifidir sub directory offers an API for finding wifidirect peers,
+initiating and responding to GO negotiation, and starting wifidirect groups.
+mwpamod is a WPA module that offers WPA STA or AP services.
+
+Each module has a single header file that defines its API.  The header file is
+usually called modulename.h and lives in the module's subdirectory.  These
+header files are the recommended starting point for developers interested in
+using these modules.  You'll note some common patterns among the modules.  For
+example, each module has launch() and halt() functions that must be called at
+boot time and shutdown time respectively.  Also, each module has init and
+deinit functions that can be called repeatedly to create and destroy instances
+of that module on a particular interface.  Most modules emit events.  These
+events are emitted via a callback function that is specified when init() was
+called.
+
+In addition to the APIs described in the modulename.h header files, most
+modules offer a string-based API that can be used by control programs running
+in another process.  This is useful for implementing separate controller
+programs, possibly written in languages other than C or C++ (e.g., java or
+python).  Modules that do offer these string-based APIs generally define them
+in files named modulename_mwu.h, and implement them in modulename_mwu.c.
+You'll notice that the string-based commands and events are a very thin wrapper
+around the actual C functions defined in the modulename.h file.
+
+mwu is tested using the "Wireless Test Framework" (wtf), which is not available
+as part of mwu.  It is maintained as a separate project.  wtf is the best
+reference for expected mwu use cases.  Further, new developments should be
+accompanied by new tests in wtf.  This helps prevent regressions and rigorously
+test new features in an automated fashion.  Here is some sample output from
+wtf:
+
+$ ./wtf.py -c ./wtfconfig-mvdroid.py -v
+Loading config file wtfconfig-mvdroid.py
+======================================================================
+Running mvdroid p2p tests
+======================================================================
+test_connect_as_go_then_as_client (mvdroid.TestMvdroid) ... ok
+test_deauth_event_on_go (mvdroid.TestMvdroid) ... ok
+test_default_connect (mvdroid.TestMvdroid) ... ok
+test_find_peer (mvdroid.TestMvdroid) ... ok
+test_initiator_loses_go_neg (mvdroid.TestMvdroid) ... ERROR
+test_only_initiator_starts_find (mvdroid.TestMvdroid) ... FAIL
+test_pdreq_fail (mvdroid.TestMvdroid) ... ok
+test_pdreq_success (mvdroid.TestMvdroid) ... ok
+test_rx_pdreq_in_idle_state (mvdroid.TestMvdroid) ... ok
+
+As you can see, not all of the tests are passing at this particular time.  But
+that's okay!  A failing test is a crisp, clear, debugging task.

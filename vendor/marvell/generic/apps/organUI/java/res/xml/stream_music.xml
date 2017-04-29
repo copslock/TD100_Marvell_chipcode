@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.marvell.organ">
+	   <PreferenceScreen
+	            android:title="@string/mp3">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.FFMP3" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/aac">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.FFAAC" />
+	    </PreferenceScreen>
+	   <PreferenceScreen
+	            android:title="@string/ogg">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.FFOGG" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/midi">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.FFMIDI" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/amr">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.FFAMR" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/wav">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.FFWAV" />
+	    </PreferenceScreen>
+            <PreferenceScreen
+                    android:title="@string/tone">
+                <intent android:action="android.intent.action.MAIN"
+                        android:targetPackage="com.marvell.organ"
+                        android:targetClass="com.marvell.organ.FFTONE" />
+            </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/mp4">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.FFMP4" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/avi">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.FFAVI" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/rmvb">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.FFRMVB" />
+	    </PreferenceScreen>
+</PreferenceScreen>

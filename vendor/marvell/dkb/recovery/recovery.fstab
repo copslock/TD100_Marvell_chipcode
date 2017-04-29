@@ -1,0 +1,17 @@
+#mount point	fstype		device		[device2]
+/bootloader      mtd        bootloader
+/ramdisk         mtd        ramdisk
+/imei            mtd        imei
+/arbelbinary     mtd        arbelbinary
+/msabinary       mtd        msabinary
+/kernel          mtd        kernel
+/maintenance     mtd        maintenance
+/recovery        mtd        recovery
+/misc            mtd        misc
+/cache           yaffs2     cache
+/system          yaffs2     system
+/data            yaffs2     userdata
+/nvm             yaffs2     nvm
+/marvell         yaffs2     telephony
+/sdcard          vfat       /dev/block/mmcblk0p1    /dev/block/mmcblk0
+/mnt/sdcard      vfat       /dev/block/mmcblk0p1    /dev/block/mmcblk0

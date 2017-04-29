@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.marvell.powersetting">
+        
+	<PreferenceCategory android:title="@string/power_setting">
+
+        <CheckBoxPreference
+            android:key="power_setting"
+            android:title="@string/power_setting"
+            android:summaryOn="@string/powersetting_on_summary"
+            android:summaryOff="@string/powersetting_off_summary"
+            android:defaultValue="false"
+        />
+
+        <CheckBoxPreference
+            android:key="policy_setting"
+            android:title="@string/policy_setting"
+            android:summaryOn="@string/policy_on_summary"
+            android:summaryOff="@string/policy_off_summary"
+            android:defaultValue="false"
+	    android:enabled="false"
+        />
+
+        <CheckBoxPreference
+            android:key="full_wakelock"
+            android:title="@string/full_wakelock"
+            android:summaryOn="@string/full_on_summary"
+            android:summaryOff="@string/full_off_summary"
+            android:defaultValue="false"
+	    android:enabled="false"
+        />
+        <CheckBoxPreference
+            android:key="partial_wakelock"
+            android:title="@string/partial_wakelock"
+            android:summaryOn="@string/partial_on_summary"
+            android:summaryOff="@string/partial_off_summary"
+            android:defaultValue="false"
+	    android:enabled="false"
+        />
+	<CheckBoxPreference
+            android:key="idle_setting"
+            android:title="@string/idle_disable"
+            android:summaryOn="@string/idle_disable_summary"
+            android:summaryOff="@string/idle_enable_summary"
+            android:defaultValue="false"
+	    android:enabled="false"
+        />
+
+        <ListPreference
+                android:key="freq_setting"
+                android:title="@string/freq_setting"
+                android:summary="@string/freq_setting_summary"
+	    	android:enabled="false"
+        />
+        
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/power_status">
+	    <PreferenceScreen
+	            android:title="@string/constrains"
+	            android:summary="@string/constrains_summary">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.powersetting"
+	                android:targetClass="com.marvell.powersetting.ViewConstrains" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/freqs"
+	            android:summary="@string/freqs_summary">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.powersetting"
+	                android:targetClass="com.marvell.powersetting.ViewFreqs" />
+	    </PreferenceScreen>
+
+	</PreferenceCategory>
+
+</PreferenceScreen>
+        
+

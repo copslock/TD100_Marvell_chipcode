@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="app_name">Network Info</string>
+    <string name="item_2g">2G Cell</string>
+    <string name="item_3g">3G Cell</string>
+    <string name="item_nw">Network Information</string>
+    <string name="item_2g_sum">GSM,GPRS Cell Information</string>
+    <string name="item_3g_sum">TD,WCDMA Cell Information</string>
+    <string name="item_nw_sum">Network Management Information</string>
+    <string name="item2g_sub0">Serving Cell</string>
+    <string name="item2g_sub1">Neighboring Cell</string>
+    <string name="item2g_sub2">Neighboring Cell GPRS</string>
+    <string name="item2g_sub3">RC/TX Power</string>
+    <string name="item2g_sub4">Current Status</string>
+    <string name="item2g_sub0_sum">Serving Cell Information</string>
+    <string name="item2g_sub1_sum">Neighboring Cell Information</string>
+    <string name="item2g_sub2_sum">Neighboring Cell information in GPRS</string>
+    <string name="item2g_sub3_sum">RX/TX Power Information</string>
+    <string name="item2g_sub4_sum">Current State Information</string>
+    <string name="item3g_sub0">RRC State and Serving Cell</string>
+    <string name="item3g_sub1">Intra-freq Cell</string>
+    <string name="item3g_sub2">Inter-freq Cell</string>
+    <string name="item3g_sub0_sum">RRC State and Serving Cell Information</string>
+    <string name="item3g_sub1_sum">FDD Cell Information</string>
+    <string name="item3g_sub2_sum">Inter Frequency FDD Cell Information</string>
+    <string name="itemnw_sub0">General Information</string>
+    <string name="itemnw_sub1">MM Information</string>
+    <string name="itemnw_sub2">Ciphering Information</string>
+    <string name="itemnw_sub0_sum">General Information</string>
+    <string name="itemnw_sub1_sum">Network Management Information</string>
+    <string name="itemnw_sub2_sum">Ciphering Information</string>
+    <string name="menu_update">Refresh</string>
+    <string name="cell_lock_pref">Cell Lock</string>
+    <string name="cell_lock_sum">Lock Arfcn and Cell (Only support 3G only mode now)</string>
+    <string name="save_arfcn">Save Arfcn</string>
+    <string name="save_arfcn_cell">Save ArfcnCell</string>
+    <string name="unlock">UnLock</string>
+    <string name="dialog_based_preferences">Choose Arfcn and CellId</string>
+    <string name="dialog_title_list_preference">Choose one</string>
+    <string name="summary_list_preference">Uses a list dialog to Lock Cell</string>
+    <string name="title_itra_list_preference">Itra List preference</string>
+    <string name="title_iter_list_preference">Iter List preference</string>
+</resources>

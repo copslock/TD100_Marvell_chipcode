@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WifiDirect Http</string>
+    <string name="share_menu_label">WifiDirect http</string>
+
+    <string name="dialog_activity_text">Do you want to send this file?</string>
+    <string name="dialog_positive_button">Send</string>
+    <string name="dialog_negative_button">Cancel</string>
+    <string name="progress_bar_text">Sending...</string>
+
+    <string name="download_folder_name_tittle">Download Folder Name</string>
+    <string name="download_folder_name_default">WifiDirectFiles</string>
+
+    <string name="web_server_switch_checkbox_title">Web Server</string>
+    <string name="web_server_state_off">OFF</string>
+    <string name="web_server_state_on">ON</string>
+    <string name="web_server_state_error">ERROR</string>
+</resources>

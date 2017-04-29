@@ -1,0 +1,30 @@
+#
+# (C) Copyright 2006 Marvell International Ltd.  
+# All Rights Reserved 
+#
+ifeq "$(CONFIG_BIONIC)" "y"
+include ../../Rules.make
+endif
+BUILDROOT=../../
+
+#Fill  special CFLAGS
+CFLAGS	+= -I./ \
+		     -I../wrapper \
+		     -I$(BUILDROOT)/include\
+		     -I$(BUILDROOT)/osa/inc\
+		     -I../msocket \
+
+CFLAGS += -DMSOCKET_AP
+
+OBJECTS = msocket_buf_dump
+all: $(OBJECTS)
+msocket_buf_dump: msocketk_dump.o 
+ifeq "$(CONFIG_BIONIC)" "y"
+	$(CC) $(BIONIC_LINK) $(CFLAGS) -o $@ msocketk_dump.o $(BIONIC_POSTLINK)
+else
+	$(CC) $(CFLAGS) -o $@ msocketk_dump.o
+endif
+
+clean:
+	rm -f $(OBJECTS) *.o
+

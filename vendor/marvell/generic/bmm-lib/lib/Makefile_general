@@ -1,0 +1,55 @@
+#
+# Makefile for BMM user library
+#
+
+ABI_VERSION = 0u
+ABI_REVISION = 1
+
+ifeq "$(CONFIG_GEN_DEBUG)" "y"
+BMM_DEF := -DBMM_DEBUG
+
+else
+BMM_DEF := 
+endif
+
+SRC_DIR := .
+
+CFLAGS += $(BMM_DEF) \
+	-I${SRC_DIR}/include \
+
+bmm_lib_src=${SRC_DIR}/bmm_lib.c \
+
+bmm_test_src=${SRC_DIR}/bmm_test.c \
+
+bmm_lib_obj=${bmm_lib_src:.c=.o} 
+
+bmm_test_obj=${bmm_test_src:.c=.o} 
+
+
+.PHONY: all compile install-host install-target clean clean-local \
+	uninstall-host uninstall-target
+
+.c.o:
+	${CC} -fPIC -o $@ -c $<
+
+all: compile install-host install-target 
+
+compile: bmm_test libbmm.so libbmm.a
+
+bmm_test: libbmm.so.$(ABI_VERSION) ${bmm_test_obj}
+	${CC} -o $@ ${bmm_test_obj} -L. -lbmm
+
+libbmm.a: ${bmm_lib_obj}
+	${AR} -rcs $@ ${bmm_lib_obj}
+
+libbmm.so.$(ABI_VERSION): ${bmm_lib_obj}
+	${CC} -g -s -shared -Wl,-soname,$@ -o $@.$(ABI_REVISION) ${bmm_lib_obj}
+	ln -s $@.$(ABI_REVISION) $@
+	ln -s $@.$(ABI_REVISION) libbmm.so
+
+clean: clean-local
+
+clean-local:
+	-rm -f ${bmm_lib_obj} ${bmm_test_obj}
+	-rm -f libbmm.*
+	-rm -f bmm_test

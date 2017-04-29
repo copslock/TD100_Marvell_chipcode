@@ -1,0 +1,104 @@
+#!/busybox/bin/sh
+# The rdinit for android and generic rootfs boot on all devices
+# It search rootfs on devices as following sequence,
+#	1. INIT_MTDBLK
+#	2. Default network
+#	3. USB network
+#	4. SD Card (TODO)
+# If multi rootfs are available, it will load one as following sequence,
+#	1. Android
+#	2. generic rootfs
+#
+# Draft by Bin Yang <bin.yang@marvell.com> on 20 Sept. 2009
+#
+
+PATH=/busybox/bin:/busybox/sbin:/busybox/usr/bin:/busybox/usr/sbin
+export PATH
+
+SD_DEVICE=/dev/mmcblk0p1
+SD_PLACE=/sd
+DUMP_PREFIX=kdump
+DUMP_FILE=kdump_1
+DUMP_ALLOW=0
+export DUMP_ALLOW
+
+sortout_max() {
+	let max_num=0
+	for file in `ls $1`; do
+		name=`echo $file | cut -d'_' -f 1`
+		filenum=`echo $file | cut -d'_' -f 2`
+		if [ $name == $DUMP_PREFIX ]; then
+			if [ $max_num -le $filenum ]; then
+				let max_num=$filenum
+			fi
+		fi
+	done;
+	let max_num=max_num+1
+	DUMP_FILE="$DUMP_PREFIX"_"$max_num"
+}
+
+rdinit_prepare() {
+	mknod /dev/console c 5 1
+	exec < /dev/console > /dev/console 2>&1
+	cd /
+	mkdir /proc
+	mount -t proc proc /proc
+	mkdir /sys
+	mount -t sysfs sysfs /sys
+	mdev -s
+	cmdline=`cat /proc/cmdline`
+	for arg in $cmdline ; do
+		cmd=`echo $arg | cut -d'=' -f1`
+		if [ "kdump_ver" = $cmd ]; then
+			DUMP_PREFIX=`echo $arg | cut -d'=' -f2`
+			DUMP_PREFIX=kdump@"$DUMP_PREFIX"
+			break
+		fi
+		if [ "sd_mount" = $cmd ]; then
+			SD_DEVICE=`echo $arg | cut -d'=' -f2`
+		fi
+	done
+}
+
+rdinit_cleanup() {
+	umount /proc
+	umount /sys
+	rm -rf /proc /sys /tmp /dev /sbin
+}
+
+boot_abort() {
+	echo "boot abort ..."
+	rdinit_cleanup
+	mv /busybox/* /
+	/bin/rm /busybox rdinit -rf
+	exec /sbin/init
+}
+
+mmc_dump() {
+	echo "ready to mmc dump to file $SD_PLACE/$DUMP_FILE"
+	cd $SD_PLACE
+	makedumpfile -cfd 31 /proc/vmcore  $DUMP_FILE
+}
+
+#########Boot sequence###########
+#sleep 2 sec to wait mmc deivce init done
+sleep 2
+rdinit_prepare
+echo "ready to mount sd $SD_DEVICE" to $SD_PLACE
+if [ -e $SD_DEVICE ]; then
+	echo "mounting..."
+	mount $SD_DEVICE $SD_PLACE
+	if [ $? -eq 0 ];then
+		sortout_max $SD_PLACE
+		DUMP_ALLOW=1
+	fi
+	echo "done"
+else
+	echo "no such device"
+fi
+
+if [ $DUMP_ALLOW -ne 0 ]; then
+	mmc_dump
+fi
+boot_abort
+

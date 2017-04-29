@@ -1,0 +1,3 @@
+-keep class com.marvell.cpugadget.CpufreqPlugin
+-keep class com.marvell.cpugadget.StartupReceiver
+-keep class com.marvell.cpugadget.IntentReceiver

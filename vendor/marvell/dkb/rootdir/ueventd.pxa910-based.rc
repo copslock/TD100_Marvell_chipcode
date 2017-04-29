@@ -1,0 +1,24 @@
+/dev/snd/* 0660 system audio
+/dev/citty* 0660 radio system
+/dev/ccichar 0640 radio radio
+/dev/cctdatadev0 0640 radio radio
+/dev/cctdatadev1 0660 radio bluetooth
+/dev/cidatatty* 0640 radio radio
+/dev/cidatatty1 0660 radio bluetooth
+/dev/bmm 0660 media media
+/dev/ire 0660 system video
+# third party apps need GC
+/dev/galcore 0666 system meida
+# flash player need the pmem
+/dev/pmem 0666 media system
+/dev/pmem_adsp 0660 system camera
+/dev/cnm 0660 media media
+/dev/rfkill 0660 system wifi
+/dev/video0 0660 media camera
+/dev/video1 0660 media camera
+/dev/radio0 0660 system system
+# fix the cts /sys permission
+/sys/devices/virtual/input/input*   active    0660  root   input
+/sys/devices/virtual/input/input*   interval  0660  root   input
+/sys/devices/virtual/input/input*   wake      0220  root   input
+/sys/devices/virtual/input/input*   position  0660  root   input

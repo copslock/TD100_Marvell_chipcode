@@ -1,0 +1,113 @@
+            CHANGE LOG for Marvell Camera Engine Framework
+
+/*****************************************************************************
+*(C) Copyright 2010 Marvell International Ltd.
+* All Rights Reserved
+******************************************************************************/
+
+Version 2.0
+------------------------------ 
+ --BrownStone: Froyo Alpha 1 to Beta 2 release
+ --TD/TTC:     Froyo Beta 7 to Beta 10 release
+ --MG1:        Froyo m15d to ml7d release   
+------------------------------
+  N/A
+  
+
+Version 2.3  
+-----------------------
+ --BrownStone: Gingerbread Alpha release
+ --TD/TTC:     Gingerbread beta1
+ --MG1:        Gingerbread ml8d release 
+-----------------------
+  1. file re-naming for a more normal and organizable style, while keep interface and behavior stable, as following:
+ < format: 2.0 naming -> 2.3 naming >
+|-- Android.mk
+|-- build
+|-- example
+|-- include
+|   |-- CamBoardDefs.h
+|   |-- CameraEngine.h
+|-- lib
+`-- src
+    `-- cameraengine2
+        `-- ansi_c
+            |-- Android_cameraengine.mk
+            |-- Android_sensorhal.mk
+            |-- _include
+            |   |-- CamTrace.h           ->cam_trace.h   
+            |   |-- extisp_sensorhal.h   ->cam_extisp_sensorhal.h    
+            |   |-- extisp_strategy.h    ->cam_extisp_buildopt.h   < for build option manifes, like enable ppu/v4l2 calling sequence dump lies in this file >    
+            |   |-- log.h                ->cam_log.h                 
+            |   |-- socdefs.h            ->cam_socdef.h              
+            |   `-- utility.h            ->cam_utility.h 
+            |-- extisp_cameraengine
+            |   |-- CameraEngineExtIsp.c ->cam_extisp_eng.c       
+            |   `-- _CameraEngineExtIsp.h->cam_extisp_eng.h
+			|    -- ************   ->cam_extisp_ppu.c
+			|    -- ************   ->cam_extisp_ppu.h
+            |-- extisp_sensorhal
+            |   |-- SensorHalWrapper.c     ->cam_extisp_sensorhal.c   
+            |   |-- SensorHalWrapper.h     ->cam_extisp_sensorwrapper.h 
+            |   |-- LogitechC500.c         ->cam_extisp_logic500.c
+            |   |-- LogitechC500.h         ->cam_extisp_logic500.h    
+            |   |-- m6mo.c                 ->cam_extisp_m6mo.c         
+            |   |-- m6mo.h                 ->cam_extisp_m6mo.h       
+            |   |-- ov3640.c               ->cam_extisp_ov3640.c     
+            |   |-- ov3640.h               ->cam_extisp_ov3640.h        
+            |   |-- ov5640.c               ->cam_extisp_ov5640.c       
+            |   |-- ov5640.h               ->cam_extisp_ov5640.h      
+            |   |-- ov5642.c               ->cam_extisp_ov5642.c      
+            |   |-- ov5642.h               ->cam_extisp_ov5642.h    
+            |   |-- v4l2base.c             ->cam_extisp_v4l2base.c   
+            |   `-- v4l2base.h             ->cam_extisp_v4l2base.h 
+            `-- general
+                |-- CamGen.c              ->cam_gen.c
+                |-- CamTrace.c            ->cam_trace.c
+                `-- utility.c             ->cam_utility.c 
+  
+  
+  
+  2. isolate Post Processing Unit as an plug-in of Camera Engine, other than mixed with Camera Engine main body code.
+  
+
+Version 2.3.1
+-----------------------
+ --TD/TTC: Gingerbread beta2
+-----------------------
+1. align naming convention: 
+   (a)type prefix:
+      structure--> st
+      string   --> s
+      char     --> c
+      int      --> i
+      pointer  --> p
+
+   (b)internal data type must start from "_"
+
+2. add JPEG digital zoom feature 
+
+3. add in-place post-processing path in camera-engine to save memory footprint for physical continuous memory, now 420p->420sp conversion follow this path by default.
+
+4. libippexif: add GPS tag support and thumbnail support in lib, rename lib from libcodecexif to libippexif
+-----------------------
+ --MG1   : Gingerbread ml8.3d
+ --TD/TTC: Gingerbread beta3
+-----------------------
+
+5. add sensor digital zoom support, open iDigitalZoomStepQ16, bSupportSmoothDigZoom in camera capability for query
+
+6. add duplicate buffer enqueue handling, will dismiss this operation and return warning to user
+
+-------------------------
+ --Brownstone: Gingerbread beta2
+------------------------
+
+7. add yuv420p/uyvy/yuv420sp/yuv422p IPP software digital zoom support in post-processing
+
+8. add DISABLE_SENSOR_DYNAMIC_DETECT macro in cam_extisp_buildopt.h to help customer shorten camera-off to viewfinder-on latency in MP stage
+
+9. add auto flash mode in ov5642 reference design__2011/06/30
+
+10.add touch focus in ov5642 reference design__2011/06/30
+

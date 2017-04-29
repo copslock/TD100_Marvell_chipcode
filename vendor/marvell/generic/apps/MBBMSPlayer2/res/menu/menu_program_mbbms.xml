@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+     <item android:id="@+id/menu_search" android:title="@string/search" android:icon="@drawable/icon_search" />
+    <item android:id="@+id/menu_mbbs_setting" android:title="@string/setting" android:icon="@drawable/icon_setting" />	
+	<item android:id="@+id/menu_subscribe" android:title="@string/subscriptionmanage" android:icon="@drawable/icon_subscribe" />
+	
+	
+</menu>

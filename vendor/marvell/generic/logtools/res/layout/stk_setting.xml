@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:orientation="vertical">
+    <TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/textView1" android:text="@string/stk_screen_busy_description"></TextView>
+    <Button android:layout_height="wrap_content" android:text="@string/stk_screen_busy_on" android:id="@+id/buttonScreenBusyOn" android:layout_width="match_parent"></Button>
+    <Button android:layout_height="wrap_content" android:text="@string/stk_screen_busy_off" android:id="@+id/buttonScreenBusyOff" android:layout_width="match_parent"></Button>  
+</LinearLayout>

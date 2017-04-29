@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" 
+  android:title="@string/app_name">
+  
+    <PreferenceCategory android:title="@string/fm_transmitter_settings">
+    
+        <CheckBoxPreference 
+            android:key="apply_fm_transmitter" 
+            android:title="@string/apply_fm_transmitter" 
+            android:summary="@string/fm_transmitter"> 
+        </CheckBoxPreference>
+        
+        <EditTextPreference 
+            android:key="apply_fm_frequency" 
+            android:title="@string/fm_frequency_settings"
+            android:dependency="apply_fm_transmitter" 
+            android:dialogTitle="@string/fm_frequency_settings"
+            android:dialogMessage="@string/fm_frequency_message"
+            android:numeric="decimal"
+            android:singleLine="true">
+        </EditTextPreference>
+        
+        <CheckBoxPreference 
+            android:key="apply_fm_mute" 
+            android:title="@string/mute_fm_transmitter" 
+            android:dependency="apply_fm_transmitter" 
+            android:summaryOff="@string/mute" 
+            android:summaryOn="@string/unmute"> 
+        </CheckBoxPreference>
+        
+    </PreferenceCategory>
+</PreferenceScreen>

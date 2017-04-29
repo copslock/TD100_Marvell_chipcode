@@ -1,0 +1,6 @@
+This Directory is made for recovery use:
+
+1.init.*.rc: The chip based init.*.rc for recovery.
+2.lib/modules: Directory for additional private modules may insmod to kernel
+3.res/ :Directory for private resources.
+4.bin/ :Directory for binaries. You can add more for recovery use.

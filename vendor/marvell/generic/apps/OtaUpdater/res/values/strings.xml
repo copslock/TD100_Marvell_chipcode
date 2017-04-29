@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Main!</string>
+    <string name="app_name">OtaUpdater</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="scanning">Scanning</string>
+    <string name="scan">Scan For Update</string>
+    <string name="find_update">Find update package. Select to download</string>
+    <string name="unfind_update">No find update package!</string>
+    <string name="system_error">System error. Please try later!</string>
+    <string name="network">Network Setting</string>
+    <string name="download_message">Download apk now?</string>
+    <string name="downloading_message">%s downloading...</string>
+    <string name="list_title">Choose item download and install</string>
+    <string name="network_title">Modify server</string>
+    <string name="network_error">Network exception, please check the network available or set server via menu</string>
+    <string name="sdcard_unmount">No SD card! Can not download. Please insert your SD card</string>
+    <string name="package_uexist">File (%s) does not exist.</string>
+    <string name="update_now">Whether update now?</string>
+    <string name="yes">Yes</string>
+    <string name="later">Later</string>
+    
+    <string name="update_title">system update</string>
+    <string name="android_version_title">Android version</string>
+    <string name="kernel_version_title">Kernel version</string>
+    <string name="scan_update">Scan for update</string>
+    <string name="local_update">Local update</string>
+    <string name="downloading_alert">Only one download support now</string>
+    
+    <string name="model">Board Model</string>
+    <string name="branch">Branch</string>
+</resources>

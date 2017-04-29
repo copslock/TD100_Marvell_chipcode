@@ -1,0 +1,1 @@
+KERNEL=="bmm|bmm[0-9]",		MODE="0666"

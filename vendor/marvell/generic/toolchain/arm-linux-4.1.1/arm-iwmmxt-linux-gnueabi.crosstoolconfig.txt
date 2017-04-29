@@ -1,0 +1,34 @@
+AR=
+BINUTILS_DIR=binutils-2.16.92
+BINUTILS_EXTRA_CONFIG=
+BUILD=i686-pc-linux-gnu
+BUILD_DIR=/home2/yfw/toolchain/toolchain-2007-06-13/build/arm-iwmmxt-linux-gnueabi/gcc-4.1.1-glibc-2.5
+CC=
+DEJAGNU=
+EXTRA_TARGET_CFLAGS=
+GCC_BUILD=
+GCC_CORE_DIR=gcc-4.1.1
+GCC_DIR=gcc-4.1.1
+GCC_EXTRA_CONFIG=--with-cpu=iwmmxt --with-float=soft --enable-cxx-flags=-msoft-float
+GCC_HOST=
+GCC_LANGUAGES=c,c++
+GDB_DIR=
+GLIBC_ADDON_OPTIONS==ports,nptl
+GLIBC_DIR=glibc-2.5
+GLIBC_EXTRA_CC_ARGS=-finline-limit=10000 -mabi=aapcs-linux
+GLIBC_EXTRA_CONFIG=--disable-libunwind-exceptions
+GLIBC_EXTRA_ENV=
+JUST_DOWNLOAD=
+KERNELCONFIG=/home2/yfw/toolchain/toolchain-2007-06-13/warm.config
+LINUX_DIR=linux-2.6.14.6
+LINUX_SANITIZED_HEADER_DIR=
+NO_DOWNLOAD=
+PREFIX=/home2/yfw/toolchain/2008-11-03/arm-iwmmxt-linux-gnueabi
+PTXDIST_DIR=
+SHARED_MODE=--enable-shared
+SRC_DIR=/home2/yfw/toolchain/toolchain-2007-06-13/build/arm-iwmmxt-linux-gnueabi/gcc-4.1.1-glibc-2.5
+TARBALLS_DIR=/home2/yfw/toolchain/toolchain-2007-06-13/sources
+TARGET=arm-iwmmxt-linux-gnueabi
+TARGET_CFLAGS=-O
+TOP_DIR=/home2/yfw/toolchain/toolchain-2007-06-13
+USE_SYSROOT=

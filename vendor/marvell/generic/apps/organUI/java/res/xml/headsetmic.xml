@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.marvell.organ">
+	   <PreferenceScreen
+	            android:title="@string/application_voice_recorder">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.ASVoiceRecorder" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	             android:title="@string/application_voip_recorder">
+	         <intent android:action="android.intent.action.MAIN"
+		         android:targetPackage="com.marvell.organ"
+			 android:targetClass="com.marvell.organ.ASVoipRecorder" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/application_camcorder">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.ASCamcorder" />
+	    </PreferenceScreen>
+	   <PreferenceScreen
+	            android:title="@string/application_asr">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.ASASR" />
+	    </PreferenceScreen>
+</PreferenceScreen>

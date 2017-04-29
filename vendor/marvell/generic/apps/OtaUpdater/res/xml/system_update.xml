@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Android Version -->
+    <Preference
+        android:key="android_version"
+        android:title="@string/android_version_title"
+        android:summary="">
+    </Preference>
+    
+    <!-- Kernel Version -->
+    <Preference
+        android:key="kernel_version"
+        android:title="@string/kernel_version_title"
+        android:summary="">
+    </Preference>
+
+    <!-- branch -->
+    <Preference
+        android:key="branch"
+        android:title="@string/branch"
+        android:summary="">
+    </Preference>
+
+    <!-- Network Setting -->
+    <Preference
+    	android:key="network_setting"
+        android:title="@string/network"
+        android:summary="">
+    </Preference>
+    
+    <!-- Local Update -->
+    <Preference
+        android:key="local_update"
+        android:title="@string/local_update">
+    </Preference>
+
+    <!-- Scan Update -->
+    <Preference
+    	android:key="scan_update"
+        android:title="@string/scan_update">
+    </Preference>
+
+</PreferenceScreen>

@@ -1,0 +1,62 @@
+KERNELDIR=	/Developer/SDKs/MacOSX10.4u.sdk/usr
+CC=		g++
+LINK=		$(CC) -o DutApi86xx_MacX
+LIBS=		lib_DutBtApi86xx.dylib
+
+CFLAGS=		-O2 -g -D_DEBUG -D_LINUX_ -D_REENTRANT -D_CLIENT_BG_ -D_BT_ -D_HCI_UART_ -DSTATIC_OBJ -I$(KERNELDIR)/include -I.
+LABTOOL_OBJS	= W86xx.o DutCalFileHandle.o DutFuncs.o 
+		
+DutApi86xx_MacX:	$(LABTOOL_OBJS)		
+		$(LINK) $(CFLAGS) $(LABTOOL_OBJS) $(LIBS)
+
+ 
+utilities.o:	../DutCommon/utilities.cpp
+		$(CC) $(CFLAGS) -c ../DutCommon/utilities.cpp
+utilities_os.o: ../DutCommon/utilities_os.cpp
+		$(CC) $(CFLAGS) -c ../DutCommon/utilities_os.cpp
+mathUtility.o:	../DutCommon/mathUtility.c
+		$(CC) $(CFLAGS) -c ../DutCommon/mathUtility.c
+Utility.o:	../DutCommon/Utility.cpp
+		$(CC) $(CFLAGS) -c ../DutCommon/Utility.cpp
+
+W86xx.o:	W86xx.cpp DutBtApi86xxDll.h
+		$(CC) $(CFLAGS) -c W86xx.cpp
+DutCalFileHandle.o: DutCalFileHandle.cpp
+		$(CC) $(CFLAGS) -c DutCalFileHandle.cpp
+DutFuncs.o:	DutFuncs.cpp
+		$(CC) $(CFLAGS) -c DutFuncs.cpp
+
+DutBtApi86xxDll.o: DutBtApi86xxDll/DutBtApi86xxDll.cpp 
+		$(CC) $(CFLAGS) -c DutBtApi86xxDll/DutBtApi86xxDll.cpp
+GruBtApiClss.o: GruBtApi86xxDll/GruBtApiClss.cpp 
+		$(CC) $(CFLAGS) -c GruBtApi86xxDll/GruBtApiClss.cpp
+
+DutBtApi86xxLinkTest.o: GruBtApi86xxDll/DutBtApi86xxLinkTest.cpp 
+		$(CC) $(CFLAGS) -c GruBtApi86xxDll/DutBtApi86xxLinkTest.cpp
+
+DutApiCalData.o: 	DutBtApi86xxDll/DutApiCalData.cpp DutBtApi86xxDll/DutBtIf_HciUart.h
+		$(CC) $(CFLAGS) -c DutBtApi86xxDll/DutApiCalData.cpp
+DutBrf.o: 		DutBtApi86xxDll/DutBrf.cpp
+		$(CC) $(CFLAGS) -c DutBtApi86xxDll/DutBrf.cpp
+DutBtu.o: 		DutBtApi86xxDll/DutBtu.cpp
+		$(CC) $(CFLAGS) -c DutBtApi86xxDll/DutBtu.cpp
+DutBtApiClss.o:	DutBtApi86xxDll/DutBtApiClss.cpp
+		$(CC) $(CFLAGS) -c DutBtApi86xxDll/DutBtApiClss.cpp
+ 
+
+DutBtIf_HciUart.o:	DutBtApi86xxDll/DutBtIf_HciUart.cpp
+		$(CC) $(CFLAGS) -c DutBtApi86xxDll/DutBtIf_HciUart.cpp
+DutBtIf_IfClss.o:	DutBtApi86xxDll/DutBtIf_IfClss.cpp
+		$(CC) $(CFLAGS) -c DutBtApi86xxDll/DutBtIf_IfClss.cpp
+HciCtrl.o:	LowLevelExtnalModual/MultiOsHciCtrl/HciCtrl/HciCtrl.cpp
+		$(CC) $(CFLAGS) -c LowLevelExtnalModual/MultiOsHciCtrl/HciCtrl/HciCtrl.cpp
+ 
+xModem.o:	LowLevelExtnalModual/MultiOsHciCtrl/HciCtrl/xModem.cpp
+		$(CC) $(CFLAGS) -c LowLevelExtnalModual/MultiOsHciCtrl/HciCtrl/xModem.cpp
+
+UartIf.o:	LowLevelExtnalModual/MultiOsHciCtrl/HciCtrl/uartIf.cpp
+		$(CC) $(CFLAGS) -c LowLevelExtnalModual/MultiOsHciCtrl/HciCtrl/uartIf.cpp
+
+clean:		
+		rm -f DutApi86xx_MacX *.o core
+

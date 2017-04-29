@@ -1,0 +1,107 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/rules/simple-patchsys.mk
+include /usr/share/cdbs/1/class/gnome.mk
+include /usr/share/cdbs/1/rules/utils.mk
+
+CFLAGS += -Wno-error
+CXXFLAGS += -Wno-error
+LDFLAGS += -Wl,-z,defs -Wl,-O1 -Wl,--as-needed
+DEB_MAKE_CHECK_TARGET = check || true
+
+# this is for compatibility with dpkg-dev < 1.13.5, see
+# <http://lists.debian.org/debian-devel-announce/2005/06/msg00010.html>
+DEB_HOST_ARCH_CPU := $(shell dpkg-architecture -qDEB_HOST_ARCH_CPU 2>/dev/null)
+DEB_HOST_ARCH_OS := $(shell dpkg-architecture -qDEB_HOST_ARCH_OS 2>/dev/null)
+
+# Take account of old dpkg-architecture output.
+ifeq ($(DEB_HOST_ARCH_CPU),)
+  DEB_HOST_ARCH_CPU := $(shell dpkg-architecture -qDEB_HOST_GNU_CPU)
+  ifeq ($(DEB_HOST_ARCH_CPU),x86_64)
+    DEB_HOST_ARCH_CPU := amd64
+  endif
+endif
+ifeq ($(DEB_HOST_ARCH_OS),)
+  DEB_HOST_ARCH_OS := $(subst -gnu,,$(shell dpkg-architecture -qDEB_HOST_GNU_SYSTEM))
+  ifeq ($(DEB_HOST_ARCH_OS),gnu)
+    DEB_HOST_ARCH_OS := hurd
+  endif
+endif
+# end of compatibility block
+
+# debian package version
+version=$(shell dpkg-parsechangelog | grep ^Version: | cut -d ' ' -f 2)
+# upstream version
+gst_version=$(shell echo $(version) | cut -d '-' -f 1)
+gst_major=0
+gst_minor=10
+gst_abi=$(gst_major).$(gst_minor)
+# gstreamer library package names
+gst_lib=libgstreamer$(gst_abi)-0
+gst_lib_dev=libgstreamer$(gst_abi)-dev
+# what gstreamer version is needed
+gst_lib_dev_dep=$(gst_lib_dev) (>= 0.10.22)
+
+gst_pkgname=gstreamer$(gst_abi)
+gst_deb_abi=$(gst_abi)-0
+
+# The plugins are basically the same.
+# Link special names to a template file.
+# still need "*.install" to be done by hand
+
+PLUGINS += plugins-marvell
+
+# Let's decide the package name and url depending on the distribution
+DISTRO = "$(shell lsb_release -si)"
+
+GST_PACKAGE_NAME := "GStreamer Marvell Plugins (unknown Debian derivative)"
+
+ifeq ($(DISTRO),"Debian")
+GST_PACKAGE_NAME := "GStreamer Marvell Plugins (Debian)"
+endif
+
+ifeq ($(DISTRO),"Ubuntu")
+GST_PACKAGE_NAME := "GStreamer Marvell Plugins (Ubuntu)"
+endif
+
+
+# setup links for packages
+pre-build::
+	for p in $(PLUGINS); do \
+		rm -f debian/$(gst_pkgname)-$$p.install; \
+		cat debian/gstreamer-$$p.install | \
+			sed 's/@GST_ABI@/$(gst_abi)/g' \
+			> debian/$(gst_pkgname)-$$p.install; \
+	done
+
+maint: debian/control
+
+debian/build-deps: debian/build-deps.in debian/rules
+	cat $< > $@
+
+debian/control:: debian/control.in debian/build-deps debian/mk.control debian/rules
+	perl debian/mk.control | \
+		sed 's/@GST_VERSION@/$(gst_version)/g' | \
+		sed 's/@GST_ABI@/$(gst_abi)/g' | \
+		sed 's/@GST_PKGNAME@/$(gst_pkgname)/g' | \
+		sed 's/@GST_LIB@/$(gst_lib)/g' | \
+		sed 's/@GST_LIB_DEV@/$(gst_lib_dev)/g' | \
+		sed 's/@GST_LIB_DEV_DEP@/$(gst_lib_dev_dep)/g' | \
+		sed "s/@GST_EXTRA_BUILD_DEPENDS@/$(gst_extra_build_depends)/g" | \
+		sed "s/@linux@/`type-handling any linux-gnu`/g"> $@
+
+clean::
+	# get rid of the sym links
+	for i in $(PLUGINS); do \
+		rm -f debian/$(gst_pkgname)-$$i.install; \
+		rm -f debian/$(gst_pkgname)-$$i.preinst; \
+	done
+
+common-binary-fixup-arch::
+	dh_gstscancodecs
+
+# Disable inclusion of large upstream ChangeLog
+DEB_INSTALL_CHANGELOGS_ALL :=
+
+.PHONY: maint

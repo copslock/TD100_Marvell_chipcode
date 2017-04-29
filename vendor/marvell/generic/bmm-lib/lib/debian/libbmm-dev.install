@@ -1,0 +1,3 @@
+*.h usr/include
+*.a usr/lib
+bmm_test usr/bin

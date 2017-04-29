@@ -1,0 +1,101 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+PACKAGE = marvell-libbmm
+SRC_VERSION := $(shell dpkg-parsechangelog | sed -ne 's/^Version: \(\([0-9]\+\):\)\?\(.*\)-.*/\3/p')
+TARBALL = $(PACKAGE)_$(SRC_VERSION).orig.tar.gz
+
+# shared library versions, option 1
+version=2.0.5
+major=2
+# option 2, assuming the library is created as src/.libs/libfoo.so.2.0.5 or so
+#version=`ls src/.libs/lib*.so.* | \
+# awk '{if (match($$0,/[0-9]+\.[0-9]+\.[0-9]+$$/)) print substr($$0,RSTART)}'`
+#major=`ls src/.libs/lib*.so.* | \
+# awk '{if (match($$0,/\.so\.[0-9]+$$/)) print substr($$0,RSTART+4)}'`
+
+configure: configure-stamp
+configure-stamp:
+	dh_testdir
+	# Add here commands to configure the package.
+
+	touch configure-stamp
+
+
+build: build-stamp
+build-stamp: configure-stamp  
+	dh_testdir
+
+	# Add here commands to compile the package.
+	$(MAKE) -f Makefile_general
+
+	touch $@
+
+clean: 
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp configure-stamp
+
+	# Add here commands to clean up after the build process.
+	$(MAKE) -f Makefile_general clean
+
+	dh_clean 
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_prep  
+	dh_installdirs -A
+
+	# Add here commands to install the package into debian/tmp
+	#$(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
+
+
+# Build architecture-independent files here.
+binary-indep: install
+# We have nothing to do by default.
+
+# Build architecture-dependent files here.
+binary-arch: install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs -A
+	dh_installdocs -A
+#	dh_installexamples
+	dh_install -A
+#	dh_installmenu
+#	dh_installdebconf
+#	dh_installlogrotate
+#	dh_installemacsen
+#	dh_installpam
+#	dh_installmime
+#	dh_installinit
+#	dh_installcron
+#	dh_installinfo
+	dh_installman
+	dh_link -A
+	dh_strip -A
+	dh_compress -A
+	dh_fixperms -A
+#	dh_perl
+#	dh_python
+	dh_makeshlibs -A -- -c4
+	dh_installdeb -A
+	dh_shlibdeps -A
+	dh_gencontrol -A
+	dh_md5sums -A
+	dh_builddeb -A
+
+get-orig-source:
+	cd .. && tar czf $(TARBALL) --exclude $(PACKAGE)*/debian $(PACKAGE)*/* 
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install configure

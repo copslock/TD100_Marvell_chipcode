@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/*
+ * (C) Copyright 2010 Marvell International Ltd.
+ * All Rights Reserved
+ *
+ * MARVELL CONFIDENTIAL
+ * Copyright 2008 ~ 2010 Marvell International Ltd All Rights Reserved.
+ * The source code contained or described herein and all documents related to
+ * the source code ("Material") are owned by Marvell International Ltd or its
+ * suppliers or licensors. Title to the Material remains with Marvell International Ltd
+ * or its suppliers and licensors. The Material contains trade secrets and
+ * proprietary and confidential information of Marvell or its suppliers and
+ * licensors. The Material is protected by worldwide copyright and trade secret
+ * laws and treaty provisions. No part of the Material may be used, copied,
+ * reproduced, modified, published, uploaded, posted, transmitted, distributed,
+ * or disclosed in any way without Marvell's prior express written permission.
+ *
+ * No license under any patent, copyright, trade secret or other intellectual
+ * property right is granted to or conferred upon you by disclosure or delivery
+ * of the Materials, either expressly, by implication, inducement, estoppel or
+ * otherwise. Any license under such intellectual property rights must be
+ * express and approved by Marvell in writing.
+ *
+ */-->
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/linerlayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<LinearLayout
+     android:orientation="vertical"
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent"
+     android:layout_weight="1"
+     android:background="@drawable/beijing_blue"
+    >
+						<RelativeLayout
+						     android:orientation="horizontal"
+						     android:layout_width="fill_parent"
+						     android:layout_height="wrap_content"
+						    >
+						    <ImageView android:id="@+id/record"
+                                                          android:layout_width="wrap_content"
+                                                          android:layout_height="wrap_content"
+                                                          android:layout_alignParentLeft="true"
+                                                          android:background="@drawable/record"
+							  android:visibility="invisible"
+                                                          android:layout_marginTop="22dp"
+                                                          android:layout_marginLeft="5dp">
+						</ImageView>
+							<TextView android:id="@+id/timer"
+                                                          android:layout_width="wrap_content"
+                                                          android:layout_height="wrap_content"
+                                                          android:visibility="invisible"
+							  android:text="@string/time"
+                                                          android:layout_marginTop="25dp"
+                                                        android:layout_marginLeft="30dp">
+						</TextView>
+							<ImageView android:id="@+id/imageView"
+							android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:layout_centerHorizontal="true"
+						        android:src="@drawable/new_fm_radio"
+						        android:layout_marginTop="25dp"
+						         ></ImageView>
+						         <ImageView android:id="@+id/rssi"
+							android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:layout_toRightOf="@+id/imageView"
+							android:layout_marginLeft="10dp"
+							android:layout_marginTop="25dp"
+						         ></ImageView>
+						         <Button android:id="@+id/btn_power"
+							android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:layout_alignParentRight="true"
+							android:background="@drawable/btn_power"
+						        android:layout_marginTop="15dp"
+							     android:layout_marginRight="10dp"></Button>
+
+						 </RelativeLayout>
+	<TextView android:id="@+id/scan" 
+	android:layout_width="wrap_content"
+	android:layout_height="25px" 
+	android:text="@string/scanning"
+	android:layout_gravity="center_horizontal"
+	android:visibility="invisible"
+	>
+	</TextView>
+	    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    >
+        </LinearLayout>
+    <RelativeLayout
+     android:orientation="horizontal"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+    >
+	       <com.marvell.fmradio.FrequencyView
+			android:id="@+id/frequency_view"
+			android:layout_width="fill_parent"
+			android:layout_height="300dp"
+		/>
+		 </RelativeLayout>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    >
+	</LinearLayout>
+</LinearLayout>
+   <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_weight="2"
+   android:background="@drawable/menu_cut"
+    >
+	<RelativeLayout
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="1"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginTop="20dp"
+	    >
+
+	<Button
+		android:id="@+id/new_btn_tune_left"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+       android:layout_toLeftOf="@+id/new_btn_scrol"
+		android:background="@drawable/new_btn_tune_left"
+    />
+
+    <Button
+		android:id="@+id/new_btn_scrol"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10px"
+		android:background="@drawable/btn_scrol"
+    />
+    <Button
+		android:id="@+id/new_btn_tune_right"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="10px"
+      android:layout_toRightOf="@+id/new_btn_scrol"
+		android:background="@drawable/new_btn_tune_right"
+    />
+    </RelativeLayout>
+     <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:layout_marginTop="15dp"
+    android:orientation="horizontal"
+    android:layout_gravity="center_vertical"
+    >
+ <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_weight="1"
+    android:orientation="horizontal"
+    >
+	<Button
+		android:id="@+id/new_btn_tune_prev"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+		android:background="@drawable/btn_tune_prev"
+    />
+    </LinearLayout>
+     <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:orientation="horizontal"
+    >
+	<Button
+		android:id="@+id/new_btn_list"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/new_btn_tune_prev"
+		android:background="@drawable/new_btn_list"
+	/>
+	</LinearLayout>
+	     <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:orientation="horizontal"
+    >
+	<Button
+		android:id="@+id/new_btn_add"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_toLeftOf="@+id/new_btn_tune_next"
+		android:background="@drawable/add"
+    />
+	</LinearLayout>
+	<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:orientation="horizontal"
+    >
+	<Button
+		android:id="@+id/new_btn_tune_next"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+		android:background="@drawable/btn_tune_next"
+    />
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>
+</LinearLayout>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.marvell.networkinfo">
+	   <PreferenceScreen
+	            android:title="@string/item_2g"
+	            android:summary="@string/item_2g_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.Item2G" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/item_3g"
+	            android:summary="@string/item_3g_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.Item3G" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/item_nw"
+	            android:summary="@string/item_nw_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.ItemNW" />
+	    </PreferenceScreen>
+</PreferenceScreen>

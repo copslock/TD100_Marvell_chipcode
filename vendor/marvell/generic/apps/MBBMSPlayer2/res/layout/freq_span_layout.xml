@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--(C) Copyright 2010 Marvell International Ltd.
+	All Rights Reserved
+
+	MARVELL CONFIDENTIAL
+	Copyright 2008 ~ 2010 Marvell International Ltd All Rights Reserved.
+	The source code contained or described herein and all documents related to
+	the source code ("Material") are owned by Marvell International Ltd or its
+	suppliers or licensors. Title to the Material remains with Marvell International Ltd
+	or its suppliers and licensors. The Material contains trade secrets and
+	proprietary and confidential information of Marvell or its suppliers and
+	licensors. The Material is protected by worldwide copyright and trade secret
+	laws and treaty provisions. No part of the Material may be used, copied,
+	reproduced, modified, published, uploaded, posted, transmitted, distributed,
+	or disclosed in any way without Marvell's prior express written permission.
+
+	No license under any patent, copyright, trade secret or other intellectual
+	property right is granted to or conferred upon you by disclosure or delivery
+	of the Materials, either expressly, by implication, inducement, estoppel or
+	otherwise. Any license under such intellectual property rights must be
+	express and approved by Marvell in writing.-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg">
+    
+    <TextView android:id="@+id/tv_title" 
+    	android:layout_width="fill_parent"
+    	android:layout_height="35px"
+    	android:text="@string/customizedfreq"
+    	android:textSize="19sp"
+    	android:textColor="@color/solid_white"
+    	android:gravity="center">
+    </TextView>
+    
+    <ImageView android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:src="@drawable/dialog_hint_line">
+    </ImageView>
+    
+    <TextView android:id="@+id/tv_freqprompt" 
+    	android:layout_marginTop="5px"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:text="@string/freqprompt"    	
+    	android:textSize="14sp"
+    	android:textColor="@color/solid_white"   	
+    	android:paddingLeft="15px"
+    	android:paddingRight="15px">
+    </TextView>
+    
+    <EditText android:id="@+id/ev_inputfreq" 
+    	android:layout_width="240px"
+    	android:layout_height="30px"
+    	android:textColor="@color/solid_black"
+    	android:gravity="center_vertical"
+    	android:layout_marginLeft="15px"
+    	android:paddingLeft="10px"    	
+    	android:background="@drawable/single_line">
+    </EditText>
+        	
+    <LinearLayout android:layout_width="fill_parent"
+    	android:layout_height="55px"
+    	android:orientation="horizontal"
+    	android:layout_marginTop="10px">
+    
+    	<Button android:id="@+id/bt_confirm" 
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="40px"
+    		android:background="@drawable/button_bg_white"
+    		android:text="@string/confirm"
+    		android:textSize="16sp"
+    		android:textColor="@color/solid_black"
+    		android:gravity="center">
+    	</Button>
+    	
+    	<Button android:id="@+id/bt_cancel" 
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="20px"
+    		android:background="@drawable/button_bg_white"
+    		android:text="@string/cancel"
+    		android:textSize="16sp"
+    		android:textColor="@color/solid_black"
+    		android:gravity="center">
+    	</Button>
+    
+    </LinearLayout>
+    
+    
+</LinearLayout>

@@ -1,0 +1,59 @@
+Hi,
+         There are more and more distributions and debug requirements now. It is a challenge for kernel to support all requirement with one binary. If we use multi definitions and binaries, it will bring lots of effort to maintain and verify the kernel. Here is my solution to support all requirements with one kernel binary. 
+
+         It uses a initrd, which has a minimized busybox inside, to handle different rootfs on different devices. It searches the devices which may have rootfs as following sequence,
+1.	Mtd init partition
+2.	Default network
+3.	USB network
+4.	SD Card (TODO)
+         If an available rootfs is found, it will boot from this device. If multi rootfs are available on one device, it will choose one as following sequence,
+1.	Android rootfs
+2.	Generic rootfs
+
+         If no rootfs is found, it will about and use self as rootfs with very basic functions supported. I think it will be very helpful for kernel bring up and a quick debug without full function rootfs, such as screening board. 
+
+         "Kernel.patch" modifies the kernel command line to change init path and mtd partition table. To be compatible with old table, it only separates 256KB from bootloader partition for init partition usage. So the flash offsets of all images are not changed. 
+         "root/busybox/rdinit" is the init program which is invoked by kernel boot up. It will search an available rootfs and switch to it. 
+         "rootfs" is used to gen the ramdisk for generic rootfs. To boot generic rootfs from flash, it should be burned to the init partition. 
+         "switch_root.patch" is my hack patch for busybox. The original checking is too strict to boot android and generic rootfs. 
+
+         Here are the examples
+
+         Boot android from flash:
+1.	Burn all images as before. 
+2.	Burn ramdisk.img, which is created by android building, to init partition (offset 0xc0000). You can use XDB or uboot to burn it. 
+3.	Run 
+
+         Boot android from nfs:
+1.	Burn all images as before.
+2.	Erase init partition(offset 0xc0000). 
+3.	Setup nfs on host. Host ip is 192.168.1.100 and android rootfs should be put to /nfs/android
+4.	run
+
+         Boot generic rootfs from flash:
+1.	Burn boot binaries as before. 
+2.	Burn rootfs.jffs2 to the system partition(offset 0xc20000)
+3.	Burn ramdisk.img, which is created by mk_ramdisk.sh in rootfs folder, to init partition (offset 0xc0000). You can use XDB or uboot to burn it.
+4.	run
+
+         Boot generic rootfs from flash:
+1.	Burn boot binaries as before. 
+2.	Burn rootfs.jffs2 to the system partition(offset 0xc20000)
+3.	Erase init partition(offset 0xc0000).
+4.	Setup nfs on host. Host ip is 192.168.1.100 and generic rootfs should be put to /nfs/rootfs
+5.	Make sure the android nfs is disabled. 
+6.	run
+
+	And you can set the specific rootfs and boot device with kernel command line like following,
+	set_rootfs=android@flash
+	set_rootfs=android@nfs
+	set_rootfs=android@mmc
+	set_rootfs=generic@flash
+	set_rootfs=generic@nfs
+	set_rootfs=generic@mmc
+         
+         Any feedback is welcome. 
+
+Thanks,
+Bin
+

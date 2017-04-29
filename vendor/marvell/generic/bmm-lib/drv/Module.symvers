@@ -1,0 +1,2 @@
+0x00000000	bmm_malloc_kernel	/home/yanl/marvell.sp6/vendor/marvell/generic/bmm-lib/drv/bmm	EXPORT_SYMBOL
+0x00000000	bmm_free_kernel	/home/yanl/marvell.sp6/vendor/marvell/generic/bmm-lib/drv/bmm	EXPORT_SYMBOL

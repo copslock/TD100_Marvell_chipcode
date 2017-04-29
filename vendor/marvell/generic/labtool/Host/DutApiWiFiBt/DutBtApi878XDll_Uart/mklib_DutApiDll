@@ -1,0 +1,59 @@
+KERNELDIR=	/Developer/SDKs/MacOSX10.4u.sdk/usr
+CC=		g++
+
+EXEC_NAME = lib_DutBtApi86xx.dylib
+
+DUTSRCE=	../DutBtApi86xxDll
+GRUSRCE=	../GruBtApi86xxDll
+COMMONSRCE=	../../DutCommon
+LIBS=		$(DUTSRCE)/lib_xmodem.dylib $(DUTSRCE)/lib_hciCtrl.dylib
+
+CFLAGS=		-O2 -g -D_REENTRANT -D_DEBUG -D_LINUX_ -D_CLIENT_BG_ -D_BT_ -D_HCI_UART_ -DSTATIC_OBJ -I$(KERNELDIR)/include -I.
+LABTOOL_OBJS	=  DutBtApi86xxDll.o GruBtApiClss.o DutBtApi86xxLinkTest.o\
+                    utilities.o utilities_os.o mathUtility.o Utility.o\
+			DutBtApiClss.o DutApiCalData.o DutBrf.o DutBtu.o\
+			DutBtIf_IfClss.o DutBtIf_HciUart.o 
+
+#  DutBtApi86xxLinkTest.o
+		
+$(EXEC_NAME):	$(LABTOOL_OBJS)		
+		$(CC) $(CFLAGS) -dynamiclib -install_name $(EXEC_NAME) -o $(EXEC_NAME) $(LABTOOL_OBJS) $(LIBS)
+		cp $(EXEC_NAME) ..
+
+ 
+utilities.o:	$(COMMONSRCE)/utilities.cpp
+		$(CC) $(CFLAGS) -c $(COMMONSRCE)/utilities.cpp
+utilities_os.o: $(COMMONSRCE)/utilities_os.cpp
+		$(CC) $(CFLAGS) -c $(COMMONSRCE)/utilities_os.cpp
+mathUtility.o:	$(COMMONSRCE)/mathUtility.c
+		$(CC) $(CFLAGS) -c $(COMMONSRCE)/mathUtility.c
+Utility.o:	$(COMMONSRCE)/Utility.cpp
+		$(CC) $(CFLAGS) -c $(COMMONSRCE)/Utility.cpp
+
+DutBtApi86xxDll.o: $(DUTSRCE)/DutBtApi86xxDll.cpp 
+		$(CC) $(CFLAGS) -c $(DUTSRCE)/DutBtApi86xxDll.cpp
+GruBtApiClss.o: $(GRUSRCE)/GruBtApiClss.cpp 
+		$(CC) $(CFLAGS) -c $(GRUSRCE)/GruBtApiClss.cpp
+
+DutBtApi86xxLinkTest.o: $(GRUSRCE)/DutBtApi86xxLinkTest.cpp 
+		$(CC) $(CFLAGS) -c $(GRUSRCE)/DutBtApi86xxLinkTest.cpp
+
+DutApiCalData.o: 	$(DUTSRCE)/DutApiCalData.cpp $(DUTSRCE)/DutBtIf_HciUart.h
+		$(CC) $(CFLAGS) -c $(DUTSRCE)/DutApiCalData.cpp
+DutBrf.o: 		$(DUTSRCE)/DutBrf.cpp
+		$(CC) $(CFLAGS) -c $(DUTSRCE)/DutBrf.cpp
+DutBtu.o: 		$(DUTSRCE)/DutBtu.cpp
+		$(CC) $(CFLAGS) -c $(DUTSRCE)/DutBtu.cpp
+DutBtApiClss.o:	$(DUTSRCE)/DutBtApiClss.cpp
+		$(CC) $(CFLAGS) -c $(DUTSRCE)/DutBtApiClss.cpp
+ 
+
+DutBtIf_HciUart.o:	$(DUTSRCE)/DutBtIf_HciUart.cpp
+		$(CC) $(CFLAGS) -c $(DUTSRCE)/DutBtIf_HciUart.cpp
+DutBtIf_IfClss.o:	$(DUTSRCE)/DutBtIf_IfClss.cpp
+		$(CC) $(CFLAGS) -c $(DUTSRCE)/DutBtIf_IfClss.cpp
+
+
+clean:		
+		rm -f $(EXEC_NAME) *.o core
+

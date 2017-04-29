@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Usb setting.  -->
+    <!--
+    <string-array name="usb_setting_entries">
+        <item>ethernet</item>
+        <item>dialog</item>
+        <item>modem</item>
+        <item>dialog and modem</item>
+        <item>adb</item>
+        <item>demo</item>
+        <item>netconsole</item>
+    </string-array>
+	-->
+
+    <!-- Usb settings return value (string). -->
+	<!--
+    <string-array name="usb_setting_values">
+        <item>0</item>    
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    -->
+    
+    <!-- Network selection setting. -->
+    <string-array name="network_setting_entries">
+        <item>DualMode(3G preferred)</item>
+        <item>2G only</item>
+        <item>3G only</item>
+	<item>DualMode(auto)</item>
+    <item>DualMode(2G preferred)</item>
+    
+</string-array>
+
+    <!-- Network selection setting return value (string). -->
+    <string-array name="network_setting_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+	<item>3</item>
+    <item>8</item>
+</string-array>
+
+    <!-- Diag to USB/SD selection setting. -->
+    <string-array name="diag_setting_entries">
+        <item>Diag to USB</item>
+        <item>Diag to SDcard</item>
+        <item>Diag to FS</item>
+        <item>Diag to UDP</item>
+        <item>Diag to TCP</item>
+    </string-array>
+
+    <!-- Diag to USB/SD selection setting return value (string). -->
+    <string-array name="diag_setting_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <!-- Diag to Camera ID selection setting. -->
+    <string-array name="camera_setting_entries">
+        <item>Main Camera</item>
+        <item>Second Camera</item>
+    </string-array>
+
+    <string-array name="camera_setting_values">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
+	<!-- Diag to Loopback ID selection setting. -->
+    <string-array name="loopback_setting_entries">
+        <item>Headset</item>
+        <item>Speaker</item>
+        <item>Earpiece</item>
+		<item>Disable</item>
+    </string-array>
+
+    <string-array name="loopback_setting_values">
+        <item>4</item>
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
+  <!--USB selection Menu options-->
+  <string-array name="usb_menu_options">
+    <item>modem, adb and mass storage</item>
+    <item>modem and mass storage</item>
+    <item>mass storage device</item>
+    <item>RNDIS</item>
+    <item>modem and diag</item>
+	<item>diag</item>
+	<item>modem, diag, adb and mass storage</item>
+	<item>RNDIS, modem, diag, adb and mass storage</item>
+    <!-- 
+    <item>Media sync</item>
+    <item>modem link and media sync</item>
+    -->
+  </string-array>
+</resources>

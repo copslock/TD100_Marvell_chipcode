@@ -1,0 +1,2 @@
+bin/lib*.so usr/lib
+etc/*.rules etc/udev/rules.d

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.marvell.networkinfo">
+	   <PreferenceScreen
+	            android:title="@string/itemnw_sub0"
+	            android:summary="@string/itemnw_sub0_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.ItemnwSub0" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/itemnw_sub1"
+	            android:summary="@string/itemnw_sub1_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.ItemnwSub1" />
+	    </PreferenceScreen>
+	   <PreferenceScreen
+	            android:title="@string/itemnw_sub2"
+	            android:summary="@string/itemnw_sub2_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.ItemnwSub2" />
+	    </PreferenceScreen>
+
+</PreferenceScreen>

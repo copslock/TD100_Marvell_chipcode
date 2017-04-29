@@ -1,0 +1,28 @@
+Source: gst-plugins-marvell@GST_ABI@
+Section: libs
+Priority: optional
+Maintainer: Li Li <lea.li@marvell.com>
+Build-Depends: BUILDDEPS
+Standards-Version: 3.8.0
+
+Package: @GST_PKGNAME@-plugins-marvell
+Architecture: armel
+Section: libs
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         gstreamer0.10-plugins-base,
+         marvell-ipp
+Recommends: @GST_PKGNAME@-x
+Replaces: gstreamer0.10-plugins-bad (<< 0.10.7.2), gstreamer0.10-plugins-really-bad (<< 0.10.7.2)
+Provides: ${gstreamer:Provides}
+Description: GStreamer plugins for Marvell CODECs
+ GStreamer is a streaming media framework, based on graphs of filters
+ which operate on media data.  Applications using this library can do
+ anything from real-time sound processing to playing videos, and just
+ about anything else media-related.  Its plugin-based architecture means
+ that new data types or processing capabilities can be added simply by
+ installing new plug-ins.
+ .
+ This package contains the GStreamer plugins from Marvell CODECs, a set
+ of optimzied plug-ins under the LGPL license.
+

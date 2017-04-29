@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.marvell.cmmb.view.customview.LoadingView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:gravity="center"
+  android:orientation="vertical">
+  
+  	<TextView android:id="@+id/tv_title"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:textSize="22sp"
+		android:layout_weight="1"
+		android:textColor="@color/solid_gray"/>
+		
+  	<ImageView android:id="@+id/iv_logo"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:src="@drawable/logo">
+	</ImageView>
+	
+	<TextView android:id="@+id/tv_info"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:gravity="center"
+		android:textSize="22sp"
+		android:textColor="@color/solid_gray"/>
+	
+	<ImageView android:id="@+id/iv_load"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:src="@drawable/load_01">
+	</ImageView>
+	<TextView android:id="@+id/tv_note"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:gravity="center"
+		android:textSize="18sp"
+		android:textColor="@color/solid_gray"/>
+</com.marvell.cmmb.view.customview.LoadingView>

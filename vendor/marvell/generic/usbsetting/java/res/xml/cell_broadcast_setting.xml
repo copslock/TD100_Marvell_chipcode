@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory>
+		<CheckBoxPreference android:key="cell_broadcast_preference"
+			android:title="@string/cell_broadcast" android:summary="@string/summary_cell_broadcast" />
+		<PreferenceScreen android:key="language_preference"
+			android:title="@string/language_settings" android:dependency="cell_broadcast_preference">
+		</PreferenceScreen>
+
+		<EditTextPreference android:key="channel_preference"
+			android:title="@string/add_channel" android:dialogTitle="@string/dialog_title_add_channel"
+			android:dependency="cell_broadcast_preference" />
+	</PreferenceCategory>
+
+	<PreferenceCategory android:key="channel_list_preference"
+		android:title="@string/channel_list">
+	</PreferenceCategory>
+</PreferenceScreen>

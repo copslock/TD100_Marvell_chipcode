@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.marvell.organ">
+	   <PreferenceScreen
+	            android:title="@string/pcm">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.EFPCM" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/amr_nb">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.EFAMRNB" />
+	    </PreferenceScreen>
+	   <PreferenceScreen
+	            android:title="@string/aac">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.EFAAC" />
+	    </PreferenceScreen>
+</PreferenceScreen>

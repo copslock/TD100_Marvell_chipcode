@@ -1,0 +1,525 @@
+#include "../DutBtApi.hc"
+
+
+
+#define REGVALUE_BRF_TH_MAX				(0xFF)
+#define REGVALUE_BRF_TH_MIN				(0x00)
+
+#define REGVALUE_BRF_BBGAIN_MAX				24 //(0x1F)
+#define REGVALUE_BRF_BBGAIN_MIN				(0x0)
+#define REGVALUE_BRF_PPAGAIN_MAX				(0x3)
+#define REGVALUE_BRF_PGAGAIN_MAX				(0x4)
+#define REGVALUE_BRF_PPAPGAGAIN_MIN				(0x0)
+#define REGVALUE_BRF_PPA_GAINSTEPMODE_6DBPERCODE		6 //(6 dB per Code)
+#define REGVALUE_BRF_PPA_GAINSTEPMODE_3DBPERCODE		3 //(3 dB per Code)
+#define REGVALUE_BRF_PGA_GAINSTEPMODE_6DBPERCODE		6 //(6 dB per Code)
+
+#define REG_BRF_CHIP_STATUS							(0x0A)
+typedef struct	BrfReg_ChipStatus
+{
+	WORD ChipStatus_flgCntOvrFlw:1;
+	WORD ChipStatus_flgFsmErr:1;  
+	WORD ChipStatus_flgLoUnLock:1;
+	WORD ChipStatus_flgTimer:1;
+	WORD ChipStatus_RosFsm:3;
+	WORD ChipStatus_LoUnlock:1;
+	WORD ChipStatus_VtPwDetLoDFlag:1;
+	WORD ChipStatus_VtPwDetLoUFlag:1;
+	WORD ChipStatus_VtPwDetHiDFlag:1;
+	WORD ChipStatus_VtPwDetHiUFlag:1;
+	WORD ChipStatus_LoUnlockDetDis:1;
+	WORD ChipStatus_resChipDigRxCtrl:2;
+	WORD ChipStatus_BrfTrxReady:1;
+ }BrfReg_ChipStatus;
+
+
+
+#if 0 //def HOST_IMPLEMENT
+ 
+#define WL_CIU_BASE					(0x80002000)
+#define WL_CIU_SYS_CONFIG			(WL_CIU_BASE+0)
+#define WL_CIU_PADPWRUPDNCTRL		(WL_CIU_BASE+0x64)
+#define WL_CIU_MISC2				(WL_CIU_BASE+0xE8)
+
+
+typedef struct Bt_PadPwrUpDnCtrl
+{
+	DWORD	PadCtrl_ClkOutSlew:2;
+	DWORD	PadCtrl_reserv2bit:2;
+	DWORD	PadCtrl_Gpio17_2Slew:2;
+	DWORD	PadCtrl_Gpio1Slew:2;
+	DWORD	PadCtrl_Gpio0Slew:2;
+	DWORD	PadCtrl_SdioSlew:2;
+	DWORD	PadCtrl_E2promJtagSlew:2;
+	DWORD	PadCtrl_BtuSlew:2;
+	DWORD	PadCtrl_HostWakeUp:1;
+	DWORD	PadCtrl_Cf_Data_PullUp_En:1;
+	DWORD	PadCtrl_reserve1bit:1;
+	DWORD	PadCtrl_Sda_PullUp_En:1;
+	DWORD	PadCtrl_ExtXtal:1;
+	DWORD	PadCtrl_LodShortCDet_Dis:1;
+	DWORD	PadCtrl_LdoBackUpV_Low:1;
+	DWORD	PadCtrl_Cf_IO_PullUp_En:1;
+	DWORD	PadCtrl_Reserveothers:8;
+} Bt_PadPwrUpDnCtrl;
+
+typedef struct Bt_Cau_Misc2
+{
+	DWORD	SocCpReg:2;
+	DWORD	SocXtalCal:8;
+	DWORD	SocXtalGain:1;
+	DWORD	SocIcp_T3:3;
+	DWORD	SocLpfr_T3:2;
+	DWORD	SocVrSel_T3:2;
+	DWORD	SocVRng_T3:2;
+	DWORD	SocRegCntl_T3:2;
+	DWORD	SocIntpi_T3:2;
+	DWORD	SocPiCapSel_T3:3;
+	DWORD	SocTest_T3:4;
+	DWORD	SocLdoATestEn:1;
+} Bt_Cau_Misc2;
+
+
+
+
+
+
+
+
+typedef struct Bt_Brf_Channel
+{
+	WORD	ChannelNumber;
+	WORD	ChannelFreqByMHz;
+	WORD	Setting0;
+	WORD	Setting1;
+} Bt_Brf_Channel;
+
+typedef struct Bt_Brf_ChannelList
+{
+	DWORD RefLoIn100KHz;
+	DWORD LowLoMode;
+	Bt_Brf_Channel BtChannel[MAX_NUM_BT_CH];
+} Bt_Brf_ChannelList;
+
+typedef struct	BrfChannelLoConf0
+{
+	WORD sd_in_b0:8;
+	WORD sd_in_b1:8;
+}BrfChannelLoConf0;
+
+
+typedef struct	BrfChannelLoConf1
+{
+	WORD sd_in_b2:4;
+	WORD ini_mm_stg:2;
+	WORD sdbit3:1;
+	WORD pr_h:1;
+	WORD pr_l:8;
+}BrfChannelLoConf1;
+
+
+typedef struct	BrfLoConf_Pr
+{
+	WORD pr_l:8;
+	WORD pr_h:1;
+}BrfLoConf_Pr;
+
+typedef struct	BrfLoConf_Din
+{
+	DWORD sd_in_b0:8;
+	DWORD sd_in_b1:8;
+	DWORD sd_in_b2:4;
+}BrfLoConf_Din;
+
+
+typedef struct Bt_Brf_ChBank
+{
+	WORD	ChannelNumber;
+	BYTE	AddressSetting0;
+	BYTE	AddressSetting1;
+	WORD	ValueSetting0;
+	WORD	ValueSetting1;
+} Bt_Brf_ChBank;
+
+ 
+typedef struct	BrfAddressValuePair
+{
+	BYTE Address;
+	WORD Value; 
+}BrfAddressValuePair;
+
+
+#define REG_BRF_CHIPID			(0x0)
+
+typedef struct	BrfReg_ChipId_Rst_PwrDn
+{
+	WORD ChipIdRst_BrfRadio_PwrDn:1;
+	WORD ChipIdRst_SoftReset:1; 
+	WORD ChipIdRst_RlfSwRstEn:1;
+	WORD ChipIdRst_BrfSaRefClkByPass:1;
+	WORD ChipIdRst_BrfCauClkTbgSel:1;
+	WORD ChipIdRst_ByPassBiasRdy:1;
+	WORD ChipIdRst_Reserve:2;
+	WORD ChipIdRst_Id:8;
+}BrfReg_ChipId_Rst_PwrDn;
+
+
+#define REG_BRF_CH_SETTING0								(0x1)
+#define REG_BRF_CH_SETTING1								(0x2)
+#define REG_BRF_CH2_SETTING0								(0x17)
+#define REG_BRF_CH2_SETTING1								(0x18)
+// BrfChannelLoConf0 and BrfChannelLoConf1
+
+ 
+#define REG_BRF_CHBANK1_SETTING0						(REG_BRF_CH2_SETTING0)		
+#define REG_BRF_CHBANK1_SETTING1						(REG_BRF_CH2_SETTING1)
+#define REG_BRF_CHBANK2_SETTING0						(0x19)		
+#define REG_BRF_CHBANK2_SETTING1						(0x1A)
+#define REG_BRF_CHBANK3_SETTING0						(0x1B)		
+#define REG_BRF_CHBANK3_SETTING1						(0x1C)
+#define REG_BRF_CHBANK4_SETTING0						(0x1D)		
+#define REG_BRF_CHBANK4_SETTING1						(0x1E)
+#define REG_BRF_CHBANK5_SETTING0						(0x1F)		
+#define REG_BRF_CHBANK5_SETTING1						(0x20)
+#define REG_BRF_CHBANK6_SETTING0						(0x21)		
+#define REG_BRF_CHBANK6_SETTING1						(0x22)
+#define REG_BRF_CHBANK7_SETTING0						(0x23)		
+#define REG_BRF_CHBANK7_SETTING1						(0x24)
+#define REG_BRF_CHBANK8_SETTING0						(0x25)		
+#define REG_BRF_CHBANK8_SETTING1						(0x26)
+
+ 
+
+#define REG_BRF_TX_MR0								(0x3)
+typedef struct	BrfReg_ChNum
+{
+	WORD ChNum_BtState:2;
+	WORD ChNum_BtChan:7; 
+	WORD ChNum_BtChan2:7;
+ }BrfReg_ChNum;
+
+
+#define REG_BRF_CALFSM_STATUS						(0x08)
+typedef struct	BrfReg_FsmState
+{
+	WORD FsmState_CalFsm:5;
+	WORD FsmState_OtherStates:11;  
+ }BrfReg_FsmState;
+
+#define REG_BRF_CHIP_STATUS							(0x09)
+typedef struct	BrfReg_ChipStatus
+{
+	WORD ChipStatus_flgCntOvrFlw:1;
+	WORD ChipStatus_flgFsmErr:1;  
+	WORD ChipStatus_flgLoUnLock:1;
+	WORD ChipStatus_flgTimer:1;
+	WORD ChipStatus_RosFsm:3;
+	WORD ChipStatus_VtPwDetLoFlag:1;
+	WORD ChipStatus_VtPwDetHiFlag:1;
+	WORD ChipStatus_ChipdigRxCtrl:6;
+	WORD ChipStatus_BrfTrxReady:1;
+ }BrfReg_ChipStatus;
+
+
+#define REGVALUE_BRF_BRF_RDY				(0x0B)
+#define REGVALUE_BRF_BRF_IDLE				(0x0C)
+
+
+#define REG_BRF_BT_MRVL_PWRCTRL_EN					(0x05)
+typedef struct	BrfReg_txMr2
+{
+	WORD txMr2_TxSlpEn:1;
+	WORD txMr2_rxSlp1En:1;
+	WORD txMr2_TxGfskLpModeEn:1;
+	WORD txMr2_MrvlPwrCtrlEn:1;
+	WORD txMr2_BtPwrCtrlEn:1;
+	WORD txMr2_RxIqSel:1;
+	WORD txMr2_Reserved:10;  
+ }BrfReg_txMr2;
+
+#define REG_BRF_TXG1_INIT_CLASSMODE					(0x33)
+ 
+typedef struct	BrfReg_TxInitialGain1
+{
+	WORD TxInitGain1_IgtPga:4;
+	WORD TxInitGain1_Reserved1:4;
+	WORD TxInitGain1_IgtPpa:4; 
+	WORD TxInitGain1_Reserved2:2;
+	WORD TxInitGain1_BtPwrCtrlEn:1;
+	WORD TxInitGain1_Classe1En:1;
+}BrfReg_TxInitialGain1;
+
+
+
+#define REG_BRF_TXGAINSTATUS					(0x34)
+typedef struct	BrfReg_TxGainStatus
+{
+	WORD TxGainStatus_Reserved:8;
+	WORD TxGainStatus_GtPga_Rb:4;
+	WORD TxGainStatus_GtPpa_Rb:4; 
+}BrfReg_TxGainStatus;
+
+
+
+#define REG_BRF_TXG2_INIT_PPAPGA				(0x35)
+
+#define REGSHIFT_BRF_TXG2_INIT_PPA_EXTSEL		(9)
+#define REGMASK_BRF_TXG2_INIT_PPA_EXTSEL		(1<<REGSHIFT_BRF_TXG2_INIT_PPA_EXTSEL)
+#define REGSHIFT_BRF_TXG2_INIT_PPA_GAIN			(4)
+#define REGMASK_BRF_TXG2_INIT_PPA_GAIN			(0x0F<<REGSHIFT_BRF_TXG2_INIT_PPA_GAIN)
+
+#define REGSHIFT_BRF_TXG2_INIT_PGA_EXTSEL		(8)
+#define REGMASK_BRF_TXG2_INIT_PGA_EXTSEL		(1<<REGSHIFT_BRF_TXG2_INIT_PGA_EXTSEL)
+#define REGSHIFT_BRF_TXG2_INIT_PGA_GAIN			(0)
+#define REGMASK_BRF_TXG2_INIT_PGA_GAIN			(0x0F<<REGSHIFT_BRF_TXG2_INIT_PGA_GAIN)
+
+#define REGSHIFT_BRF_TXG2_INIT_XGTPPA_C1_MIN_MAX		(13)
+#define REGMASK_BRF_TXG2_INIT_XGTPPA_C1_MIN_MAX		(1<<REGSHIFT_BRF_TXG2_INIT_XGTPPA_C1_MIN_MAX)
+#define REGSHIFT_BRF_TXG2_INIT_XGTPGA_C1_MIN_MAX		(12)
+#define REGMASK_BRF_TXG2_INIT_XGTPGA_C1_MIN_MAX		(1<<REGSHIFT_BRF_TXG2_INIT_XGTPGA_C1_MIN_MAX)
+
+#define REGSHIFT_BRF_TXG2_INIT_XGTPPA_C2_MIN_MAX		(11)
+#define REGMASK_BRF_TXG2_INIT_XGTPPA_C2_MIN_MAX		(1<<REGSHIFT_BRF_TXG2_INIT_XGTPPA_C2_MIN_MAX)
+#define REGSHIFT_BRF_TXG2_INIT_XGTPGA_C2_MIN_MAX		(10)
+#define REGMASK_BRF_TXG2_INIT_XGTPGA_C2_MIN_MAX		(1<<REGSHIFT_BRF_TXG2_INIT_XGTPGA_C2_MIN_MAX)
+
+typedef struct	BrfReg_TxG_min_max
+{
+	WORD XgtPga_min:4;
+	WORD XgtPga_max:4;
+	WORD XgtPpa_min:4;
+	WORD XgtPpa_max:4;
+}BrfReg_TxG_min_max;
+
+#define REG_BRF_TXG_C1_MIN_MAX				(0x36)
+#define REG_BRF_TXG_C2_MIN_MAX				(0x37)
+#define REG_BRF_TXG_MRVL_MIN_MAX			(0x3A)
+
+
+ 
+
+#define REG_BRF_VT_PWDET_CLASS1_MD				(0x3B)
+#define REG_BRF_VT_PWDET_MRVL_MD				(0x3C)
+#define REG_BRF_VT_PWDET_CLASS2_MD				(0x3D)
+//#define REGVALUE_BRF_TH_MAX				(0xFF)
+//#define REGVALUE_BRF_TH_MIN				(0x00)
+
+typedef struct	BrfReg_TxPwDetTh
+{
+	WORD TxPwDetTh_Hi:8;
+	WORD TxPwDetTh_Lo:8; 
+}BrfReg_TxPwDetTh;
+
+ 
+#define REG_BRF_TX_MD1					(0x3E)
+typedef struct	BrfReg_txmd1
+{
+	WORD txmd1_PpaTune:2;
+	WORD txmd1_TxGainPriority_ppa0pga1:1;
+	WORD txmd1_xPwDet_Polority_Pos0neg1:1;
+	WORD txmd1_PwrCtrl_Dly:3; 
+	WORD txmd1_PpaPwrUp_Dly:4; 
+	WORD txmd1_SlowPwrDet_Sar_Clk:1;
+	WORD txmd1_TxCompensationGainTempCoEff:3;
+	WORD txmd1_Reserved:1;
+}BrfReg_txmd1;
+
+#define REG_BRF_TX_MD2					(0x3F)
+typedef struct	BrfReg_txmd2
+{
+	WORD txmd2_Itx_BwBB:2;
+	WORD txmd2_Xtx_BwBB:2;
+	WORD txmd2_Xtx_BwBB_Sel:1;
+	WORD txmd2_Xtos_CntQ_Sel:1;
+	WORD txmd2_Xtos_CntI_Sel:1;
+	WORD txmd2_ExtPaPe_En:1; 
+	WORD txmd2_ExtPaPe:1; 
+	WORD txmd2_PaPeMode:1;
+	WORD txmd2_PaPeDly:2;
+	WORD txmd2_PwrCtrlTimer:4;
+}BrfReg_txmd2;
+
+
+#define REG_BRF_BM_TX1					(0x42)
+#define REG_BRF_BM_TXLP					(0x44)
+typedef struct	BrfReg_Bm_tx
+{
+	WORD BmTx_BmPpa:4;
+	WORD BmTx_BmPga:4;
+	WORD BmTx_BmTxDiv:4;
+	WORD BmTx_BmTxLoBuf:4;
+}BrfReg_Bm_tx;
+
+
+
+
+
+#define REG_BRF_TEST0					(0x6C)
+#define REG_BRF_TEST1					(0x6D)
+#define REG_BRF_TEST2					(0x6E)
+#define REG_BRF_TEST3					(0x6F)
+
+typedef struct	BrfReg_Test0
+{
+	WORD tst_c2_txoffset1_en:1;
+	WORD tst_c2_dac32_en:1;
+	WORD tst_lpbk_en:1;
+	WORD tst_dig_lpbk_en:1; 
+	WORD tst_adc_early_start:1;
+	WORD tst_dac_early_start:1;
+	WORD tst_adc_cau_refclk_bypass:1; 
+	WORD tst_adc_clk_sel:1; 
+	WORD tst_dac_clk_sel:1; 
+	WORD tst_adc_pahse_inv:1; 
+	WORD tst_dac_pahse_inv:1; 
+	WORD tst_adc_tst_en:1; 
+	WORD tst_dac_tst_en:1; 
+	WORD tst_led_ind:2; 
+	WORD tst_int_scantest:1; 
+}BrfReg_Test0;
+
+
+
+typedef struct	BrfReg_Test1
+{
+	WORD tst_testmode_mux:7;
+	WORD tst_test_lp0_en:1;
+	WORD tst_test_lp1_en:1;
+	WORD tst_test_lp2_en:1;
+	WORD tst_test_lp3_en:2;
+	WORD tst_en:1;
+	WORD tst_start:1;
+	WORD tst_brf_tst_fail:1; 
+	WORD tst_brf_tst_rdy:1; 
+}BrfReg_Test1;
+
+typedef struct	BrfReg_Test2
+{
+	WORD tst_ana_en:1;
+	WORD tst_hop_en:1;
+	WORD tst_rate:2;
+	WORD tst_data_type:2;
+	WORD tst_data_type1:1;
+	WORD tst_data_only:1;
+	WORD tst_hop_timer:2;
+	WORD tst_acc_mode:2; // pseudo code
+	WORD tst_bus2dac_en:2;
+	WORD tst_bt_rx_state:1;
+	WORD tst_bt_tx_state:1;
+}BrfReg_Test2;
+
+typedef struct	BrfReg_Test3
+{
+	WORD tst_length:12;
+	WORD tst_corr_th:2;
+	WORD tst_systime_dly:2; 
+}BrfReg_Test3;
+
+ 
+
+ 
+
+#define REG_BRF_IQ_CAL2					(0x75)
+typedef struct	BrfReg_iqcal2
+{
+	WORD iqcal_beta_est_rb:4;
+	WORD iqcal_alpha_est_rb:4;
+	WORD iqcal_freq_gen:6;
+	WORD iqcal_avg_cycle:1; 
+	WORD iqcal_tonegen_sine_saw:1; 
+}BrfReg_iqcal2;
+
+
+#endif //#ifdef HOST_IMPLEMENT
+
+
+
+#if 1//def _W8689_
+#define REG_BRF_TEST0					(0x80)
+#define REG_BRF_TEST1					(0x81)
+#define REG_BRF_TEST2					(0x82)
+#define REG_BRF_TEST3					(0x83)
+
+typedef struct	BrfReg_Test0
+{
+	WORD tst_Reserve:1;
+	WORD tst_c2_dac32_en:1;
+	WORD tst_lpbk_en:1;
+	WORD tst_dig_lpbk_en:1; 
+	WORD tst_adc_early_start:1;
+	WORD tst_dac_early_start:1;
+	WORD tst_adc_cau_refclk_bypass:1; 
+	WORD tst_adc_clk_sel:1; 
+	WORD tst_dac_clk_sel:1; 
+	WORD tst_adc_pahse_inv:1; 
+	WORD tst_dac_pahse_inv:1; 
+	WORD tst_adc_tst_en:1; 
+	WORD tst_dac_tst_en:1; 
+	WORD tst_led_ind:2; 
+	WORD tst_int_scantest:1; 
+}BrfReg_Test0;
+
+
+
+typedef struct	BrfReg_Test1
+{
+	WORD tst_testmode_mux:7;
+	WORD tst_test_lp0_en:1;
+	WORD tst_test_lp1_en:1;
+	WORD tst_test_lp2_en:1;
+	WORD tst_test_lp3_en:2;
+	WORD tst_en:1;
+	WORD tst_start:1;
+	WORD tst_brf_tst_fail:1; 
+	WORD tst_brf_tst_rdy:1; 
+}BrfReg_Test1;
+
+typedef struct	BrfReg_Test2
+{
+	WORD tst_ana_en:1;
+	WORD tst_hop_en:1;
+	WORD tst_rate:2;
+	WORD tst_data_type:2;
+	WORD tst_data_type1:1;
+	WORD tst_data_only:1;
+	WORD tst_hop_timer:2;
+	WORD tst_acc_mode:2; // pseudo code
+	WORD tst_bus2dac_en:2;
+	WORD tst_bt_rx_state:1;
+	WORD tst_bt_tx_state:1;
+}BrfReg_Test2;
+
+typedef struct	BrfReg_Test3
+{
+	WORD tst_length:12;
+	WORD tst_corr_th:2;
+	WORD tst_systime_dly:2; 
+}BrfReg_Test3;
+
+ 
+#define REG_BRF_TONE_GEN				(0x89)
+typedef struct	BrfReg_ToneGen
+{
+//	WORD tonegen_beta_est_rb:4;
+//	WORD tonegen_alpha_est_rb:4;
+	WORD tonegen_freq_gen:8;
+	WORD tonegen_reserve:6;
+	WORD tonegen_avg_cycle:1; 
+	WORD tonegen_tonegen_sine_saw:1; 
+}BrfReg_ToneGen;
+ 
+
+#define REG_BRF_IQ_CAL0				(0x87)
+typedef struct	BrfReg_IqCal0
+{
+	WORD iqcal0_iqcalBetaInit:4;
+	WORD iqcal0_iqcalAlphaInit:4;
+	WORD iqcal0_PreCompScaleFactor:2;
+	WORD iqcal0_TxIqSinDis:1;
+	WORD iqcal0_TxIqCosDis:1;
+	WORD iqcal0_TxPreCompByPass:1;
+	WORD iqcal0_Reserve:3;
+}BrfReg_IqCal0;
+ 
+
+#endif //#if 1//def _W8689_

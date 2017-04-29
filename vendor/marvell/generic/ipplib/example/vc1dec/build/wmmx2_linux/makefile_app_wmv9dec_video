@@ -1,0 +1,89 @@
+# makefile created by Linux Automake V1.0.0
+# This makefile will build a Linux application
+
+#==============================================================================
+# Codec Name												(user update)
+#==============================================================================
+CODEC_NAME=vc1dec
+
+#==============================================================================
+# Rules.make												(user update)
+#==============================================================================
+include ../../../../example/Rules.make
+
+#==============================================================================
+# Codec Specific Flags											(user update)
+#==============================================================================
+
+M=n
+CFLAGS+= -fno-unit-at-a-time -D_FILE_OFFSET_BITS=64
+ASFLAGS+= 
+
+
+#==============================================================================
+# Log file          										(user update)
+#==============================================================================
+PATH_USR_LOG=$(PATH_USR_BUILD)/wmmx2_linux/log
+USR_LOG_TRACE=$(PATH_USR_LOG)/build_trace_app_$(CODEC_NAME)_linux.log
+
+#==============================================================================
+# More external include option 											(user update)
+#==============================================================================R
+OPT_INC_EXT+=\
+-I $(PATH_USR_ROOT)/src/vc1dec/ansi_c/ \
+-I $(PATH_USR_ROOT)/src/vc1dec/ansi_c/PVR/ \
+-I $(PATH_USR_ROOT)/src/vc1dec/asm/wmmx2_linux
+
+#==============================================================================
+# User libraries          										(user update)
+#==============================================================================
+
+ifeq ($(M), y)
+
+ifeq ($(USE_STATICLIB), y)
+USR_LIBS=\
+ $(PATH_USR_LIB)/libmiscgen.a\
+ $(PATH_USR_LIB)/libcodecwmvdecmved.a\
+ $(PATH_USR_LIB)/libmved.a
+else
+USR_LIBS=-L$(PATH_USR_LIB)/ -lcodecwmvdecmved -lmiscgen $(PATH_USR_LIB)/libmved.a
+
+endif
+
+else
+
+ifeq ($(USE_STATICLIB), y)
+USR_LIBS=\
+ $(PATH_USR_LIB)/libmiscgen.a\
+ $(PATH_USR_LIB)/libcodecwmvdec.a
+
+else
+USR_LIBS=-L$(PATH_USR_LIB)/ -lcodecwmvdec -lmiscgen
+
+#USR_LIBS=\
+ $(PATH_USR_LIB)/libmiscgen.so\
+ $(PATH_USR_LIB)/libcodecwmvdec.so
+endif
+
+endif
+
+#==============================================================================
+# Target                                                          (user update)
+#==============================================================================
+ifeq ($(M), y)
+OUTPUT_TARGET=$(PATH_USR_BIN)/wmv9decMVED_wmmx2
+else
+OUTPUT_TARGET=$(PATH_USR_BIN)/appwmv9dec.exe
+endif
+
+#==============================================================================
+#  Object files         										(user update)
+#==============================================================================
+OBJS_C=\
+	$(PATH_USR_SRC)/wmvexample.o\
+	$(PATH_USR_ROOT)/example/main/src/main.o
+
+#==============================================================================
+# AppTemplate.make												(user update)
+#==============================================================================
+include ../../../../example/AppTemplate.make

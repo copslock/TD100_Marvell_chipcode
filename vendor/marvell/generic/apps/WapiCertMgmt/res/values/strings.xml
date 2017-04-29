@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, WapiCertMgmt!</string>
+    <string name="install_cert"> Install Certificate </string>
+    <string name="uninstall_cert"> unInstall Certificate </string>
+    <string name="app_name">WapiCertMgmt</string>
+    <string name="wifi_wapi_cert_mgmt_titlebar">WAPI Certificate Management</string>
+    <!-- Action message of the install WAPI certificate -->
+    <string name="wifi_wapi_cert_install">Install WAPI Certificate</string>
+    <!-- Button caption to install wapi certificate button -->
+    <string name="wifi_wapi_cert_install_button">Install</string>
+    <!-- Button caption to uninstall wapi certificate button -->
+    <string name="wifi_wapi_cert_uninstall_button">Uninstall</string>
+    <!-- Button caption to  cancel wapi certificate button -->
+    <string name="wifi_wapi_cert_cancel_button">Cancel</string>
+    <!-- Action message of the uninstall WAPI certificate -->
+    <string name="wifi_wapi_cert_uninstall">Uninstall WAPI Certificate</string>
+    <!-- Caption for entering the directroy of wapi certificate which you want to storage -->
+    <string name="wifi_wapi_cert_create_subdir">Create a directroy</string>
+    <!-- Caption for entering the directroy of wapi certificate which you want to delet -->
+    <string name="wifi_wapi_cert_delet_subdir">Select a suit certificate</string>
+    <!-- Caption for the wapi root certificate -->
+    <string name="wifi_wapi_root_cert">Root Certificate</string>
+    <!-- Caption for the wapi user certificate -->
+    <string name="wifi_wapi_user_cert">User Certificate</string>  
+    <string name="error_title">Attention</string>
+    <string name="wifi_wapi_cert_mgmt_root_dont_exist">The SDCard does not has the root certificate, please checke it!</string>
+    <string name="wifi_wapi_cert_mgmt_root_format_is_wrong">The root certificate format is wrong! Please intall right one</string>
+    <string name="wifi_wapi_cert_mgmt_user_format_is_wrong">The user certificate format is wrong! Please intall right one</string>
+    <string name="wifi_wapi_cert_mgmt_user_name_is_empty">Please input the user certificate name</string>
+    <string name="wifi_wapi_cert_mgmt_user_dont_exist">The user certificate does not exist</string>
+    <string name="wifi_wapi_cert_mgmt_root_name_is_empty">Please input the as certificate name</string>
+    <string name="wifi_wapi_cert_mgmt_subdir_create_fail">Create directory fail</string>
+    <string name="wifi_wapi_cert_mgmt_subdir_exist">Please input the other directory name, this one does exist</string>
+    <string name="wifi_wapi_cert_mgmt_subdir_name_is_empty">Please input the directory name which you want to create!</string>
+</resources>

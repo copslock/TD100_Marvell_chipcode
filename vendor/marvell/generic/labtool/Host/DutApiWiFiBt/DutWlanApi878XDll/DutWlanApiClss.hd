@@ -1,0 +1,50 @@
+
+#ifndef _DUTAPICLSS_HD_
+#define _DUTAPICLSS_HD_
+
+ 
+//#include "CondorMacReg.hd"
+//#include "CondorConf.hd"
+//#include "../DutShareApi8xxxDll/DutApiClss_Caldata.hd"
+
+
+
+//#define EAGLE_MAX_CHANNEL_NUMBER 14
+//#define EAGLE_MAX_BSS_DESCRIPTS 20
+//#define EAGLE_TX_POWER_LEVEL_TOTAL 21
+
+
+//extern DWORD vg_dwSpiSleep; 
+ 
+#define	REGBASE_MAC					(0x8000A000)
+#define	REGBASE_SQ					(0xC0000000)
+#define REGBASE_GPIO				(0x80000000)
+
+#define VMR_SIGNATURE		(0x38333058)
+
+#define VMR_HEADER_LENGTH			0x80  // this is helping to figure out the MAC address location of SPI mode
+#define VMR_SPIVERSION_OFFSET		0x10  // this is helping to figure out the MAC address location of SPI mode
+
+#define VMR_MACADDR_OFFSET			0x08  // this is helping to figure out the MAC address location of SPI mode
+#define VMR_MACADDR_LOW				0x0C
+#define VMR_MACADDR_HIGH			(VMR_MACADDR_LOW+4)  // the same DWORD as Version it is like [Versuin][MAC Address High]
+
+#define VMR_OFFSET_CIS_LENGTH		0x14
+#define VMR_OFFSET_CIS_OFFSET		0x18
+#define VMR_OFFSET_CIS_BASE_SQ		0x1C
+#define VMR_OFFSET_PIU_OFFSET		0x20
+#define VMR_PIU_LENGTH				7  // in DWORD
+
+#define VMR_OFFSET_CAL_LENGTH		0x48
+#define VMR_OFFSET_CAL_OFFSET		0x4c
+
+
+ 
+ 
+
+//===============================================================================
+//								INCLUDE FILES
+//===============================================================================
+
+#endif
+

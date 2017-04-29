@@ -1,0 +1,97 @@
+----------------------------------------------------------------------
+Release Notes for Intel AT Commands Server V3.0.0
+----------------------------------------------------------------------
+
+Intel Confidential
+======================
+V3.0.0 - Sept 13, 2006
+======================
+LABEL:  TG_LINUX_ATCMDSRV_3.0.0
+	ENV_LINUX_TEL_3.0.0 (this includes all the drivers)
+COMM: PCAC_10.4.0
+ATP: PK_ATP_2.1.0
+- added SMS functionalities
+- tested on Qtopia Phone Edition 4.1.4
+- Final version before leaving Calgary Site
+
+
+======================
+V2.1.0 - June 28, 2006
+======================
+LABEL:  TG_LINUX_ATCMDSRV_2.1.0
+	ENV_LINUX_TEL_2.1.0 (this includes all the drivers)
+COMM: PCAC_10.0.1
+ATP: PK_ATP_2.1.0
+- changed at command line length to 255
+- moved around the atciSvgFreeIndMem to try to avoid crashing
+- solved timeout issue with the PK_ATP_2.1.0
+
+======================
+V2.0.0 - June 23, 2006
+======================
+LABEL:  TG_LINUX_ATCMDSRV_2.0.0
+	ENV_LINUX_TEL_2.0.0 (this includes all the drivers)
+COMM: PCAC9.0.0
+- added telephony controller layer code
+- working SIM Phone book functionalities
+- added SMS functionalities, not completed
+- main.c as program entry point, removed atcmdsrv.c
+- added telconfig.h for configuration
+
+
+Bugs:
+- DEACTED_IND and DAT_NOK sometimes will crash the program
+- re-entry of PPPD sometimes will crash the program
+
+======================
+V1.2.1 - May 18, 2006
+======================
+LABEL_ TG_LINUX_ATCMDSRV_1.2.1
+- changed sleep time before calling pppd
+- fixed typo for ENABLE_CSD_TESTING
+- added test code for AT Command Server
+- checked PPPD works on CSD and PSD
+
+V1.2.0
+April 12, 2006  - Vincent Yeung
+- ClearCase LABEL TG_LINUX_ATCMDSRV_1.2.0
+- removed non-posix type define and got rid of them in the code
+- applied new directory structures
+- Followed CBA for building process
+- use buildall and cleanall script to build and clean
+- changed Makefiles to use libatparser.a
+	libatparser.a needs to be created separately
+
+
+V1.01
+March, 2006 - Vincent Yeung
+- Qtopia Integration, added Qtopia System Initialization AT-commands 
+
+V1.00 - Vincent Yeung
+March, 2006
+
+COMM Version:
+Hermon C8.31.03 
+
+Hardware Platform:
+Mathis Phrase 2 
+
+- Initial Release 
+
+- Support the following AT Commands through /dev/citty0
+
+- CSD tested with Aglient 8960 with the following test sequences:
+    
+    1) AT+CBST=7,0,1
+    2) ATD12345
+    3) run ./pppd /dev/citty2
+
+- PSD tested with Aglient 8960 and Live Network with the following test sequences:
+
+    1) AT+CGDCONT=1,"IP","internet.com","",0,0
+    2) AT+CGDATA="PPP",1   (if wanted to test with Network
+    3) run ./pppd /dev/citty1
+
+Note: Audio of Voice Call can be enabled through ICAT MaCRO 
+
+Refer to Intel AT Cmd Server User Guide for setting up the enviroment

@@ -1,0 +1,18 @@
+LOCAL_PATH := $(my-dir)
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := uaputl.exe
+LOCAL_SRC_FILES := uapcmd.c uaputl.c uaphostcmd.c
+LOCAL_MODULE_TAGS := optional
+
+CONFIG_DFS_TESTING_SUPPORT=y
+ifeq ($(CONFIG_DFS_TESTING_SUPPORT), y)
+LOCAL_CFLAGS += -DDFS_TESTING_SUPPORT
+endif
+
+CONFIG_WFD_SUPPORT=y
+ifeq ($(CONFIG_WFD_SUPPORT), y)
+LOCAL_CFLAGS += -DWFD_SUPPORT
+endif
+
+include $(BUILD_EXECUTABLE)

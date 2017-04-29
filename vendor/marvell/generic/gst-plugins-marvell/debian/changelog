@@ -1,0 +1,26 @@
+gst-plugins-marvell0.10 (0.1.0-4) karmic; urgency=low
+
+  * Rename libgstmpeg2dec.so to libgstippmpeg2dec.so
+  * gst-plugins-ugly has another libgstmpeg2dec.so
+
+ -- Li Li <lea.li@marvell.com>  Fri, 11 Sep 2009 12:38:03 +0800
+
+gst-plugins-marvell0.10 (0.1.0-3) karmic; urgency=low
+
+  * vmeta: correct wrong warning & increase rank
+
+ -- Li Li <lea.li@marvell.com>  Fri, 11 Sep 2009 12:35:02 +0800
+
+gst-plugins-marvell0.10 (0.1.0-2) karmic; urgency=low
+
+  * autogen.sh
+  * Debianize vmetadec
+
+ -- Li Li <lea.li@marvell.com>  Thu, 03 Sep 2009 14:40:29 +0800
+
+gst-plugins-marvell0.10 (0.1.0-1) karmic; urgency=low
+
+  * Initial Release.
+
+ -- Ke Ding <kding1@marvell.com>  Thu, 03 Sep 2009 12:10:00 +0800
+

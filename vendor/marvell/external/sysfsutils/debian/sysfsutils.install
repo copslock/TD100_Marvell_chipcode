@@ -1,0 +1,4 @@
+debian/tmp/usr/bin/systool
+debian/tmp/usr/share/man/man1/
+debian/sysfs.conf etc/
+

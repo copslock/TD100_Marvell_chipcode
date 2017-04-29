@@ -1,0 +1,36 @@
+<AgpsConfigFile>
+  <SystemSettings>
+    <GPSPort>/dev/ttyS2</GPSPort>
+    <ResetPort>\\.\COM1</ResetPort>
+  </SystemSettings>
+  <LSMCommonSettings>
+    <NumberOfSessions>1</NumberOfSessions>
+    <ServerAddress>221.176.0.55</ServerAddress>
+    <Port>7275</Port>
+    <Secure>Yes</Secure>
+  </LSMCommonSettings>
+  <LSMSessionSettings>
+    <ResetType>Cold</ResetType>
+    <AidingType>NetworkAiding</AidingType>
+    <PositionTechnologyMSB>Yes</PositionTechnologyMSB>
+    <PositionTechnologyMSA>Yes</PositionTechnologyMSA>
+    <PositionTechnologyAutonomous>Yes</PositionTechnologyAutonomous>
+    <PositionTechnologyECID>No</PositionTechnologyECID>
+    <Preference>MSB</Preference>
+    <FixType>Multiple</FixType>
+    <NumberOfFixes>0</NumberOfFixes>
+    <TimeBetweenFixes>0</TimeBetweenFixes>
+    <AssistProtocol>SUPL_RRLP</AssistProtocol>
+    <ApproximateLocation>NoPresent</ApproximateLocation>
+    <ApproximateLatitude>37.37</ApproximateLatitude>
+    <ApproximateLongitude>-121.91</ApproximateLongitude>
+    <QoPinSUPLSTART>Present</QoPinSUPLSTART>
+    <QoShorizontalAccuracy>100</QoShorizontalAccuracy>
+    <QoSverticalAccuracy>100</QoSverticalAccuracy>
+    <QoSmaxResponseTime>90</QoSmaxResponseTime>
+    <LoggingType>SingleSession</LoggingType>
+    <BriefLogFilePath>/data/BriefLog.txt</BriefLogFilePath>
+    <DetailedLogFilePath>/data/DetailedLog.txt</DetailedLogFilePath>
+    <SLCLogFilePath>/data/SLCLog.gp2</SLCLogFilePath>
+  </LSMSessionSettings>
+</AgpsConfigFile>

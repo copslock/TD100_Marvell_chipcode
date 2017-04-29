@@ -1,0 +1,5 @@
+0x00000000	cp_holdcp	/home/yanl/marvell.sp6/vendor/marvell/generic/ttc_telephony/drivers/cp_load/cploaddev	EXPORT_SYMBOL
+0x00000000	cp_releasecp	/home/yanl/marvell.sp6/vendor/marvell/generic/ttc_telephony/drivers/cp_load/cploaddev	EXPORT_SYMBOL
+0x00000000	cp_loadfromflash	/home/yanl/marvell.sp6/vendor/marvell/generic/ttc_telephony/drivers/cp_load/cploaddev	EXPORT_SYMBOL
+0x00000000	cp_loadreliabledatafromflash	/home/yanl/marvell.sp6/vendor/marvell/generic/ttc_telephony/drivers/cp_load/cploaddev	EXPORT_SYMBOL
+0x00000000	get_cp_load_table	/home/yanl/marvell.sp6/vendor/marvell/generic/ttc_telephony/drivers/cp_load/cploaddev	EXPORT_SYMBOL

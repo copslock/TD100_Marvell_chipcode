@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright (C) 2010 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<apns version="6">
+    <!-- China Mobile -->
+    <apn mcc="460" mnc="00" carrier="CMCC WAP MMS" apn="cmwap" user="" server="*" password="" proxy="10.0.0.172" port="80"
+        mmsproxy="10.0.0.172" mmsport="80" mmsc="http://mmsc.monternet.com" type="mms,wap"/>
+
+    <apn mcc="460" mnc="00" carrier="CMNET" apn="cmnet" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="default"/>
+
+    <apn mcc="460" mnc="00" carrier="CMCC MAIL" apn="cmmail" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="cmmail"/>
+
+    <apn mcc="460" mnc="00" carrier="CMCC DM" apn="cmdm" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="cmdm"/>
+
+    <apn mcc="460" mnc="00" carrier="CMCC MM" apn="cmmm" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="cmmm"/>
+
+    <!-- China Unicom WO & 2G-->
+    <apn mcc="460" mnc="01" carrier="UNICOM NET" apn="3gnet" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="default"/>
+
+    <apn mcc="460" mnc="01" carrier="UNICOM WAP MMS" apn="3gwap" user="" server="*" password="" proxy="10.0.0.172" port="80"
+        mmsproxy="10.0.0.172" mmsport="80" mmsc="http://mmsc.myuni.com.cn" type="mms,wap"/>
+
+    <!-- China Mobile -->
+    <apn mcc="460" mnc="02" carrier="CMCC WAP MMS" apn="cmwap" user="" server="*" password="" proxy="10.0.0.172" port="80"
+        mmsproxy="10.0.0.172" mmsport="80" mmsc="http://mmsc.monternet.com" type="mms,wap"/>
+
+    <apn mcc="460" mnc="02" carrier="CMNET" apn="cmnet" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="default"/>
+
+    <apn mcc="460" mnc="02" carrier="CMCC MAIL" apn="cmmail" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="cmmail"/>
+
+    <apn mcc="460" mnc="02" carrier="CMCC DM" apn="cmdm" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="cmdm"/>
+
+    <apn mcc="460" mnc="02" carrier="CMCC MM" apn="cmmm" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="cmmm"/>
+
+    <!-- China Mobile TD -->
+    <apn mcc="460" mnc="07" carrier="CMCC WAP MMS" apn="cmwap" user="" server="*" password="" proxy="10.0.0.172" port="80"
+        mmsproxy="10.0.0.172" mmsport="80" mmsc="http://mmsc.monternet.com" type="mms,wap"/>
+
+    <apn mcc="460" mnc="07" carrier="CMNET" apn="cmnet" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="default"/>
+
+    <apn mcc="460" mnc="07" carrier="CMCC MAIL" apn="cmmail" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="cmmail"/>
+
+    <apn mcc="460" mnc="07" carrier="CMCC DM" apn="cmdm" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="cmdm"/>
+
+    <apn mcc="460" mnc="07" carrier="CMCC MM" apn="cmmm" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="cmmm"/>
+
+   <!-- China Mobile HK -->
+    <apn mcc="454" mnc="12" carrier="CMCC WAP MMS" apn="cmwap" user="" server="*" password="" proxy="" port=""
+        mmsproxy="10.0.0.172" mmsport="80" mmsc="http://mmsc.monternet.com" type="mms"/>
+
+    <apn mcc="454" mnc="12" carrier="CMNET" apn="cmnet" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="default"/>
+
+    <apn mcc="454" mnc="12" carrier="CMWAP" apn="cmwap" user="" server="" password="" proxy="10.0.0.172" port="80"
+        mmsproxy="" mmsport="" mmsc="" type="wap"/>
+
+    <apn mcc="454" mnc="12" carrier="CMCC MAIL" apn="cmmail" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="cmmail"/>
+
+    <apn mcc="454" mnc="12" carrier="CMCC DM" apn="cmdm" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="cmdm"/>
+
+    <apn mcc="454" mnc="12" carrier="CMCC MM" apn="cmmm" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="cmmm"/>
+
+    <!-- China Chunghwa -->
+    <apn mcc="466" mnc="92" carrier="Chunghwa MMS" apn="emome" user="" server="" password="" proxy="" port=""
+        mmsproxy="10.1.1.1" mmsport="8080"  mmsc="http://mms.emome.net:8002" type="mms"/>
+
+    <apn mcc="466" mnc="92" carrier="Chunghwa GPRS" apn="internet" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport=""  mmsc="" type="default"/>
+
+    <apn mcc="466" mnc="92" carrier="Chunghwa WAP GPRS" apn="emome" user="" server="" password="" proxy="10.1.1.1" port="8080"
+        mmsproxy="" mmsport=""  mmsc="" type="wap"/>
+
+    <apn mcc="466" mnc="01" carrier="FarEasTone MMS" apn="fetnet01" user="" server="" password="" proxy="" port=""
+        mmsproxy="210.241.199.199" mmsport="80"  mmsc="http://mms" type="mms"/>
+
+    <apn mcc="466" mnc="01" carrier="FarEasTone GPRS" apn="internet" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport=""  mmsc="" type="default"/>
+
+    <apn mcc="466" mnc="01" carrier="FarEasTone WAP GPRS" apn="fetnet01" user="" server="" password="" proxy="210.241.199.199" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="wap"/>
+
+    <apn mcc="466" mnc="97" carrier="TWN GSM MMS" apn="mms" user="" server="" password="" proxy="" port=""
+        mmsproxy="10.1.1.2" mmsport="80"  mmsc="http://mms" type="mms"/>
+
+    <apn mcc="466" mnc="97" carrier="TWN GSM GPRS" apn="internet" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport=""  mmsc="" type="default"/>
+
+    <apn mcc="466" mnc="97" carrier="TWN GSM WAP GPRS" apn="internet" user="wap" server="" password="wap" proxy="10.1.1.2" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="wap"/>
+
+    <!-- AT&T -->
+    <apn mcc="311" mnc="180" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="" port=""
+        mmsproxy="wireless.cingular.com" mmsport="80"  mmsc="http://mmsc.cingular.com" type="mms"/>
+
+    <apn mcc="311" mnc="180" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="default"/>
+
+    <apn mcc="311" mnc="180" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="wap"/>
+
+    <apn mcc="310" mnc="410" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="" port=""
+        mmsproxy="wireless.cingular.com" mmsport="80"  mmsc="http://mmsc.cingular.com" type="mms"/>
+
+    <apn mcc="310" mnc="410" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="default"/>
+
+    <apn mcc="310" mnc="410" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="wap"/>
+
+    <apn mcc="310" mnc="150" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="" port=""
+        mmsproxy="wireless.cingular.com" mmsport="80"  mmsc="http://mmsc.cingular.com" type="mms"/>
+
+    <apn mcc="310" mnc="150" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="default"/>
+
+    <apn mcc="310" mnc="150" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="wap"/>
+
+    <apn mcc="310" mnc="170" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="" port=""
+        mmsproxy="wireless.cingular.com" mmsport="80"  mmsc="http://mmsc.cingular.com" type="mms"/>
+
+    <apn mcc="310" mnc="170" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="default"/>
+
+    <apn mcc="310" mnc="170" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="wap"/>
+
+    <apn mcc="310" mnc="380" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="" port=""
+        mmsproxy="wireless.cingular.com" mmsport="80"  mmsc="http://mmsc.cingular.com" type="mms"/>
+
+    <apn mcc="310" mnc="380" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="default"/>
+
+    <apn mcc="310" mnc="380" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="wap"/>
+
+    <apn mcc="310" mnc="560" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="" port=""
+        mmsproxy="wireless.cingular.com" mmsport="80"  mmsc="http://mmsc.cingular.com"/>
+
+    <apn mcc="310" mnc="560" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="default"/>
+
+    <apn mcc="310" mnc="560" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="wap"/>
+
+    <apn mcc="310" mnc="680" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="" port=""
+        mmsproxy="wireless.cingular.com" mmsport="80"  mmsc="http://mmsc.cingular.com" type="mms"/>
+
+    <apn mcc="310" mnc="680" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="default"/>
+
+    <apn mcc="310" mnc="680" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="wap"/>
+
+    <apn mcc="310" mnc="070" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="" port=""
+        mmsproxy="wireless.cingular.com" mmsport="80"  mmsc="http://mmsc.cingular.com" type="mms" visible ="1" preloaded ="1" sort = "0"/>
+
+    <apn mcc="310" mnc="070" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="default"/>
+
+    <apn mcc="310" mnc="070" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="wap"/>
+
+    <apn mcc="310" mnc="980" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="" port=""
+        mmsproxy="wireless.cingular.com" mmsport="80"  mmsc="http://mmsc.cingular.com" type="mms" visible ="1" preloaded ="1" sort = "0"/>
+
+    <apn mcc="310" mnc="980" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="default"/>
+
+    <apn mcc="310" mnc="980" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="wap"/>
+
+    <apn mcc="310" mnc="090" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="" port=""
+        mmsproxy="wireless.cingular.com" mmsport="80"  mmsc="http://mmsc.cingular.com" type="mms" visible ="1" preloaded ="1" sort = "0"/>
+
+    <apn mcc="310" mnc="090" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="default"/>
+
+    <apn mcc="310" mnc="090" carrier="MEdia Net" apn="wap.cingular" user="" server="" password="" proxy="wireless.cingular.com" port="80"
+        mmsproxy="" mmsport=""  mmsc="" type="wap"/>
+
+    <!-- TC -->
+    <apn mcc="334" mnc="020" carrier="Internet.itelcel.com" apn="internet.itelcel.com" user="webgprs" server="" password="webgprs2002" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="default"/>
+
+    <apn mcc="334" mnc="020" carrier="Mensajes Multimedia" apn="mms.itelcel.com" user="mmsgprs" server="" password="mmsgprs2003" proxy="" port=""
+        mmsproxy="148.233.151.240" mmsport="8080" mmsc="http://mms.itelcel.com/servlets/mms" type="mms"/>
+
+    <apn mcc="334" mnc="020" carrier="Ideas Telcel" apn="wap.itelcel.com" user="iesgprs" server="" password="iesgprs2002" proxy="148.233.151.240" port="8080"
+        mmsproxy="" mmsport="" mmsc="" type="wap"/>
+
+    <!-- CLR -->
+    <apn mcc="724" mnc="05" carrier="Java Session" apn="java.claro.com.br" user="claro" server="" password="claro" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="default"/>
+
+    <apn mcc="724" mnc="05" carrier="Claro Foto" apn="mms.claro.com.br" user="claro" server="" password="claro" proxy="" port=""
+        mmsproxy="200.169.126.10" mmsport="8799" mmsc="http://mms.claro.com.br" type="mms"/>
+
+    <!-- MTNL -->
+    <apn mcc="404" mnc="68" carrier="MMS GPRS" apn="gprsmtnldel" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="9401" mmsc="http://172.16.31.136/mms/" type="mms"/>
+
+    <apn mcc="404" mnc="68" carrier="MMS 3G" apn="mtnl3g" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="9401" mmsc="http://172.16.31.136/mms/" type="mms"/>
+
+    <apn mcc="404" mnc="68" carrier="MMS HSDPA" apn="mtnlhsdpa" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="9401" mmsc="http://172.16.31.136/mms/" type="mms"/>
+
+    <apn mcc="404" mnc="68" carrier="MTNL Delhi GPRS" apn="gprsmtnldel" user="" server="" password="" proxy="172.16.31.10" port="9401"
+        mmsproxy="" mmsport="" mmsc="" type="default"/>
+
+    <apn mcc="404" mnc="68" carrier="MTNL Delhi 3G" apn="mtnl3g" user="" server="" password="" proxy="172.16.31.10" port="9401"
+        mmsproxy="" mmsport="" mmsc="" type="default"/>
+
+    <apn mcc="404" mnc="68" carrier="MTNL Delhi HSDPA" apn="mtnlhsdpa" user="" server="" password="" proxy="172.16.31.10" port="9401"
+        mmsproxy="" mmsport="" mmsc="" type="default"/>
+
+    <!-- Singtel -->
+    <apn mcc="525" mnc="01" carrier="IDEAS INTERNET" apn="internet" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="default"/>
+
+    <apn mcc="525" mnc="01" carrier="IDEAS MMS" apn="e-ideas" user="65IDEAS" server="" password="IDEAS" proxy="" port=""
+        mmsproxy="165.21.42.84" mmsport="8080" mmsc="http://mms.singtel.com:10021/mmsc" type="mms"/>
+
+    <apn mcc="525" mnc="01" carrier="IDEAS WAP" apn="e-ideas" user="65IDEAS" server="" password="IDEAS" proxy="165.21.42.84" port="8080"
+        mmsproxy="" mmsport="" mmsc="" type="wap"/>
+
+    <!-- Movilnet -->
+    <apn mcc="736" mnc="06" carrier="Movilnet Internet" apn="int.movilnet.com.ve" user="" server="" password="" proxy="" port=""
+        mmsproxy="" mmsport="" mmsc="" type="default"/>
+
+    <apn mcc="736" mnc="06" carrier="MMS" apn="mm.movilnet.com.ve" user="" server="" password="" proxy="" port=""
+        mmsproxy="192.168.16.12" mmsport="8080" mmsc="http://mms2.movilnet.com.ve/servlets/mms" type="mms"/>
+
+    <apn mcc="736" mnc="06" carrier="wap" apn="app.movilnet.com.ve" user="" server="" password="" proxy="192.168.201.170" port="8080"
+        mmsproxy="" mmsport="" mmsc="" type="wap"/>
+
+</apns>

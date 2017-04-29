@@ -1,0 +1,99 @@
+ifeq ($(MAKERULES),)
+include ../../../Rules.make
+else
+include $(MAKERULES)
+endif
+
+BUILDROOT=../../..
+
+CFLAGS+=-I$(BUILDROOT)/include\
+	-I$(BUILDROOT)/osa/inc\
+	-I$(BUILDROOT)/fsm/inc\
+	-I$(BUILDROOT)/pca_components/pca_components/inc\
+	-I$(BUILDROOT)/pca_components/msl_dl/src/bdd\
+	-I$(BUILDROOT)/pca_components/msl_dl/src/llc\
+	-I$(BUILDROOT)/pca_components/msl_dl/inc\
+	-I$(BUILDROOT)/pca_components/msl_xllp/inc\
+	-I$(BUILDROOT)/pca_components/gpc/inc\
+	-I$(BUILDROOT)/pca_components/ci/inc\
+	-I$(BUILDROOT)/pca_components/msl_utils/inc\
+	-I$(BUILDROOT)/pca_components/msl_utils/src\
+	-I$(BUILDROOT)/pca_components/msl_dl/src/linux\
+	-I$(BUILDROOT)/pca_components/ci_stub/src\
+	-I$(BUILDROOT)/pca_components/msl_sal/src\
+	-I$(BUILDROOT)/pca_components/msl_sal/inc\
+	-I$(BUILDROOT)/aud_sw/audio_stub/src\
+	-I$(BUILDROOT)/linux_telephony/atcmdsrv/inc\
+	-I$(BUILDROOT)/genlib/atparser/inc\
+	-I$(BUILDROOT)/pca_components/sac/inc\
+	-I$(BUILDROOT)/aud_sw/acm/inc\
+	-I$(BUILDROOT)/linux_audio\
+	-I$(PXA_HOST_DIR)/include\
+
+CFLAGS+=-DOSA_LINUX\
+	-DOSA_USE_ASSERT\
+	-DOSA_MSG_QUEUE\
+	-DOSA_QUEUE_NAMES\
+	-D_FDI_USE_OSA_\
+	-DUSE_OSA_SEMA\
+	-DENV_LINUX\
+	-DMSL_TAVOR_LINUX\
+	-DMSL_SAL_RPC_CLIENT_INCLUDE\
+	-DMSL_NO_DMA\
+	-DMSL_PM_USE_AC_IPC_AS_WAKEUP\
+	-DMSL_STBC_CLIENT_INCLUDE\
+	-DCI_STUB_CLIENT_INCLUDE\
+	-DMSL_SAL_RPC_CLIENT_INCLUDE\
+	-DMSL_STBC_CLIENT_INCLUDE\
+	-DGPC_NODE_1=1\
+  	-DGPC_UNIT_TEST\
+  	-DGPC_MODULE_INCLUDE\
+	-DUPGRADE_R99\
+	-DSAL_LITTLE_ENDIAN\
+	-DDEBUG_BUILD\
+	-DATCMDSRV_DEBUG\
+	-DutlDEBUG\
+	-DTAVOR_AUDIO\
+	-D_MICCO_B0_ \
+
+ifeq "$(CONFIG_BIONIC)" "y"
+all : libasound_module_ctl_phone.so libasound_module_pcm_phone.so 
+
+libasound_module_ctl_phone.so : ctl_phone.o
+	$(CC) -nostdlib -Wl,-soname,$@ -Wl,-shared,-Bsymbolic $(BIONICS_LIBS) $^ -o $@ -L$(PXA_HOST_DIR)/lib -lasound -L$(BUILDROOT) -lacm -lmaudio -laudioserver -lc -Wl,--no-undefined $(BIONIC_ALIB)
+
+libasound_module_pcm_phone.so : pcm_phone.o
+	$(CC) -nostdlib -Wl,-soname,$@ -Wl,-shared,-Bsymbolic $(BIONICS_LIBS) $^ -o $@ -L$(PXA_HOST_DIR)/lib -lasound -L$(BUILDROOT) -lacm -lmaudio -laudioserver -lc -Wl,--no-undefined $(BIONIC_ALIB)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -fPIC -DPIC -o $@ -c $<
+
+else
+all : libasound_module_ctl_phone.la libasound_module_pcm_phone.la 
+
+
+libasound_module_ctl_phone.la : ctl_phone.lo
+	$(SUDO) chmod a+x $(shell pwd)/libtool
+	$(shell pwd)/libtool  --tag=CC --mode=link arm-marvell-linux-gnueabi-gcc -I. -g $(CFLAGS) -g -O2 -module -avoid-version -export-dynamic -o libasound_module_ctl_phone.la -rpath $(PXA_HOST_DIR)/lib  ctl_phone.lo -L$(PXA_HOST_DIR)/lib -lasound -L$(BUILDROOT) -lacm -lmaudio -laudioserver 
+
+
+libasound_module_pcm_phone.la : pcm_phone.lo
+	$(SUDO) chmod a+x $(shell pwd)/libtool
+	$(shell pwd)/libtool  --tag=CC --mode=link arm-marvell-linux-gnueabi-gcc -I. -g $(CFLAGS) -g -O2 -module -avoid-version export-  dynamic -o libasound_module_pcm_phone.la -rpath $(PXA_HOST_DIR)/lib  pcm_phone.lo -L$(PXA_HOST_DIR)/lib -lasound -L$(BUILDROOT) -lacm -lmaudio -laudioserver
+
+
+ctl_phone.lo : ctl_phone.c
+	$(SUDO) chmod a+x $(shell pwd)/libtool
+	./libtool --tag=CC --mode=compile arm-marvell-linux-gnueabi-gcc  -I. -Wall -g $(CFLAGS) -g -O2 -c ctl_phone.c
+
+pcm_phone.lo : pcm_phone.c
+	$(SUDO) chmod a+x $(shell pwd)/libtool
+	$(shell pwd)/libtool --tag=CC --mode=compile arm-marvell-linux-gnueabi-gcc  -I.  -Wall -g $(CFLAGS) -g -O2 -c pcm_phone.c
+
+endif
+
+clean :
+	rm -f lib*.a *~ *core *.lo *.o *.la *.so 
+	rm -rf .libs
+	echo $(BUILDROOT)
+	echo $(PXA_HOST_DIR) 

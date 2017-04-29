@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.marvell.organ">
+	   <PreferenceScreen
+	            android:title="@string/stream_music">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.STMusic" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/stream_system">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.STSystem" />
+	    </PreferenceScreen>
+	   <PreferenceScreen
+	            android:title="@string/stream_ring">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.STRing" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/stream_alarm">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.STAlarm" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/stream_notification">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.STNotification" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/stream_enforced_audible">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.STEnforcedAudible" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/stream_voice_call">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.STVoiceCall" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/stream_voip_call">
+		<intent android:action="android.intent.action.MAIN"
+		        android:targetPackage="com.marvell.organ"
+			android:targetClass="com.marvell.organ.STVoip" />
+            </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/stream_bluetooth_sco">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.STBluetoothSco" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/stream_dtmf">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.STDtmf" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/stream_tts">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.STTts" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/stream_fm_radio">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.STFMRadio" />
+	    </PreferenceScreen>   
+</PreferenceScreen>

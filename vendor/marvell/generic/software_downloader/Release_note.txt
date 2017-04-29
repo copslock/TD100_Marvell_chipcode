@@ -1,0 +1,124 @@
+SWD console version release note and history
+
+1.0: initial release
+1.1: patch release
+
+1.5: Change list:
+
+1, Add support of "Erase All Flash" option in menu, which could erase all flash before update;
+2, Add support of Partial downloading, user can check or uncheck the download items; only the checked items will be downloaded;
+3, Add support of reliable data auto build and bind
+4, Add IMEI/MEP generator into SWD release, customer can use it to generate IMEI/MEP data they want
+5, Add support of new stepping of TTC A0/A1/A2, TD Y0/Y1/Y2
+6, Improve the download speed signaficantly, now it will cost around 5 minutes to download all images into DKB board.
+
+2.0: Change list:
+1, support 4 types of DKB3.0, please check the board to choose the right blf
+2, add AVDD_USB settings to set LDO5 as 3.3v
+3, stablize erase all and BBT
+4, support non-encrypted MEP in reliable data
+5, Add support of Linux build
+6, fix the version number in SWD, add it to title bar also
+8, Add RTOS support; add USB dongle support and BBU support
+9, update user guide
+10, add TavorFlasher_ONENAND.bin also
+11, OBM can load Seagull and MSA images and Reliable Data image when boot
+12, add new DDR and PMIC patch
+13, update the new USB PHY setting according to new EMTS spec.
+14, change the name of reliable data binary to ReliableData.bin to keep backward compatibility
+15, add ROMCopy support
+16, improve the MSA release out of reset sequence in BBU only
+
+2.5: Change list:
+1, Change the flash layout for Linux, now all images are aligned to 256k boundary which is to compliant to new 4kpage flashes
+2, fix an bug in GUI which will not save Falsher address correctly;
+3, change from "press any key" to "press OK key" to enter download mode, this is to compliant to the new magic key:
+            1) SW Download   "Power key + Back key"
+4, support 4k page oneNAND YAFFS image conversion
+5, add support to change preamble, if customer changed the preamble in GUI, he need to change the preamble in OBM accordingly
+6, support OBM to pass a few parameters into u-boot then kernel
+7, fixed the DDR setting issue for Hynix 4G and Micron 4G
+
+3.0: Change list:
+1, Change the BBT default page position to align to XDB and UBOOT/Kernel
+2, fixed a few DDR setting according to the new findings in silicon
+3, support TD A0, TTC B0 now
+4, add support ROMCopy image size > DDR size
+5, add support multiple block skip cases
+6, add support 4k page ONENAND flash
+
+3.5: Change list:
+1, fix NAND nunmber of blocks issue;
+2, modify to match ROMC requirement on the ECC portion;
+3, add the judge that will skip all 0xFF pages, which is required by customer
+4, add MIFI support
+5, modify the guide document;
+6, modify the oneNAND 4kpage folder name
+7, correct the samsung 4G NAND tR timing
+
+3.6: Change list: (This is a major upgrade)
+1, add support of eMMC (major)
+2, change the backend to FBF based (major)
+3, add FBF support
+4, change for supporting SS flash erase and write
+5, change DDR setting to TTC_SDRTMGREG5_ID: 0x000A0022 
+6, remove the enable clock for UPH
+7, add EMCR into DDR settings for Hynix MCP
+8, change to correct i2C clock settings
+9, add support BCH ECC NAND (need to have A1 chip)
+10, add support erase only.
+11, add suport fast download.
+12, change DDR settings to follow ASIC's new guide.
+
+3.7: Change list:
+1, add support Win7
+2, add support of two stage boot, OBM2 in DDR in order to remove the limitation of SRAM size; see Anroid_TWO
+3, clean up the code. 
+
+3.8: Change list:
+1, fixed misc display issues in GUI for win7
+2, add 4k page and 2k page BCH ECC support
+3, fix the issue that for some kind of Hynix NAND, the NumberOfBlocks can not be read correctly issue
+4, change the DDR setting to the latest ASIC guideline
+5, upgrade GEU libraries
+6, fix the issue that for some special size of YAFFS image, the FBF generated will be wrong issue
+7, change TTC blfs to match the new CP size and RD position
+8, change DDR setting to enable fast bank;
+9, fix the issue that in Android_TWO, sometimes the download fails when using the OBM running in DDR;
+10, add support of 2k page BCH ECC for micron flash.
+
+3.9: Change list:
+1, Fix the YAFFS image issue for 4k page NAND with BCH ECC
+2, Add serial port debug functions;
+3, Add error code interaction with GUI
+4, Fixed the multiple download issue that multiple deiveces may interfere each other.
+
+3.9.1.3
+1, add a fix for some flash that can only detect bad block by erase not by write;
+2, clean up code a little bit;
+3, fix a minor issue on reserved area in SWD
+4, disable XPAGE in DDR settings
+5, Add new blfs for Gingerbread
+6, modify the eMMC blfs to match the new partition method of AP
+7, remove the unused JY504/JW345 DDR support
+
+3.9.1.4
+1, add "erase all" notifications for product line debugging, SWD PC side also have changes accordingly;
+2, "erase all" will trigger re-set BBT;
+3, add protection on the illegal BBT in updateBBT;
+4, Add LPDDR2 settings, now this version can support both LPDDR1 and LPDDR2, just blf different
+5, update the blfs for Gingerbread according to new layout;
+6, update the blfs for eMMC according to new layout
+
+3.9.1.5
+1, Add Max size of each image in Ntim header file support
+
+3.9.1.6
+1, add sparse file support of eMMC flash
+2, change TTC blfs to reflect new layout of DDR
+3, change the BBT to align to kernel and XDB on the handling the case of bad block locate in reserved area.
+4, change DDR settings for Hynix LPDDR1 according to the latest test
+5, change u-boot load address to align to new requirements of AP system.
+
+Any issues/questions Please contact Marvell
+

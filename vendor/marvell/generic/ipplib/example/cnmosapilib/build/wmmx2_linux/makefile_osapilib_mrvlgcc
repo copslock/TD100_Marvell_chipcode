@@ -1,0 +1,62 @@
+#to include common CC definition
+include ../../../../example/Rules.make
+
+#CC=/usr/local/arm-marvell-linux-gnueabi/bin/arm-marvell-linux-gnueabi-gcc
+#AR=/usr/local/arm-marvell-linux-gnueabi/bin/arm-marvell-linux-gnueabi-ar
+CFLAGS= -mcpu=marvell-f -mtry-ldrd-strd -mmrvl-tune-mla-cost -mforce-word-length -combine -fno-jump-tables -mmrvl-no-ldmpc -mmrvl-use-iwmmxt -O3 -Wall -mabi=aapcs-linux -fPIC 
+
+USR_LIBPATH=../../../../lib
+TARGET_FILENAME=$(USR_LIBPATH)/libcnm.so
+TARGET_FILENAME2=$(USR_LIBPATH)/libcnm.a
+
+ifeq ($(USE29KER_MOD), y)
+BMMSOFILE=../../bin/kernel29_mod/libbmm.so
+BMMAFILE=../../bin/kernel29_mod/libbmm.a
+else
+ifeq ($(USE32KER_MOD), y)
+BMMSOFILE=../../bin/kernel32_mod/libbmm.so
+BMMAFILE=../../bin/kernel32_mod/libbmm.a
+else
+BMMSOFILE=../../bin/kernel35_mod/libbmm.so
+BMMAFILE=../../bin/kernel35_mod/libbmm.a
+endif
+endif
+
+ifeq ($(USEBMM_USERSPACE), y)
+LINK_MEMLIB_DEPEND=-lbmm
+CFLAGS+= -DCNM_USERSPACE_USEBMM
+else
+LINK_MEMLIB_DEPEND=-lpmemhelper
+endif
+
+PMEMSOFILE=../../bin/kernel35_mod/libpmemhelper.so
+PMEMAFILE=../../bin/kernel35_mod/libpmemhelper.a
+
+.PHONY : all clean
+all:clean $(TARGET_FILENAME) $(TARGET_FILENAME2)
+
+$(TARGET_FILENAME): cnm_bridge.o
+	if [ ! -d $(USR_LIBPATH) ]; then mkdir $(USR_LIBPATH); fi
+ifeq ($(USEBMM_USERSPACE), y)
+	cp -f $(BMMSOFILE) $(USR_LIBPATH)/
+else
+	cp -f $(PMEMSOFILE) $(USR_LIBPATH)/
+endif
+	$(CC) -s -shared -L$(USR_LIBPATH) $(LINK_MEMLIB_DEPEND) -o $@ $^
+
+$(TARGET_FILENAME2): cnm_bridge.o
+	if [ ! -d $(USR_LIBPATH) ]; then mkdir $(USR_LIBPATH); fi
+ifeq ($(USEBMM_USERSPACE), y)
+	cp -f $(BMMAFILE) $(USR_LIBPATH)/
+else
+	cp -f $(PMEMAFILE) $(USR_LIBPATH)/
+endif
+	$(AR)  -r $@  $^
+
+cnm_bridge.o:../../src/cnm_bridge.c
+	$(CC) $(CFLAGS) -I ../../../../include -c -o $@ $^
+
+
+clean:
+	rm -f *.o
+	rm -f $(TARGET_FILENAME) $(TARGET_FILENAME2) $(USR_LIBPATH)/libbmm.so $(USR_LIBPATH)/libbmm.a $(USR_LIBPATH)/libpmemhelper.so $(USR_LIBPATH)/libpmemhelper.a

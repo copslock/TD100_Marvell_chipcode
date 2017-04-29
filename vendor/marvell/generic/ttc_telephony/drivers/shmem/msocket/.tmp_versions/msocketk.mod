@@ -1,0 +1,2 @@
+/home/yanl/marvell.sp6/vendor/marvell/generic/ttc_telephony/drivers/shmem/msocket/msocketk.ko
+/home/yanl/marvell.sp6/vendor/marvell/generic/ttc_telephony/drivers/shmem/msocket/portqueue.o /home/yanl/marvell.sp6/vendor/marvell/generic/ttc_telephony/drivers/shmem/msocket/shm.o /home/yanl/marvell.sp6/vendor/marvell/generic/ttc_telephony/drivers/shmem/msocket/msocket.o /home/yanl/marvell.sp6/vendor/marvell/generic/ttc_telephony/drivers/shmem/msocket/acipcd.o

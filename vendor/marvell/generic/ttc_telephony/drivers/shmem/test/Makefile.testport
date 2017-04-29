@@ -1,0 +1,27 @@
+# (C) Copyright 2010 Marvell International Ltd.
+# All Rights Reserved
+#
+ifeq "$(CONFIG_BIONIC)" "y"
+include ../../Rules.make
+else
+COMLIBS=-lpthread -lutil -lrt
+endif
+
+BUILDROOT=../../
+
+#Fill  special CFLAGS
+CFLAGS += -I./ \
+	-I../wrapper \
+	-I$(BUILDROOT)/include\
+	-I$(BUILDROOT)/osa/inc\
+	-I../msocket \
+
+OBJECTS = msocket_testport
+
+all: $(OBJECTS)
+
+msocket_testport: msocket_testport.o
+	$(CC) $(BIONIC_LINK) $(CFLAGS) -o $@ msocket_testport.o -L$(BUILDROOT) $(COMLIBS) -lshm -losa -leeh $(BIONIC_POSTLINK)
+
+clean:
+	rm -f $(OBJECTS) *.o

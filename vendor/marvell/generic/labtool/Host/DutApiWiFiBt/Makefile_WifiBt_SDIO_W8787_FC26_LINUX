@@ -1,0 +1,148 @@
+#	File	: Makefile
+#	Version	: 0.1 2nd December, 2003
+#	Edited	: 2003/12/02
+#		; Copyright (c) 2003, Marvell Semiconductor Inc.
+
+PROJECT=	labtool
+BACKUP=		/home/marvell/backup
+TOOLPATH=	/usr/bin/
+CROSS=		$(TOOLPATH)
+CC=		$(CROSS)g++
+LINK=		$(CC) -o labtool  
+STRIP=		$(CROSS)strip
+YMD=		`date +%Y%m%d%H%M`
+
+
+DUTCOMMON = ../DutCommon
+DIR_DLL_BT = ./DutBtApi878XDll
+DIR_DLL_WLAN = ./DutWlanApi878XDll
+DIR_DLL_SHARE = ./DutShareApi878XDll
+
+CFLAGS=		-O2 -DDEBUG -D_LINUX_ -D_LINUX_FEDORA_ -D_NO_CLASS_ -D_CLIENT_BG_ -D_BT_ -D_WLAN_ -DBIG_ENDIAN -D_FLASH__ -D_IF_SDIO_ -D_WIFI_SDIO_ -D_BT_UART_ -D_W8688_ -D_HCI_PROTOCAL__ -D_SUPPORT_LDO__ -D_SUPPORT_PM__ -D_MIMO_ -I$(KERNELDIR)/include --static\
+                -I.
+
+#CFLAGS=		-O2 -DDEBUG -D_LINUX_ -D_LINUX_FEDORA_ -D_CLIENT_BG_ -D_BT_ -D_HCI_UART_  -DSTATIC_OBJ -I$(KERNELDIR)/include --static\
+#                -I.
+
+LABTOOL_OBJS	= DutApi878XDll.o\
+DutSpiImage.o DutSharedCalTxt.o DutSharedCalFilehandle.o\
+DutSharedCalData.o DutSharedCal.o DutShared_spiAccess.o\
+DutWlanApi.o DutWlanApiClss.o DutIf_IfClss.o\
+DutBtApiClss.o DutBtIf_IfClss.o DutBrf.o DutBtu.o\
+utilities_os.o utility.o utilities.o mathUtility.o\
+W878X_Bt.o DutCalFileHandle.o DutFuncs.o w878X_Wifi.o W878XApp.o
+#DutWlanApi878XDll.o DutBtApi878XDll.o 
+
+labtool:	$(LABTOOL_OBJS)		
+		$(LINK) $(CFLAGS) $(LABTOOL_OBJS) -lpthread
+		$(STRIP) $@
+
+		#cp labtool /tftpboot/bulverde/root/
+
+ 
+######################
+# App:
+W878XApp.o:	W878XApp.cpp 
+		$(CC) $(CFLAGS) -c W878XApp.cpp
+
+w878X_Wifi.o:	w878X_Wifi.cpp 
+		$(CC) $(CFLAGS) -c w878X_Wifi.cpp
+
+W878X_Bt.o:	W878X_Bt.cpp 
+		$(CC) $(CFLAGS) -c W878X_Bt.cpp
+		
+DutCalFileHandle.o: DutCalFileHandle.cpp
+		$(CC) $(CFLAGS) -c DutCalFileHandle.cpp
+		
+DutFuncs.o:	DutFuncs.cpp
+		$(CC) $(CFLAGS) -c DutFuncs.cpp
+
+######################
+# Common
+utilities_os.o: $(DUTCOMMON)/utilities_os.cpp
+		$(CC) $(CFLAGS) -c $(DUTCOMMON)/utilities_os.cpp
+
+utility.o: $(DUTCOMMON)/utility.cpp
+		$(CC) $(CFLAGS) -c $(DUTCOMMON)/utility.cpp
+
+utilities.o:	$(DUTCOMMON)/utilities.cpp
+		$(CC) $(CFLAGS) -c $(DUTCOMMON)/utilities.cpp
+ 
+mathUtility.o:	$(DUTCOMMON)/mathUtility.c
+		$(CC) $(CFLAGS) -c $(DUTCOMMON)/mathUtility.c
+
+######################
+# BT
+DutBtApi878XDll.o: $(DIR_DLL_BT)/DutBtApi878XDll.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_BT)/DutBtApi878XDll.cpp
+		
+DutBrf.o: 		$(DIR_DLL_BT)/DutBrf.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_BT)/DutBrf.cpp
+		
+DutBtu.o: 		$(DIR_DLL_BT)/DutBtu.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_BT)/DutBtu.cpp
+
+DutBtApiClss.o:	$(DIR_DLL_BT)/DutBtApiClss.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_BT)/DutBtApiClss.cpp
+ 
+DutBtIf_IfClss.o:	$(DIR_DLL_BT)/DutBtIf_IfClss.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_BT)/DutBtIf_IfClss.cpp
+
+
+######################
+# Wifi
+
+DutWlanApi878XDll.o:	$(DIR_DLL_WLAN)/DutWlanApi878XDll.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_WLAN)/DutWlanApi878XDll.cpp
+
+DutWlanApiClss.o:	$(DIR_DLL_WLAN)/DutWlanApiClss.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_WLAN)/DutWlanApiClss.cpp
+
+DutWlanApi.o:	$(DIR_DLL_WLAN)/DutWlanApi.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_WLAN)/DutWlanApi.cpp
+
+DutIf_IfClss.o:	$(DIR_DLL_WLAN)/DutIf_IfClss.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_WLAN)/DutIf_IfClss.cpp
+
+
+######################
+# Shared
+
+DutApi878XDll.o:	DutApi878XDll/DutApi878XDll.cpp 
+		$(CC) $(CFLAGS) -c DutApi878XDll/DutApi878XDll.cpp 
+
+DutShared_spiAccess.o:	$(DIR_DLL_SHARE)/DutShared_spiAccess.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_SHARE)/DutShared_spiAccess.cpp
+
+DutSharedCal.o:	$(DIR_DLL_SHARE)/DutSharedCal.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_SHARE)/DutSharedCal.cpp
+
+DutSharedCalData.o:	$(DIR_DLL_SHARE)/DutSharedCalData.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_SHARE)/DutSharedCalData.cpp
+
+DutSharedCalFilehandle.o:	$(DIR_DLL_SHARE)/DutSharedCalFilehandle.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_SHARE)/DutSharedCalFilehandle.cpp
+
+DutSharedCalTxt.o:	$(DIR_DLL_SHARE)/DutSharedCalTxt.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_SHARE)/DutSharedCalTxt.cpp
+
+DutSpiImage.o:	$(DIR_DLL_SHARE)/DutSpiImage.cpp
+		$(CC) $(CFLAGS) -c $(DIR_DLL_SHARE)/DutSpiImage.cpp
+
+
+######################
+# IF
+DutIf_SdioAdapter.o:	DutIf/DutIf_SdioAdapter.cpp
+		$(CC) $(CFLAGS) -c DutIf/DutIf_SdioAdapter.cpp
+ 
+
+backup:	clean
+		rm tags
+		tar cfz $(BACKUP)/$(PROJECT)-$(YMD).tgz *
+
+clean:		
+		rm -f labtool *.o core
+
+ReleaseClean:
+		rm -f *.o core
+

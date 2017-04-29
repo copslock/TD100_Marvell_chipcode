@@ -1,0 +1,16 @@
+./src/ippSPelements/amrnbdec/.libs/libgstamrnbdec.so
+./src/ippSPelements/amrwbdec/.libs/libgstamrwbdec.so
+./src/ippSPelements/amrwbenc/.libs/libgstamrwbenc.so
+./src/ippSPelements/amrnbenc/.libs/libgstamrnbenc.so
+./src/ippACelements/aacdec/.libs/libgstaacdec.so
+./src/ippACelements/mp3dec/.libs/libgstmp3dec.so
+./src/ippVCelements/mpeg4enc/.libs/libgstmpeg4enc.so
+./src/ippVCelements/h263enc/.libs/libgsth263enc.so
+./src/ippVCelements/mpeg4dec/.libs/libgstmpeg4dec.so
+./src/ippVCelements/h263dec/.libs/libgsth263dec.so
+./src/ippVCelements/h264dec/.libs/libgsth264dec.so
+./src/ippVCelements/h264enc/.libs/libgsth264enc.so
+./src/ippVCelements/mpeg2dec/.libs/libgstippmpeg2dec.so
+./src/ippWMelements/wmadec/.libs/libgstwmadec.so
+./src/ippWMelements/wmvdec/.libs/libgstwmvdec.so
+./src/ippJPelements/mjpegdec/.libs/libgstmjpegdec.so

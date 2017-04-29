@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/*
+ * (C) Copyright 2010 Marvell International Ltd.
+ * All Rights Reserved
+ *
+ * MARVELL CONFIDENTIAL
+ * Copyright 2008 ~ 2010 Marvell International Ltd All Rights Reserved.
+ * The source code contained or described herein and all documents related to
+ * the source code ("Material") are owned by Marvell International Ltd or its
+ * suppliers or licensors. Title to the Material remains with Marvell International Ltd
+ * or its suppliers and licensors. The Material contains trade secrets and
+ * proprietary and confidential information of Marvell or its suppliers and
+ * licensors. The Material is protected by worldwide copyright and trade secret
+ * laws and treaty provisions. No part of the Material may be used, copied,
+ * reproduced, modified, published, uploaded, posted, transmitted, distributed,
+ * or disclosed in any way without Marvell's prior express written permission.
+ *
+ * No license under any patent, copyright, trade secret or other intellectual
+ * property right is granted to or conferred upon you by disclosure or delivery
+ * of the Materials, either expressly, by implication, inducement, estoppel or
+ * otherwise. Any license under such intellectual property rights must be
+ * express and approved by Marvell in writing.
+ *
+ */-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.marvell.fmradio">
+      <uses-sdk android:minSdkVersion="7" />
+    <!-- This tells the system about the custom library used by the
+         application, so that it can be properly loaded and linked
+         to the app when the app is initialized. -->
+    <uses-library android:name="com.marvell.fmmanager" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <application android:icon="@drawable/fm_app_icon" android:label="@string/app_name">
+        <activity android:name=".MainActivity"
+                  android:label="@string/app_name"
+		  android:theme="@style/Theme.FloatActivity"
+                  android:screenOrientation="portrait"
+		android:launchMode="singleTop"
+		  >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+	<activity android:name=".list.BrowserListActivity" android:theme="@style/Theme.FloatActivity"/>
+	<activity android:name=".list.EditStationView" android:theme="@style/Theme.FloatActivity"/>
+	<activity android:name=".list.RemoveListActivity" android:theme="@style/Theme.FloatActivity"/>
+	<activity android:name=".list.RenameListActivity" android:theme="@style/Theme.FloatActivity"/>
+	<service android:name=".FMService" android:exported="true" /> 
+    </application>
+<supports-screens
+          android:largeScreens="true"
+          android:normalScreens="true"
+          android:smallScreens="true"
+          android:anyDensity="true"/> 
+</manifest> 

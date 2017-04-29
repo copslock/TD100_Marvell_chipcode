@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Power Setting</string>
+    <string name="policy_setting">Power Policy Setting</string>
+    <string name="policy_on_summary">Enabled Android level Power Policy Maker</string>
+    <string name="policy_off_summary">Disabled Android level Power Policy Maker</string>
+    
+    <string name="userinput_policy">User Input Policy</string>
+    <string name="userinput_on_summary">Enabled userinput policy in Android level Power Policy Maker</string>
+    <string name="userinput_off_summary">Disabled userinput policy in Android level Power Policy Maker</string>
+    
+    <string name="power_setting">PowerSetting Service</string>
+    <string name="powersetting_on_summary">Enabled PowerSetting Service for debugging</string>
+    <string name="powersetting_off_summary">Disabled PowerSetting Service for debugging</string>
+    <string name="reboot_setting">Remember Changes</string>
+    <string name="reboot_on_summary">After reboot, changes will be saved</string>
+    <string name="reboot_off_summary">After reboot, changes will be discarded</string>
+
+    <string name="full_wakelock">Hold full wakelock</string>
+    <string name="full_on_summary">A full wakelock is held here</string>
+    <string name="full_off_summary">No full wakelock is held</string>
+    <string name="partial_wakelock">Hold partial wakelock</string>
+    <string name="partial_on_summary">A partial wakelock is held here</string>
+    <string name="partial_off_summary">No partial wakelock is held</string>
+    <string name="idle_disable">Disable CPU Idle</string>
+    <string name="idle_disable_summary">CPU Idle is disabled</string>
+    <string name="idle_enable_summary">CPU Idle is enabled</string>
+    <string name="freq_setting">Frequency Setting</string>
+    <string name="freq_setting_summary">Set to speicifed frequency.Auto frequency change will be disabled</string>
+   
+    <string name="power_status">Power Status</string> 
+    <string name="constrains">View constrains</string>
+    <string name="constrains_summary">View all constrains and wakelock</string>
+    <string name="freqs">View frequency</string>
+    <string name="freqs_summary">View current frequency settings</string> 
+    
+    <string name="view_constrains">View Constrains</string>
+    <string name="view_freqs">View Frequencies</string>
+</resources>

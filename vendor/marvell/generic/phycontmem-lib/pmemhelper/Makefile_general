@@ -1,0 +1,20 @@
+
+INC_PMEM_ANDROID_HEADER?=-I../../../../../bionic/libc/kernel/common/ \
+ -I../../../../../bionic/libc/kernel/arch-arm/
+
+.PHONY : all clean
+all:clean libpmemhelper.so libpmemhelper.a
+
+libpmemhelper.so: pmem_helper_lib.o
+	$(CC) -s -shared -o $@ $^
+
+libpmemhelper.a: pmem_helper_lib.o
+	$(AR) -r $@  $^
+
+pmem_helper_lib.o: pmem_helper_lib.c
+	$(CC) -O3 -Wall -fPIC $(INC_PMEM_ANDROID_HEADER) -c -o $@ $^
+
+
+clean:
+	rm -f *.o
+	rm -f libpmemhelper.so libpmemhelper.a

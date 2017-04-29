@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/*
+ * (C) Copyright 2010 Marvell International Ltd.
+ * All Rights Reserved
+ *
+ * MARVELL CONFIDENTIAL
+ * Copyright 2008 ~ 2010 Marvell International Ltd All Rights Reserved.
+ * The source code contained or described herein and all documents related to
+ * the source code ("Material") are owned by Marvell International Ltd or its
+ * suppliers or licensors. Title to the Material remains with Marvell International Ltd
+ * or its suppliers and licensors. The Material contains trade secrets and
+ * proprietary and confidential information of Marvell or its suppliers and
+ * licensors. The Material is protected by worldwide copyright and trade secret
+ * laws and treaty provisions. No part of the Material may be used, copied,
+ * reproduced, modified, published, uploaded, posted, transmitted, distributed,
+ * or disclosed in any way without Marvell's prior express written permission.
+ *
+ * No license under any patent, copyright, trade secret or other intellectual
+ * property right is granted to or conferred upon you by disclosure or delivery
+ * of the Materials, either expressly, by implication, inducement, estoppel or
+ * otherwise. Any license under such intellectual property rights must be
+ * express and approved by Marvell in writing.
+ *
+ */-->
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+    android:layout_height="125px"
+    android:orientation="vertical"    
+    android:background="@drawable/menu1"
+    >
+              
+	<LinearLayout
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"	    
+	    android:layout_height="30px"
+	    android:paddingLeft="35px"
+	    android:paddingRight="40px"
+	    android:layout_marginTop="30px"
+	    android:layout_gravity="center_horizontal">
+	    
+	<Button
+		android:id="@+id/new_btn_tune_left"
+        android:layout_height="25px"
+        android:layout_width="21px"
+        android:layout_marginLeft="20px"
+		android:background="@drawable/new_btn_tune_left"
+    />
+    
+    <Button
+		android:id="@+id/new_btn_scrol"
+        android:layout_height="30px"
+        android:layout_width="150px"
+        android:layout_marginLeft="10px"
+		android:background="@drawable/btn_scrol"
+    />
+    
+    <Button
+		android:id="@+id/new_btn_tune_right"
+        android:layout_height="25px"
+        android:layout_width="21px"
+        android:layout_marginLeft="10px"
+		android:background="@drawable/new_btn_tune_right"
+    />
+    </LinearLayout>
+    <include layout="@layout/bottom2"/>
+</LinearLayout>

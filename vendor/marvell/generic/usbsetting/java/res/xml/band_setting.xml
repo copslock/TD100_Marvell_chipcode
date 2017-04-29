@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceScreen
+	android:key="gsm_prefered_key"
+	android:summary="@string/gsm_band_setting_summary" android:title="@string/gsm_band_setting" android:enabled="false">
+	<intent
+	    android:action="android.intent.action.MAIN"
+            android:targetPackage="com.marvell.usbsetting"
+	    android:targetClass="com.marvell.usbsetting.GsmBandSetting"/>  
+</PreferenceScreen>
+
+<PreferenceScreen
+    android:key="wcdma_prefered_key"
+    android:summary="@string/w_band_setting_summary" android:title="@string/w_band_setting" android:enabled="false">
+    <intent
+	    android:action="android.intent.action.MAIN"
+            android:targetPackage="com.marvell.usbsetting"
+	    android:targetClass="com.marvell.usbsetting.WcdmaBandSetting"/>  
+</PreferenceScreen>
+
+<PreferenceScreen
+    android:key="td_prefered_key"
+    android:summary="@string/td_band_setting_summary" android:title="@string/td_band_setting" android:enabled="false">
+    <intent
+	    android:action="android.intent.action.MAIN"
+            android:targetPackage="com.marvell.usbsetting"
+	    android:targetClass="com.marvell.usbsetting.TdBandSetting"/>
+</PreferenceScreen>
+
+</PreferenceScreen>

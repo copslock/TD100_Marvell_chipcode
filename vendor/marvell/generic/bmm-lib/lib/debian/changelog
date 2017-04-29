@@ -1,0 +1,58 @@
+marvell-libbmm (0.2.0-0ubuntu1~ppa8) karmic; urgency=low
+
+  * Add symbol bmm_flush_user in libbmm0u.symbols
+
+ -- jun <jun@junj@marvell.com>  Sat, 05 Mar 2011 01:39:06 +0800
+
+marvell-libbmm (0.2.0-0ubuntu1~ppa7) lucid; urgency=low
+
+  * Support HIGHMEM in module
+
+ -- Li Li <lea.li@marvell.com>  Sat, 04 Sep 2010 14:02:54 +0800
+
+marvell-libbmm (0.2.0-0ubuntu1~ppa6) lucid; urgency=low
+
+  * Import code to LP/BZR lp:~adana-team/adana/marvell-libbmm 
+
+ -- Li Li <lea.li@marvell.com>  Wed, 28 Jul 2010 11:34:33 +0800
+
+marvell-libbmm (0.2.0-0ubuntu1~ppa5) lucid; urgency=low
+
+  * Fix ioctl magic number 
+  * Fix incompatible obsolete attributes
+
+ -- Li Li <lea.li@marvell.com>  Fri, 04 Jun 2010 15:21:44 +0800
+
+marvell-libbmm (0.2.0-0ubuntu1~ppa4) lucid; urgency=low
+
+  * Properly fix udev rule installation so bmm gets proper permissions
+
+ -- Michael Casadevall <mcasadevall@ubuntu.com>  Fri, 26 Mar 2010 14:00:53 -0400
+
+marvell-libbmm (0.2.0-0ubuntu1~ppa3) lucid; urgency=low
+
+  * Fix init.d scripts to properly install and remove.
+
+ -- Michael Casadevall <mcasadevall@ubuntu.com>  Thu, 25 Mar 2010 13:06:43 -0400
+
+marvell-libbmm (0.2.0-0ubuntu1~ppa2) lucid; urgency=low
+
+  * versionify soname - we are at libbmm.so.0u.1 now
+    + change binary package to libbmm0u and libbmm-dev
+    + fix depends of -dev package in control
+    + add API_VERSION and API_REVISION variables to Makefile_general
+    + produce proper versioned soname lib and links using API_VERSION
+      and API_REVISION from above in Makefile_general
+    + install _all_ libbmm.so* in the libbmm0u package as we need the
+      unversioned .so link for compatibility reasons with legacy upstream
+      dependencies that look for that soname
+    + use libbmm0u.symbols file to track API/ABI; use -c4 for
+      dpkg-gensymbols to fail if symbols are out of sync
+
+ -- Alexander Sack <asac@ubuntu.com>  Sun, 21 Mar 2010 03:13:12 +0100
+
+marvell-libbmm (0.2.0-0ubuntu1~ppa1) lucid; urgency=low
+
+  * Initial Release (LP: #XXXXXX)
+
+ -- Michael Casadevall <mcasadevall@ubuntu.com>  Thu, 18 Mar 2010 12:40:16 -0400

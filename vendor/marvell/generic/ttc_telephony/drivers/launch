@@ -1,0 +1,39 @@
+#!/system/bin/sh
+
+#move NVM_ROOT_DIR to init.rc so other applications and services also use it.
+#export  NVM_ROOT_DIR="/data/Linux/Marvell/NVM"
+
+setprop marvell.ril.ppp.enabled 0
+setprop log.tag.Mms:transaction V
+setprop log.tag.Mms:app V
+setprop log.tag.Mms:threadcache V
+setprop android.telephony.apn-restore 600000
+
+#backup log files
+/marvell/tel/backup_log.sh
+
+cd /marvell/tel;
+/marvell/tel/run_composite.sh;
+/system/bin/ipv6-network-manager &
+
+sleep 1
+
+file_name="/data/data/com.marvell.usbsetting/usbmode.sh"
+file_exist=`ls $file_name`
+case "$file_exist" in
+    $file_name)
+	sh /data/data/com.marvell.usbsetting/usbmode.sh;
+    ;;
+    *)
+	# for kernel .35 or before
+	echo acm,diag,usb_mass_storage,adb > /sys/devices/platform/pxa-u2o/composite
+	# for kernel 3.0
+	echo 0 > /sys/devices/virtual/android_usb/android0/enable
+	echo marvell_modem,marvell_diag,adb,mass_storage > /sys/devices/virtual/android_usb/android0/functions
+	echo 0bb4 > /sys/devices/virtual/android_usb/android0/idVendor
+	echo 4e22 > /sys/devices/virtual/android_usb/android0/idProduct
+	echo 1 > /sys/devices/virtual/android_usb/android0/enable
+    ;;
+esac
+
+/marvell/tel/telmon &

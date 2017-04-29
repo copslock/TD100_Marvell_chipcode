@@ -1,0 +1,43 @@
+ifeq ($(MAKERULES),)
+include ../Rules.make
+else
+include $(MAKERULES)
+endif
+
+BUILDROOT=..
+
+CFLAGS+=-I$(BUILDROOT)/include\
+	-I$(BUILDROOT)/aud_sw/audio_stub/src\
+	-I$(BUILDROOT)/aud_sw/acm/inc\
+	-I$(BUILDROOT)/linux_audio\
+	-I$(PXA_HOST_DIR)/include\
+	-I$(BUILDROOT)/diag/diag_al\
+
+ifeq "$(CONFIG_BIONIC)" "y"
+CFLAGS+=$(BIONICS_INCS) \
+        $(BIONICS_LD) \
+	-D__linux__
+endif
+	
+CFLAGS+=-DOSA_LINUX\
+
+#	-DDEBUG_BUILD\
+
+AUDIOSERVEROBJS=audio_ipc.o \
+		audio_control.o\
+		audio_file.o \
+		audio_ringbuf.o \
+		audio_timer.o
+
+AUDIOSERVERINTS = audio_file.i
+
+.PHONY:	libaudioserver.a
+
+$(BUILDROOT)/libaudioserver.a:$(AUDIOSERVEROBJS) $(AUDIOSERVERINTS)
+	$(AR) $(ARFLAGS) $@ $(AUDIOSERVEROBJS)
+	echo $(RANLIB)
+	$(RANLIB) $@
+clean:
+	-rm $(AUDIOSERVEROBJS)
+	-rm $(BUILDROOT)/libaudioserver.a
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.marvell.networkinfo">
+	   <PreferenceScreen
+	            android:title="@string/item3g_sub0"
+	            android:summary="@string/item3g_sub0_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.Item3gSub0" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/item3g_sub1"
+	            android:summary="@string/item3g_sub1_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.Item3gSub1" />
+	    </PreferenceScreen>
+	   <PreferenceScreen
+	            android:title="@string/item3g_sub2"
+	            android:summary="@string/item3g_sub2_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.Item3gSub2" />
+	    </PreferenceScreen>
+        <PreferenceScreen
+	            android:title="@string/cell_lock_pref"
+	            android:summary="@string/cell_lock_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.CellLock" />
+	    </PreferenceScreen> 
+</PreferenceScreen>

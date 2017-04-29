@@ -1,0 +1,20 @@
+Source: marvell-ipp
+Priority: extra
+Maintainer: Li Li <lea.li@marvell.com>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.8.0
+Section: libs
+
+Package: marvell-ipp-dev
+Section: libdevel
+Architecture: armel
+Depends: marvell-ipp (= ${binary:Version})
+Description: Marvell IPP headers and static CODECs
+ Header files for Marvell IPP CODECs
+
+Package: marvell-ipp
+Section: libs
+Architecture: armel
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Marvell IPP CODECs
+ Marvell optimized audio, video, image and speech CODECs

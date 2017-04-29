@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="web_server_switch_checkbox"
+        android:title="@string/web_server_switch_checkbox_title"
+        android:defaultValue="false"
+        android:summary="@string/web_server_state_off"
+        android:persistent="false"/>
+    <EditTextPreference
+        android:key="download_folder_name_editor"
+        android:inputType="text"
+        android:title="@string/download_folder_name_tittle"
+        android:summary="@string/download_folder_name_default"
+        android:defaultValue="@string/download_folder_name_default"
+        android:persistent="false"/>
+</PreferenceScreen>

@@ -1,0 +1,4 @@
+usr/lib
+etc/init.d
+etc/rcS.d
+etc/udev/rules.d

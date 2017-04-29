@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.marvell.cmmb.view.customview.PlayFrameView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="#000000"
+  >
+  
+  		<SurfaceView android:id="@+id/surface"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_gravity="center">
+		</SurfaceView>
+		
+		<ImageView android:id="@+id/iv_cmmb"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:src="@drawable/mbbms"
+          android:layout_gravity="center"
+          android:scaleType="fitXY">
+        </ImageView>
+		<com.marvell.cmmb.view.customview.LoadingView
+		  android:id="@+id/loading"
+		  android:layout_width="fill_parent"
+		  android:layout_height="fill_parent"
+		  android:gravity="center"
+		  android:layout_gravity="center"
+		  android:orientation="vertical"
+		  android:background="#000000">
+		  
+		  	<TextView android:id="@+id/tv_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:textSize="22sp"
+				android:layout_weight="1"
+				android:textColor="@color/solid_gray"/>
+				
+		  	<ImageView android:id="@+id/iv_logo"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:src="@drawable/logo">
+			</ImageView>
+			
+			<TextView android:id="@+id/tv_info"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:textSize="22sp"
+				android:textColor="@color/solid_gray"/>
+			
+			<ImageView android:id="@+id/iv_load"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:src="@drawable/load_01">
+			</ImageView>
+		</com.marvell.cmmb.view.customview.LoadingView>
+
+        <TextView android:id="@+id/tv_index"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="top|right"
+			android:gravity="center"
+			android:textSize="40sp"
+			android:textColor="@color/solid_blue"
+			android:visibility="gone">
+		</TextView>
+		
+		<com.marvell.cmmb.view.customview.RecTime
+			android:id="@+id/tv_recordtime"
+			android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+			android:layout_gravity="top|right"
+			android:gravity="center"
+    		android:textColor="@color/solid_red"
+    		android:textSize="16sp"
+    		android:visibility="gone">
+    	</com.marvell.cmmb.view.customview.RecTime>
+    	
+</com.marvell.cmmb.view.customview.PlayFrameView>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--(C) Copyright 2010 Marvell International Ltd.
+	All Rights Reserved
+
+	MARVELL CONFIDENTIAL
+	Copyright 2008 ~ 2010 Marvell International Ltd All Rights Reserved.
+	The source code contained or described herein and all documents related to
+	the source code ("Material") are owned by Marvell International Ltd or its
+	suppliers or licensors. Title to the Material remains with Marvell International Ltd
+	or its suppliers and licensors. The Material contains trade secrets and
+	proprietary and confidential information of Marvell or its suppliers and
+	licensors. The Material is protected by worldwide copyright and trade secret
+	laws and treaty provisions. No part of the Material may be used, copied,
+	reproduced, modified, published, uploaded, posted, transmitted, distributed,
+	or disclosed in any way without Marvell's prior express written permission.
+
+	No license under any patent, copyright, trade secret or other intellectual
+	property right is granted to or conferred upon you by disclosure or delivery
+	of the Materials, either expressly, by implication, inducement, estoppel or
+	otherwise. Any license under such intellectual property rights must be
+	express and approved by Marvell in writing.-->
+	
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    
+    <LinearLayout android:layout_width="fill_parent"
+    	android:layout_height="32dip"
+    	android:background="@drawable/title_bg"
+    	android:orientation="horizontal">
+    	
+    	<ImageView android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="10dip"
+    		android:layout_gravity="center_vertical"
+    		android:src="@drawable/title_item">
+    	</ImageView>
+    	
+    	<TextView android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="5dip"
+    		android:layout_gravity="center"
+    		android:text="@string/help"
+    		android:textColor="@color/solid_black"
+    		android:textSize="16sp">
+    	</TextView>
+    	
+    </LinearLayout>
+    
+    <ScrollView
+    	android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:background="@drawable/background"
+		android:scrollbars="none">
+		<LinearLayout
+		     android:layout_width="fill_parent"
+		     android:layout_height="wrap_content"
+		     android:orientation="vertical">
+		    <TextView android:id="@+id/tv_helpdescription"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+		    	android:textSize="15sp"
+		    	android:text="@string/helpdescription"
+		    	android:textColor="@color/solid_white"
+		    	android:layout_marginTop="25dip"
+		    	android:layout_marginLeft="15dip">
+		    </TextView>
+			<TextView android:id="@+id/tv_helpcontact"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+		    	android:textSize="15sp"
+		    	android:text="@string/helpcontact"
+		    	android:textColor="@color/solid_white"   	
+		    	android:layout_marginLeft="15dip">
+		    </TextView>
+		    
+		    <TextView android:id="@+id/tv_helptitle1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+		    	android:textSize="17sp"
+		    	android:text="@string/helptitle1"
+		    	android:textColor="@color/solid_white"
+		    	android:layout_marginTop="25dip"
+		    	android:layout_marginLeft="15dip">
+		    </TextView>	
+		    <TextView android:id="@+id/tv_helpcontent1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+		    	android:textSize="15sp"
+		    	android:text="@string/helpcontent1"
+		    	android:textColor="@color/solid_white"
+		    	android:layout_marginTop="10dip"
+		    	android:layout_marginLeft="15dip">
+		    </TextView>	
+		    <TextView android:id="@+id/tv_helptitle2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+		    	android:textSize="17sp"
+		    	android:text="@string/helptitle2"
+		    	android:textColor="@color/solid_white"
+		    	android:layout_marginTop="25dip"
+		    	android:layout_marginLeft="15dip">
+		    </TextView>	
+		    <TextView android:id="@+id/tv_helpcontent2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+		    	android:textSize="15sp"
+		    	android:text="@string/helpcontent2"
+		    	android:textColor="@color/solid_white"
+		    	android:layout_marginTop="10dip"
+		    	android:layout_marginLeft="15dip">
+		    </TextView>	    
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>

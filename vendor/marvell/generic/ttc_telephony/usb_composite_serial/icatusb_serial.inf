@@ -1,0 +1,175 @@
+;; icatusb.inf
+
+
+[Version]
+Signature="$Windows 95$"
+Provider=%ProviderName%
+
+Class=USB
+;ClassGuid={4D36E97E-E325-11CE-BFC1-08002BE10318}
+ClassGuid= {36fc9e60-C465-11CF-8056-444553540000}
+;--------- SourceDiskNames and SourceDiskFiles Section -----------------------
+
+; These sections identify source disks and files for installation.  They are
+; shown here as an example, but commented out.
+
+;[SourceDisksNames]
+;1 = "Install Disk",Disk1,,
+
+;[SourceDisksFiles]
+;icatusb.sys = 1,,
+
+;--------- ClassInstall/ClassInstall32 Section -------------------------------
+
+; Not necessary if using a standard class
+
+; 9X Style
+[ClassInstall]
+Addreg=Class_AddReg
+
+; NT Style
+[ClassInstall32]
+Addreg=Class_AddReg
+
+[Class_AddReg]
+HKR,,,,%DeviceClassName%
+HKR,,Icon,,"-18"
+
+;--------- DestinationDirs Section -------------------------------------------
+
+[DestinationDirs]
+Files_Driver = 10,System32\Drivers
+
+;--------- Manufacturer and Models Sections ----------------------------------
+
+[Manufacturer]
+%MfgName%=Mfg0
+
+[Mfg0]
+;%DeviceDesc%=icatusb_DDI, USB\VID_8086&PID_4000
+;%DeviceDesc%=icatusb_DDI, USB\VID_1286&PID_4000
+;%BootLdr%=BootLdr_DDI, USB\VID_8086&PID_4001
+;%Flasher%=Flasher_DDI, USB\VID_8086&PID_4002
+;%DeviceDesc%=icatusb_DDI, USB\VID_8086&PID_0aaa&MI_00
+;%composit%=icatusb_DDI, USB\VID_8086&PID_2455&MI_00
+;%Interface0OnComposite%=icatusb_DDI, USB\VID_8086&PID_4020&MI_00
+;%Interface0OnComposite%=icatusb_DDI, USB\VID_8086&PID_2445&MI_01
+;%DeviceDesc%=icatusb_DDI, USB\VID_1286&PID_0aaa&MI_01
+%DeviceDesc%=icatusb_DDI, USB\Class_0a&SubClass_00&Prot_ff
+
+
+
+;---------- DDInstall Sections -----------------------------------------------
+; --------- Windows 9X -----------------
+
+; Experimentation has shown that DDInstall root names greater than 19 characters
+; cause problems in Windows 98
+
+[icatusb_DDI]
+CopyFiles=Files_Driver
+AddReg=icatusb_9X_AddReg
+
+[icatusb_9X_AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,icatusb.sys
+HKR, "Parameters", "BreakOnEntry", 0x00010001, 0
+
+; --------- Windows NT -----------------
+
+
+; --------- Manitoba 4000 -----------------
+
+[icatusb_DDI.NT]
+CopyFiles=Files_Driver
+AddReg=icatusb_NT_AddReg
+
+[icatusb_DDI.NT.Services]
+Addservice = icatusb, 0x00000002, CommonAddService
+
+[icatusb_DDI.NT.HW]
+AddReg=icatusb.ClassGuidAddReg
+
+[icatusb.ClassGuidAddReg]
+;0C6DE300-4B24-4110-969C-C9AA785F9C53
+HKR,,"Guid",%REG_BINARY%, 00,E3,6D,0C,24,4B,10,41,96,9C,C9,AA,78,5F,9C,53
+
+[icatusb_NT_AddReg]
+
+
+
+; --------- Boot Loader 4001 -----------------
+
+[BootLdr_DDI.NT]
+CopyFiles=Files_Driver
+AddReg=BootLdr_NT_AddReg
+
+[BootLdr_DDI.NT.Services]
+Addservice = icatusb, 0x00000002, CommonAddService
+
+[BootLdr_DDI.NT.HW]
+AddReg=BootLdr.ClassGuidAddReg
+
+[BootLdr.ClassGuidAddReg]
+;245117DD-F6DD-486B-899F-65 E0 9B DE EC 9F
+HKR,,"Guid",%REG_BINARY%, DD,17,51,24,DD,F6,6B,48,89,9F,65,E0,9B,DE,EC,9F
+
+
+[BootLdr_NT_AddReg]
+
+
+; --------- Flasher 4001 -----------------
+
+[Flasher_DDI.NT]
+CopyFiles=Files_Driver
+AddReg=Flasher_NT_AddReg
+
+[Flasher_DDI.NT.Services]
+Addservice = icatusb, 0x00000002, CommonAddService
+
+[Flasher_DDI.NT.HW]
+AddReg=Flasher.ClassGuidAddReg
+
+[Flasher.ClassGuidAddReg]
+;057FD8C1-C9EC-4158-8F01-04C904E003E5
+HKR,,"Guid",%REG_BINARY%, C1,D8,7F,05,EC,C9,58,41,8F,01,04,C9,04,E0,03,E5
+
+
+
+; --------- AddService (common) -------------
+
+[CommonAddService]
+DisplayName    = %SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\icatusb.sys
+
+
+; --------- Files (common) -------------
+
+[Files_Driver]
+icatusb.sys
+
+;--------- Strings Section ---------------------------------------------------
+
+[Strings]
+
+
+;
+; Non-Localizable Strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+
+
+ProviderName="Marvell PTK"
+MfgName="Marvell PTK"
+DeviceDesc="Marvell PTK Mobile Ref Design Driver"
+SvcDesc="Mobile Ref Design Board Serice"
+BootLdr="Marvell PTK BootLoader Device Driver"
+Flasher="Marvell PTK Flasher Device Driver"
+Interface0OnComposite = "Marvell PTK Mobile Ref Design Composite Driver"

@@ -1,0 +1,4 @@
+wifi direct needs to know when a dhcp lease is granted to a client so that it
+can announce that the client is connected.  We achieve this with this simple
+program, which is invoked by dnsmasq when a lease is changed.  See related
+changes in frameworks/base and system/netd/ and external/dnsmasq.

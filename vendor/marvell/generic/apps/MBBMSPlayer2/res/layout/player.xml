@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--(C) Copyright 2010 Marvell International Ltd.
+	All Rights Reserved
+
+	MARVELL CONFIDENTIAL
+	Copyright 2008 ~ 2010 Marvell International Ltd All Rights Reserved.
+	The source code contained or described herein and all documents related to
+	the source code ("Material") are owned by Marvell International Ltd or its
+	suppliers or licensors. Title to the Material remains with Marvell International Ltd
+	or its suppliers and licensors. The Material contains trade secrets and
+	proprietary and confidential information of Marvell or its suppliers and
+	licensors. The Material is protected by worldwide copyright and trade secret
+	laws and treaty provisions. No part of the Material may be used, copied,
+	reproduced, modified, published, uploaded, posted, transmitted, distributed,
+	or disclosed in any way without Marvell's prior express written permission.
+
+	No license under any patent, copyright, trade secret or other intellectual
+	property right is granted to or conferred upon you by disclosure or delivery
+	of the Materials, either expressly, by implication, inducement, estoppel or
+	otherwise. Any license under such intellectual property rights must be
+	express and approved by Marvell in writing.-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="#000000">
+	    
+		<LinearLayout android:id="@+id/title_bar"
+			android:layout_width="fill_parent"
+	    	android:layout_height="32dip"
+	    	android:layout_alignParentTop="true"
+	    	android:layout_alignParentLeft="true"
+	    	android:background="@drawable/title_bg"
+	    	android:orientation="horizontal">
+	    	
+	    	<ImageView android:layout_width="wrap_content"
+	    		android:layout_height="wrap_content"
+	    		android:layout_marginLeft="5dip"
+	    		android:layout_gravity="center_vertical"
+	    		android:src="@drawable/title_item">
+	    	</ImageView>
+	    	
+	    	<TextView android:id="@+id/tv_channelname"
+	    		android:layout_width="wrap_content"
+	    		android:layout_height="wrap_content"
+	    		android:layout_marginLeft="5dip"
+	    		android:layout_gravity="center"
+	    		android:text="@string/channel1"
+	    		android:textColor="#000"
+	    		android:textSize="16sp">
+	    	</TextView>
+	    	
+	    </LinearLayout>
+
+		<Gallery android:id="@+id/gl_channel"
+	        android:layout_width="match_parent"
+	        android:layout_height="33dip"
+	        android:layout_alignParentBottom="true"
+	        android:layout_marginBottom="105dip"
+	        android:gravity="center_vertical"
+	        android:background="@drawable/gallery_bg">	
+	   </Gallery> 
+
+		<include android:id="@+id/control_panel"
+		    android:layout_alignParentRight="true"
+		    android:layout_alignParentBottom="true"
+		    android:layout_width="fill_parent"
+		    android:layout_height="90dip"
+		    layout="@layout/control_panel"/>
+		
+		<ImageView android:id="@+id/iv_downpad"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/playbackframe"
+			android:layout_alignLeft="@+id/playbackframe"
+			android:layout_alignRight="@+id/playbackframe"
+			android:layout_marginTop="0dip"
+			android:src="@drawable/play_down">
+		</ImageView>
+
+		<ImageView android:id="@+id/iv_uppad"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/title_bar"
+			android:layout_marginTop="5dip"
+			android:layout_alignWithParentIfMissing="true"
+			android:layout_alignLeft="@+id/playbackframe"
+			android:layout_alignRight="@+id/playbackframe"
+			android:src="@drawable/play_up">
+		</ImageView>
+		
+		<FrameLayout android:id="@+id/playbackframe"
+			android:layout_width="320dip"
+			android:layout_height="240dip"
+			android:layout_alignParentLeft="true"
+			android:layout_marginTop="56dip"
+			android:background="#000000">
+			<include 
+				android:id="@+id/firstframe" 
+				layout="@layout/play_frame"/>
+			<include 
+				android:id="@+id/secondframe" 
+				android:layout_width="160dip" 
+				android:layout_height="120dip"
+				android:layout_gravity="bottom|right"
+				layout="@layout/play_frame"/>
+			
+			<LinearLayout android:id="@+id/pip_controler"
+				android:layout_width="fill_parent"
+		    	android:layout_height="wrap_content"
+		    	android:layout_gravity="top"
+		    	android:gravity="center"
+		    	android:visibility="gone">
+		    		<TextView android:id="@+id/tv_full_screen"
+			          android:layout_width="fill_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_weight="1"
+			          android:drawableTop="@drawable/icon_fullscreen"
+			          android:drawablePadding="5dip"
+			          android:padding="2px"
+			          android:gravity="center_horizontal"
+			          android:text="@string/fullscreen"
+			          android:textColor="@color/solid_white"       
+					  android:textSize="15sp"
+			          android:background="@drawable/pipitem_bg">
+			        </TextView>
+		    	    <TextView android:id="@+id/tv_openpip"
+			          android:layout_width="fill_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_weight="1"
+			          android:drawableTop="@drawable/pip"
+			          android:drawablePadding="5dip"
+			          android:padding="2px"
+			          android:gravity="center_horizontal"
+			          android:text="@string/openpip"
+			          android:textColor="@color/solid_white"       
+					  android:textSize="15sp"
+			          android:background="@drawable/pipitem_bg">
+			        </TextView>
+			        <TextView android:id="@+id/tv_switchpip"
+			          android:layout_width="fill_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_weight="1"
+			          android:drawableTop="@drawable/switchpip"
+			          android:drawablePadding="5dip"
+			          android:padding="2px"
+			          android:gravity="center_horizontal"
+			          android:text="@string/switchpip"
+			          android:textColor="@color/solid_white"       
+					  android:textSize="15sp"
+			          android:background="@drawable/pipitem_bg">
+			        </TextView>
+		    </LinearLayout>
+			
+			<com.marvell.cmmb.view.customview.ThumbnailView 
+				android:id="@+id/iv_thunbnails"
+				android:layout_width="80dip"
+				android:layout_height="60dip"
+				android:scaleType="fitCenter"
+				android:background="@drawable/thumbnail_bg"
+				android:layout_gravity="bottom|left"
+				android:gravity="center"
+				android:visibility="gone">
+			</com.marvell.cmmb.view.customview.ThumbnailView>
+		</FrameLayout>
+</RelativeLayout>

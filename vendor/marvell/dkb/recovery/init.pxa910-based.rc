@@ -1,0 +1,4 @@
+on init
+    mkdir /mnt
+    mkdir /mnt/sdcard
+    symlink /mnt/sdcard /sdcard

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, FMTransmitterSettings!</string>
+    <string name="app_name">FM Transmitter</string>
+    
+    <!-- FM Transmitter settings -->
+    <string name="apply_fm_transmitter">FM Transmitter</string>
+    <string name="fm_transmitter_settings">FM Transmitter Settings</string>
+    <string name="fm_transmitter">Enable FM Transmitter</string>
+    <string name="error_state">Error</string>
+    <string name="fm_frequency_settings">FM Frequency Settings</string>
+    <string name="mute_fm_transmitter">Mute</string>
+    <string name="mute">Mute</string>
+    <string name="unmute">Unmute</string>
+    <string name="fm_frequency_message">Please input a frequency between 87.5~108.1 MHz</string>
+
+</resources>

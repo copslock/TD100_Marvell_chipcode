@@ -1,0 +1,59 @@
+# makefile created by Linux Automake V1.0.0
+# This makefile will build a Linux application
+
+#==============================================================================
+# Codec Name												(user update)
+#==============================================================================
+CODEC_NAME=amrwb
+
+#==============================================================================
+# Rules.make												(user update)
+#==============================================================================
+include ../../../../example/Rules.make
+
+#==============================================================================
+# Codec Specific Flags											(user update)
+#==============================================================================
+ASFLAGS+= -mcpu=iwmmxt2 
+
+
+#==============================================================================
+# Log file          										(user update)
+#==============================================================================
+PATH_USR_LOG=$(PATH_USR_BUILD)/wmmx_linux/log
+USR_LOG_TRACE=$(PATH_USR_LOG)/build_trace_app_$(CODEC_NAME)_linux.log
+
+
+#==============================================================================
+# usr libraries          										(user update)
+#==============================================================================
+
+ifeq ($(USE_STATICLIB), y) 
+USR_LIBS=\
+ $(PATH_USR_LIB)/libcodecamrwbenc.a\
+ $(PATH_USR_LIB)/libcodecamrwbdec.a\
+ $(PATH_USR_LIB)/libmiscgen.a 
+else
+USR_LIBS=\
+ $(PATH_USR_LIB)/libcodecamrwbenc.so\
+ $(PATH_USR_LIB)/libcodecamrwbdec.so\
+ $(PATH_USR_LIB)/libmiscgen.so
+endif
+
+#==============================================================================
+# Target                                                          (user update)
+#==============================================================================
+OUTPUT_TARGET=$(PATH_USR_BIN)/appamrwb.exe
+
+
+#==============================================================================
+# Object files                                                    (user update)
+#==============================================================================
+OBJS_C=\
+$(PATH_USR_SRC)/amrwbexample.o\
+$(PATH_USR_ROOT)/example/main/src/main.o  
+
+#==============================================================================
+# AppTemplate.make												(user update)
+#==============================================================================
+include ../../../../example/AppTemplate.make

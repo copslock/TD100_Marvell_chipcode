@@ -1,0 +1,36 @@
+BACKUP = /root
+KERNELDIR=	/Developer/SDKs/MacOSX10.4u.sdk/usr
+CC=		g++
+EXEC_NAME = lib_xmodem.dylib
+
+CFLAGS=		-O2 -g -D_REENTRANT -D_DEBUG -D_LINUX_ -D_CLIENT_BG_ -D_BT_ -D_HCI_UART_ -DSTATIC_OBJ -I$(KERNELDIR)/include -I.
+LABTOOL_OBJS	= xModem.o UartIf.o Utilities_os.o utility.o
+
+LOWLEVEL_FILES = .
+DUTCOMMON = ../../../../DutCommon
+		
+$(EXEC_NAME):	$(LABTOOL_OBJS)		
+		$(CC) $(CFLAGS) -dynamiclib -install_name $(EXEC_NAME) -o $(EXEC_NAME) $(LABTOOL_OBJS)
+		cp $(EXEC_NAME) ..
+		cp $(EXEC_NAME) ../../../
+		cp $(EXEC_NAME) ../../../DutBtApi86xxDll/
+		cp xmodem.h ..
+		cp xmodem.h ../../../
+		cp xmodem.h ../../../DutBtApi86xxDll/
+ 
+  
+xModem.o:	$(LOWLEVEL_FILES)/xModem.cpp
+		$(CC) $(CFLAGS) -c $(LOWLEVEL_FILES)/xModem.cpp
+
+UartIf.o:	$(LOWLEVEL_FILES)/uartIf.cpp
+		$(CC) $(CFLAGS) -c $(LOWLEVEL_FILES)/uartIf.cpp
+
+Utilities_os.o: $(DUTCOMMON)/Utilities_os.cpp
+		$(CC) $(CFLAGS) -c $(DUTCOMMON)/Utilities_os.cpp
+
+utility.o: $(DUTCOMMON)/utility.cpp
+		$(CC) $(CFLAGS) -c $(DUTCOMMON)/utility.cpp
+
+clean:		
+		rm -f $(EXEC_NAME) *.o core
+

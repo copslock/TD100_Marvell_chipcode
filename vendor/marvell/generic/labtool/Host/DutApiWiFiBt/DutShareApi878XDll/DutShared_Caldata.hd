@@ -1,0 +1,1325 @@
+// DutApiClss_Caldata.hd
+#ifndef _DUT_CAL_REVC_HD_
+#define _DUT_CAL_REVC_HD_
+
+#pragma pack(1)
+
+#include "../DutWlanApi.hc"
+#include "../DutBtApi.hc"
+
+#ifdef _LINUX_
+#define MAX_SETTING_PAIRS 10
+//#define MAX_VPSTR_SIZE 60
+ #define PACK __attribute__ ((packed)) 
+#else
+//!(_LINUX_)
+#define PACK
+
+#endif //#ifdef _LINUX_
+//#include "DutApiCal_REV_C.hd"
+
+#define MAXSAVEDCH 6
+
+#define STRUCTUREREV_C		0x0C
+#define STRUCTUREREV_D		0x0D
+
+#define CALSTRU_MAXNUM_MIMODEVICE	2 
+#define CALSTRU_MAXNUM_TXPATH 		2 
+#define CALSTRU_MAXNUM_RXPATH 		3
+
+
+//#define MAXSAVEDCH_G 6
+//#define MAXSAVEDCH_A 16
+
+#define ANNEX_TYPE_RESERVED_LAST	(0xFF)
+enum{ANNEX_TYPE_RESERVED=0,
+	 ANNEX_TYPE_NUM1=1, ANNEX_TYPE_NUM2, 
+	 ANNEX_TYPE_NUM3,	ANNEX_TYPE_NUM4, 
+	 ANNEX_TYPE_NUM5,	ANNEX_TYPE_NUM6,
+	 ANNEX_TYPE_NUM7,	ANNEX_TYPE_NUM8,
+	 ANNEX_TYPE_NUM9,	ANNEX_TYPE_NUM10,
+	 ANNEX_TYPE_NUM11,	ANNEX_TYPE_NUM12,
+	 ANNEX_TYPE_NUM13,	ANNEX_TYPE_NUM14,
+	 ANNEX_TYPE_NUM15,	ANNEX_TYPE_NUM16,
+	 ANNEX_TYPE_NUM17,	ANNEX_TYPE_NUM18,
+	 ANNEX_TYPE_NUM19,	ANNEX_TYPE_NUM20,
+	 ANNEX_TYPE_NUM21,	ANNEX_TYPE_NUM22,
+	 ANNEX_TYPE_NUM23,	ANNEX_TYPE_NUM24,
+	 ANNEX_TYPE_NUM25,	ANNEX_TYPE_NUM26,
+	 ANNEX_TYPE_NUM27,	ANNEX_TYPE_NUM28,	
+	 ANNEX_TYPE_NUM29,	ANNEX_TYPE_NUM30,	
+	 ANNEX_TYPE_NUM31,	ANNEX_TYPE_NUM32,	
+	 ANNEX_TYPE_NUM33,	ANNEX_TYPE_NUM34,
+	 ANNEX_TYPE_NUM35,	ANNEX_TYPE_NUM36,
+	 ANNEX_TYPE_NUM37,	ANNEX_TYPE_NUM38,
+	 ANNEX_TYPE_NUM39,	ANNEX_TYPE_NUM40,
+	 ANNEX_TYPE_NUM41,	ANNEX_TYPE_NUM42,
+	 ANNEX_TYPE_NUM43,	ANNEX_TYPE_NUM44,
+ 	 ANNEX_TYPE_NUM45,	ANNEX_TYPE_NUM46,
+ 	 ANNEX_TYPE_NUM47,	ANNEX_TYPE_NUM48
+#if defined(_CAL_REV_D_)
+	 ,
+ 	 ANNEX_TYPE_NUM49,	ANNEX_TYPE_NUM50,
+	 ANNEX_TYPE_NUM51,	ANNEX_TYPE_NUM52,	  
+	 ANNEX_TYPE_NUM53,	ANNEX_TYPE_NUM54,	  
+	 ANNEX_TYPE_NUM55,	ANNEX_TYPE_NUM56,	  
+	 ANNEX_TYPE_NUM57,	  
+#endif	//#if defined(_CAL_REV_D_)
+	 };
+
+#if defined(_CAL_REV_D_)
+#define ANNEX_TYPE_BT_CAL	ANNEX_TYPE_NUM55  
+#define ANNEX_TYPE_BT_CONF	ANNEX_TYPE_NUM56  
+#else	//#if defined(_CAL_REV_D_)
+#define ANNEX_TYPE_BT_CAL	ANNEX_TYPE_NUM43  
+#define ANNEX_TYPE_BT_CONF	ANNEX_TYPE_NUM44  
+#endif	//#if defined(_CAL_REV_D_)
+ 
+enum {SPISIZE_KBIT, SPISIZE_MBIT};
+#include "../DutBtApi.hc"
+typedef struct PCBREVDWORD
+{
+	BYTE			DesignType;
+	BYTE			MajorRev;
+	BYTE			MinorRev;
+	BYTE			Variation;
+} PCBREVDWORD;   
+
+typedef struct ANTBYTE_VC
+{
+	BYTE TxAntCfg:4;
+ 	BYTE RxAntCfg:4;
+} ANTBYTE_VC; 
+
+ 
+typedef struct PAOPTIONBYTE_VC
+{
+ 	BYTE PaOption_ExtPaPolar_PathABC_G:1; 
+	BYTE ReservedBits1:3;
+  	BYTE PaOption_ExtPaPolar_PathABC_A:1; 
+	BYTE ReservedBits2:3;
+ } PAOPTIONBYTE_VC; 
+
+typedef struct LNAOPTIONBYTE_VC
+{
+ 	BYTE PaOption_ExtLnaFlag_PathABC_G:1; 
+  	BYTE PaOption_ExtLnaPolorityFlag_PathABC_G:1;
+	BYTE PaOption_ReserveBit1:2;
+ 	BYTE PaOption_ExtLnaFlag_PathABC_A:1; 
+  	BYTE PaOption_ExtLnaPolorityFlag_PathABC_A:1;
+	BYTE PaOption_ReserveBit2:2;
+} LNAOPTIONBYTE_VC; 
+
+typedef struct IDBYTE_VC
+{
+	BYTE Id4Dev0:4; 
+	BYTE Id4Dev1:4;
+} IDBYTE_VC; 
+
+
+typedef struct MISCFLAGBYTE_VC
+{
+	BYTE ExtXtalSource:1;
+	BYTE ExtSleepClk:1;
+	BYTE WlanWakeUp:1;	
+	BYTE ReserveBit:1;
+	BYTE CckPwrScaler:2;
+	BYTE ReserveBits:2;
+} MISCFLAGBYTE_VC; 
+
+typedef struct ASNDWORD_VC
+{
+ 	DWORD		SN:24; 
+ 	DWORD		AssemblyHouse:8; 
+} ASNDWORD_VC; 
+
+typedef struct SPISIZEBYTE_VC
+{
+ 	BYTE		size:7; 
+ 	BYTE		unit:1; 
+} SPISIZEBYTE_VC; 
+
+//REV D
+typedef struct Capabilities_VD
+{
+	BYTE	Capable_2G:1;
+	BYTE	Capable_5G:1;
+	BYTE	InternalBluetooth:1;
+	BYTE	Antenna_Diversity:1;
+	BYTE 	LNA_2G:1;
+	BYTE	LNA_5G:1;
+	BYTE	SameAnt_2G_BT:1;
+	BYTE	SameAnt_5G_BT:1;
+}Capabilities_VD;
+
+typedef struct Concurrency_VD
+{
+	BYTE	Capabilities_2G:4;
+	BYTE	Capabilities_5G:4;
+}Concurrency_VD;
+
+
+typedef struct LNAOPTIONBYTE_VD
+{
+ 	BYTE PaOption_ExtLnaFlag_PathABC_G:1; 
+	BYTE PaOption_ReserveBit1:3;
+ 	BYTE PaOption_ExtLnaFlag_PathABC_A:1; 
+	BYTE PaOption_ReserveBit2:3;
+} LNAOPTIONBYTE_VD; 
+//
+//////////////
+// main_structure
+//////////////
+#define TESTVER			DWORD
+#define	MFGTASKVER		DWORD 
+#define	DLLVER			DWORD 
+
+#if defined(_W8787_) || defined(_W8790_) || defined(_W8782_)
+#if defined(_CAL_REV_D_)
+typedef struct CardSpecDataRev0D
+{
+	BYTE			StructureRevision;
+ 	BYTE			Cs;
+	WORD			LengthInByte;
+
+	DWORD			PtrFirstAnnex; 
+
+	BYTE			DesignType;
+	SPISIZEBYTE_VC	SpiSize;
+  BYTE			LNAGain;
+	BYTE			AntDiversityInfo;
+	
+	PAOPTIONBYTE_VC PaOption;
+	BYTE      FEVersion;	    
+	BYTE			Reserv[2];
+	 
+	BYTE			CountryCode;
+ 	MISCFLAGBYTE_VC MiscFlag;
+	ANTBYTE_VC		AntCfg[2];
+	
+	Capabilities_VD			Capabilities;
+	Concurrency_VD			Concurrency;
+	
+	BYTE				BTFrontEnd2G[9];
+	BYTE				BTFrontEnd5G[9];
+	
+	TESTVER			TestVersion;
+	MFGTASKVER	MfgTaskVersion; 
+	DLLVER			DllVersion; 
+	WORD				Reserv2; 
+
+	BYTE				Soc_OR_Rev;
+	BYTE				Rfu_OR_Rev;
+	
+
+	BYTE				MimoRxCnt:4; 	 
+	BYTE				MimoTxCnt:4; 
+	BYTE				MimoMapDev0[3];
+	BYTE				ReservedMimo; 
+	BYTE				MimoMapDev1[3];
+		 
+ }CardSpecDataRev0D;
+
+#else
+typedef struct CardSpecDataRev0C
+{
+	BYTE			StructureRevision;
+ 	BYTE			Cs;
+	WORD			LengthInByte;
+
+	DWORD			PtrFirstAnnex; 
+
+	PCBREVDWORD		PcbRevision;
+
+	PAOPTIONBYTE_VC PaOption[2];
+	LNAOPTIONBYTE_VC LnaOption[2];	
+
+	BYTE			CountryCode;
+ 	MISCFLAGBYTE_VC MiscFlag;
+	ANTBYTE_VC		AntCfg[2];
+	
+	BYTE			FemConfId[2];
+	BYTE			ReservedId[2];
+	BYTE			LnaGain;
+	IDBYTE_VC		AntPartId[3];
+//	IDBYTE_VC		PaVendorId[2];
+//	IDBYTE_VC		LnaVendorId[3];
+//	IDBYTE_VC		AntPartId[3];
+
+	ASNDWORD_VC		Asn;
+	
+	WORD			SocId;
+	BYTE			SocVers;
+ 	SPISIZEBYTE_VC	SpiSize;
+
+	BYTE			BbuId;
+	BYTE			BbuVers;
+	BYTE			RfId;
+	BYTE			RfVers;
+
+	TESTVER			TestVersion; 
+
+	MFGTASKVER		MfgTaskVersion; 
+	DLLVER			DllVersion; 
+
+	BYTE			BT_CoExist;
+//	BYTE			BT_Reserved[3];
+	BYTE			AppModeFlag;
+	BYTE			Soc_OR_Rev; 
+	BYTE			Rfu_OR_Rev;
+
+	BYTE			MimoRxCnt:4; 	 
+	BYTE			MimoTxCnt:4; 
+	BYTE			MimoMapDev0[3];
+	BYTE			ReservedMimo; 
+	BYTE			MimoMapDev1[3];
+		 
+ }CardSpecDataRev0C;
+#endif	//#if defined(_CAL_REV_D_)
+
+#else
+typedef struct CardSpecDataRev0C
+{
+	BYTE			StructureRevision;
+ 	BYTE			Cs;
+	WORD			LengthInByte;
+
+	DWORD			PtrFirstAnnex; 
+
+	PCBREVDWORD		PcbRevision;
+
+	PAOPTIONBYTE_VC PaOption[CALSTRU_MAXNUM_MIMODEVICE];
+	LNAOPTIONBYTE_VC LnaOption[CALSTRU_MAXNUM_MIMODEVICE];	
+
+	BYTE			CountryCode;
+ 	MISCFLAGBYTE_VC MiscFlag;
+	ANTBYTE_VC		AntCfg[CALSTRU_MAXNUM_MIMODEVICE];
+	
+	BYTE			FemConfId[CALSTRU_MAXNUM_MIMODEVICE];
+	BYTE			ReservedId[2];
+	BYTE			LnaGain;
+	IDBYTE_VC		AntPartId[CALSTRU_MAXNUM_RXPATH];
+
+	ASNDWORD_VC		Asn;
+	
+	WORD			SocId;
+	BYTE			SocVers;
+ 	SPISIZEBYTE_VC	SpiSize;
+
+	BYTE			BbuId;
+	BYTE			BbuVers;
+	BYTE			RfId;
+	BYTE			RfVers;
+
+	TESTVER			TestVersion; 
+
+	MFGTASKVER		MfgTaskVersion; 
+	DLLVER			DllVersion; 
+
+	BYTE			BT_CoExist;
+	BYTE			AppModeFlag;
+	BYTE			Soc_OR_Rev; 
+	BYTE			Rfu_OR_Rev;
+
+	BYTE			MimoRxCnt:4; 	 
+	BYTE			MimoTxCnt:4; 
+	BYTE			MimoMapDev0[CALSTRU_MAXNUM_RXPATH];
+
+	BYTE			ReservedMimo; 
+	BYTE			MimoMapDev1[CALSTRU_MAXNUM_RXPATH];
+		 
+ }CardSpecDataRev0C;
+#endif //#if defined(_W8787_)|| defined(_W8790_)
+typedef struct ANNEX_TYPE_HEADER_VC
+{ 
+	BYTE			AnnexType;
+	BYTE			Cs;
+	WORD			LengthInByte;
+	DWORD			PtrNextAnnex; 
+//	BYTE			DeviceId;
+//	BYTE			PathId;
+//	BYTE			BandId;
+//	BYTE			SubBandId; 
+} ANNEX_TYPE_HEADER_VC;
+
+typedef struct ANNEX_TYPE_HEADER_EXTENDED_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE			DeviceId;
+	BYTE			PathId;
+	BYTE			BandId;
+	BYTE			SubBandId; 
+} ANNEX_TYPE_HEADER_EXTENDED_VC;
+
+typedef struct ANNEX_TYPE_HEADER_EXTENDED_VD
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE			DeviceId:4;
+	BYTE			PathId:4;
+} ANNEX_TYPE_HEADER_EXTENDED_VD;
+
+//////////////
+// ANNEX_TYPE_16_POWERTABLE_VC
+//////////////
+
+typedef struct PWRTBL_DWORD
+{ 
+BYTE powerLevel;
+BYTE ValPDetThHi;
+BYTE ValPDetThLo;
+// bit fields are little endean
+#if defined(_W8787_)|| defined(_W8790_) || defined(_W8782_)
+BYTE ValInitTgrt:7;
+BYTE Reserve:1;
+#else
+BYTE ValInitTgrt:6;
+BYTE Reserve:1;
+BYTE ValDacX:1;
+#endif
+}PWRTBL_DWORD;
+
+typedef struct FW_RNGTABLE 
+{
+	BYTE		PpaGain5_1;
+	BYTE		PpaGain5_2;
+	BYTE		TopPwr;
+	BYTE		BtmPwr;
+} FW_RNGTABLE;
+
+
+typedef struct POWRTABLE
+{ 
+ 	WORD			HighFreqBound;
+	WORD			LowFreqBound;
+	FW_RNGTABLE		rngTblLevel[RFPWRRANGE_NUM];
+	PWRTBL_DWORD	pwrTblLevel[POWTBL_LEVEL]; 
+}  POWRTABLE;
+
+
+typedef struct FW_POWRTABLE
+{ 
+ 	BYTE			DeviceId;
+ 	BYTE			PathId;
+ 	BYTE			BandId;
+ 	BYTE			SubBandId; 
+	POWRTABLE		pwrTbl;
+} FW_POWRTABLE;
+
+
+typedef struct ANNEX_TYPE_16_POWERTABLE_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	FW_POWRTABLE			fwPwrTbl; 
+} ANNEX_TYPE_16_POWERTABLE_VC;
+
+//////////////////////////////
+// ANNEX_TYPE_17_LNATABLE_VC
+//////////////////////////////
+
+typedef struct FW_LNASETTING
+{
+	BYTE BbuLna_hi;
+	BYTE BbuLna_Lo;
+	BYTE BbuLna_GainOffset;
+	BYTE RfLna_GrBb;
+	BYTE RfLna_GrRfIf;
+} FW_LNASETTING;
+
+
+typedef struct ANNEX_TYPE_17_LNATABLE_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE					deviceId;
+	BYTE					PathId;
+	BYTE					useBbuLnaSettings; 
+	FW_LNASETTING			fwLnaSetting_G[NUM_SUBBAND_G]; 
+	FW_LNASETTING			fwLnaSetting_A[NUM_SUBBAND_A]; 
+	BYTE					reservedBytes[2]; 
+} ANNEX_TYPE_17_LNATABLE_VC;
+
+//////////////////////////////
+//  ANNEX_TYPE_14_PWRCAL2GHZ_VC
+//////////////////////////////
+
+typedef struct CALVALUE_M_0_WORD_VC
+{
+ 	BYTE		CorrInitPwrTrgt; 
+ 	BYTE		CorrPdetTh;  
+} CALVALUE_M_0_WORD_VC;   
+
+typedef struct CALVALUE_M_1_WORD_VC
+{
+ 	BYTE		ValueInitPwrTrgt; 
+ 	BYTE		Step1dB;  
+} CALVALUE_M_1_WORD_VC;   
+
+typedef struct CALVALUE_M_2_WORD_VC
+{
+ 	BYTE		ValueVga; 
+ 	BYTE		Step1dB;  
+} CALVALUE_M_2_WORD_VC;   
+
+typedef union CALVALUE_M_WORD_VC 
+{
+CALVALUE_M_0_WORD_VC CalValuePerCh0;
+CALVALUE_M_1_WORD_VC CalValuePerCh1;
+CALVALUE_M_2_WORD_VC CalValuePerCh2; 
+}CALVALUE_M_WORD_VC ; 
+
+typedef struct CALVALUE_IQMISMATCH_VC
+{
+ 	BYTE		Phase;  //beta
+ 	BYTE		Amp;	// alpha
+} CALVALUE_IQMISMATCH_VC;   
+
+typedef struct CALOPTIONBYTE_VC
+{
+ 	BYTE CalOption_Range1:1;
+ 	BYTE CalOption_Range2:1;
+ 	BYTE CalOption_Range3:1;
+ 	BYTE CalOption_Range4:1;
+
+ 	BYTE CalOption_signal_B:1;
+ 	BYTE CalOption_signal_G:1;
+	BYTE CalOption_CalDataOption:2; 
+} CALOPTIONBYTE_VC; 
+
+
+
+
+typedef struct ANNEX_TYPE_14_PWRCAL2GHZ_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE					deviceId;
+	BYTE					PathId;
+	CALOPTIONBYTE_VC		CalOption; 
+	BYTE					CalXtal; 
+	BYTE					ThermalScaler;
+
+ 	BYTE					NumOfSavedCh; 
+	BYTE					SavedChannelIndex[MAXSAVEDCH_G]; 
+	BYTE					LcTankCalFlag;
+	BYTE					LcTankCal[MAXSAVEDCH_G]; 
+	BYTE					Offset11NInitPCommon;
+ 	CALVALUE_M_WORD_VC		PaCal[RFPWRRANGE_NUM][MAXSAVEDCH_G];
+	CALVALUE_IQMISMATCH_VC	CalTxIQ_Bw20[NUM_SUBBAND_G];
+	CALVALUE_IQMISMATCH_VC	CalTxIQ_Bw10[NUM_SUBBAND_G];
+	CALVALUE_IQMISMATCH_VC	CalTxIQ_Bw5[NUM_SUBBAND_G];
+	CALVALUE_IQMISMATCH_VC	CalTxIQ_Bw40[NUM_SUBBAND_G];
+} ANNEX_TYPE_14_PWRCAL2GHZ_VC;
+
+#define ANNEX_TYPE_37_PWRCAL2GHZ_VC ANNEX_TYPE_14_PWRCAL2GHZ_VC
+//////////////////////////////
+//  ANNEX_TYPE_15_PWRCAL5GHZ_VC
+//////////////////////////////
+
+
+typedef struct ANNEX_TYPE_15_PWRCAL5GHZ_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE					deviceId;
+	BYTE					PathId;
+	CALOPTIONBYTE_VC		CalOption; 
+	BYTE					CalXtal; 
+	BYTE					Offset11NInitPCommon;
+	BYTE					ThermalScaler;
+
+  	BYTE					NumOfSubBands; 
+	BYTE					NumOfSavedChInSubBand[NUM_SUBBAND_A]; 
+	BYTE					SavedChannelIndex[MAXSAVEDCH_A]; 
+
+  	CALVALUE_M_WORD_VC		PaCal[RFPWRRANGE_NUM][MAXSAVEDCH_A];
+	CALVALUE_IQMISMATCH_VC	CalTxIQ_Bw20[NUM_SUBBAND_A];
+	CALVALUE_IQMISMATCH_VC	CalTxIQ_Bw10[NUM_SUBBAND_A];
+	CALVALUE_IQMISMATCH_VC	CalTxIQ_Bw40[NUM_SUBBAND_A];
+	CALVALUE_IQMISMATCH_VC	CalTxIQ_Bw5[NUM_SUBBAND_A];
+} ANNEX_TYPE_15_PWRCAL5GHZ_VC;
+
+
+
+//////////////////////////////
+//  ANNEX_TYPE_18_RXCALSISO_VC
+//  ANNEX_TYPE_19_RXCALMIMO_VC
+//////////////////////////////
+typedef struct RXIQCAL_VC
+{ 
+  	CALVALUE_IQMISMATCH_VC	CalRxIQ_Bw20;
+	CALVALUE_IQMISMATCH_VC	CalRxIQ_Bw40;
+	CALVALUE_IQMISMATCH_VC	CalRxIQ_Bw10;
+	CALVALUE_IQMISMATCH_VC	CalRxIQ_Bw5;
+} RXIQCAL_VC;
+
+typedef struct ANNEX_TYPE_18_RXCALSISO_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	RXIQCAL_VC	CalRxIQ[NUM_SUBBAND_G];
+ } ANNEX_TYPE_18_RXCALSISO_VC;
+
+typedef struct RXGAINMISMTACH_VC
+{ 
+  	BYTE	RxDelta[CALSTRU_MAXNUM_RXPATH]; 
+  	BYTE	Reserve;
+} RXGAINMISMTACH_VC;
+
+typedef struct RXCALIQGAINMIMO_VC
+{ 
+  	RXIQCAL_VC		CalRxIQ[CALSTRU_MAXNUM_RXPATH]	;
+	RXGAINMISMTACH_VC	RxGainMism; 
+} RXCALIQGAINMIMO_VC;
+
+typedef struct ANNEX_TYPE_19_RXCALMIMO_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE					deviceId;
+	BYTE					ReservedByte[3];
+	RXCALIQGAINMIMO_VC		CalRxIQGain[NUM_SUBBAND_G];
+ } ANNEX_TYPE_19_RXCALMIMO_VC;
+
+//////////////////////////////
+//  ANNEX_TYPE_20_RXCALSISO_VC
+//  ANNEX_TYPE_21_RXCALMIMO_VC
+//////////////////////////////
+
+
+typedef struct ANNEX_TYPE_20_RXCALSISO_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	RXIQCAL_VC	CalRxIQ[NUM_SUBBAND_A]; 
+} ANNEX_TYPE_20_RXCALSISO_VC;
+	 
+
+typedef struct ANNEX_TYPE_21_RXCALMIMO_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE					deviceId;
+	BYTE					ReservedByte[3];
+	RXCALIQGAINMIMO_VC		CalRxIQGain[NUM_SUBBAND_A];
+ } ANNEX_TYPE_21_RXCALMIMO_VC;
+
+
+//////////////////////////////
+// ANNEX_TYPE_22_RFSETTING_VC
+// ANNEX_TYPE_23_BBUSETTING_VC
+// ANNEX_TYPE_24_SOCSETTING_VC
+//////////////////////////////
+
+typedef struct ADDR_VAL_PAIRS_8BIT
+{ 
+	BYTE address;
+	BYTE value;
+} ADDR_VAL_PAIRS_8BIT;
+
+typedef struct ADDR_VAL_PAIRS_16BIT
+{ 
+	BYTE address;
+	BYTE value;
+} ADDR_VAL_PAIRS_16BIT;
+
+
+typedef struct ADDR_VAL_PAIRS_32BIT
+{ 
+	DWORD address;
+	DWORD value;
+} ADDR_VAL_PAIRS_32BIT;
+
+
+typedef struct ANNEX_TYPE_22_RFSETTING_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	ADDR_VAL_PAIRS_8BIT		RfValuePairs[MAX_SETTING_PAIRS]; 
+} ANNEX_TYPE_22_RFSETTING_VC;
+
+typedef struct ANNEX_TYPE_23_BBUSETTING_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	ADDR_VAL_PAIRS_8BIT		BbuValuePairs[MAX_SETTING_PAIRS]; 
+} ANNEX_TYPE_23_BBUSETTING_VC;
+
+typedef struct ANNEX_TYPE_24_BBUSETTING_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	ADDR_VAL_PAIRS_16BIT	BbuValuePairs[MAX_SETTING_PAIRS]; 
+} ANNEX_TYPE_24_BBUSETTING_VC;
+
+typedef struct ANNEX_TYPE_25_SOCSETTING_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	ADDR_VAL_PAIRS_32BIT	SocValuePairs[MAX_SETTING_PAIRS]; 
+} ANNEX_TYPE_25_SOCSETTING_VC;
+
+
+//////////////////////////////
+// ANNEX_TYPE_26_CAL2GHZ_SIGNALG_VC
+//////////////////////////////
+typedef struct ANNEX_TYPE_26_CAL2GHZ_SIGNALG_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE					deviceId;
+	BYTE					PathId;
+	WORD					Reserved; 
+	BYTE	range1CalValue[MAXSAVEDCH_G]; 
+	BYTE	range2CalValue[MAXSAVEDCH_G]; 
+	BYTE	range3CalValue[MAXSAVEDCH_G]; 
+	BYTE	range4CalValue[MAXSAVEDCH_G]; 
+} ANNEX_TYPE_26_CAL2GHZ_SIGNALG_VC;
+
+//////////////////////////////
+// ANNEX_TYPE_27_LED_VC
+//////////////////////////////
+typedef struct ANNEX_TYPE_27_LED_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE	LED[MAX_LED]; 
+} ANNEX_TYPE_27_LED_VC;
+
+//////////////////////////////
+// ANNEX_TYPE_28_USBSTRINGS_VC
+//////////////////////////////
+typedef struct ANNEX_TYPE_28_USBSTRINGS_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE	VendorProductString[MAX_VPSTR_SIZE]; 
+} ANNEX_TYPE_28_USBSTRINGS_VC;
+
+//////////////////////////////
+// ANNEX_TYPE_29_HWBANDSUPPORT_VC
+//////////////////////////////
+typedef struct ANNEX_TYPE_29_HWBANDSUPPORT_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	DWORD	HwSupp2_4G:1; 
+	DWORD	HwSupp4_9G:1; 
+	DWORD	HwSupp5_0G:1; 
+	DWORD	HwSupp5_2G:1; 
+	DWORD	Reserved:28; 
+	DWORD	ReservedD1; 
+	DWORD	ReservedD2; 
+	DWORD	ReservedD3; 
+} ANNEX_TYPE_29_HWBANDSUPPORT_VC;
+
+//////////////////////////////
+// ANNEX_TYPE_30_LOSPURSCAL_VC
+//////////////////////////////
+typedef struct LOSPURSCAL_WORD
+{
+	BYTE Setting0;
+	BYTE Setting1_reserved; 
+} LOSPURSCAL_WORD;
+
+typedef struct ANNEX_TYPE_30_LOSPURSCAL_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE					deviceId;
+	BYTE					PathId;
+	BYTE					BandId;
+	BYTE					Reserved;
+	LOSPURSCAL_WORD			LoSpurs[NUM_SUBBAND_A]; 
+	WORD					ReservedW;  
+} ANNEX_TYPE_30_LOSPURSCAL_VC;
+
+//////////////////////////////
+// ANNEX_TYPE_31_RSSI_G_VC
+// ANNEX_TYPE_32_RSSI_A_VC
+//////////////////////////////
+typedef struct RSSI_DWORD
+{
+	BYTE	NfOffset;
+	BYTE	RssiOffset_CCK_11B; 
+	BYTE	RssiOffset_OFDM_11G; 
+	BYTE	RssiOffset_MCS_11N; 
+} RSSI_DWORD;
+
+typedef struct ANNEX_TYPE_31_47_RSSI_G_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE					deviceId;
+	BYTE					PathId;
+	BYTE					BandId;
+	BYTE					Flag;
+	RSSI_DWORD				Rssi[NUM_SUBBAND_G]; 
+} ANNEX_TYPE_31_47_RSSI_G_VC;
+
+typedef struct ANNEX_TYPE_32_48_RSSI_A_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE					deviceId;
+	BYTE					PathId;
+	BYTE					BandId;
+	BYTE					Flag;
+	RSSI_DWORD				Rssi[NUM_SUBBAND_A]; 
+} ANNEX_TYPE_32_48_RSSI_A_VC;
+
+//typedef struct ANNEX_TYPE_31_RSSI_G_VC ANNEX_TYPE_47_RSSI_G_VC;
+//typedef struct ANNEX_TYPE_32_RSSI_A_VC ANNEX_TYPE_48_RSSI_A_VC;
+
+//////////////////////////////
+// ANNEX_TYPE_33_PWRTRGT_G20_VC
+// ANNEX_TYPE_34_PWRTRGT_G40_VC
+// ANNEX_TYPE_35_PWRTRGT_A20_VC
+// ANNEX_TYPE_36_PWRTRGT_A40_VC
+//////////////////////////////
+
+typedef struct REGIONAL_PWR_TARGET_G_32BIT
+{ 
+	BYTE					PwrTrgt_Rate1;	// CCK
+	BYTE					PwrTrgt_Rate2;	// OFDM MCS low
+	BYTE					PwrTrgt_Rate3;	// OFDM MCS mid
+	BYTE					PwrTrgt_Rate4;	// OFDM MCS	high
+} REGIONAL_PWR_TARGET_G_32BIT;
+
+typedef struct REGIONAL_PWR_TARGET_A_32BIT
+{ 
+	BYTE					ChannelList;	// CCK
+	BYTE					PwrTrgt_Rate2;	// OFDM MCS low
+	BYTE					PwrTrgt_Rate3;	// OFDM MCS mid
+	BYTE					PwrTrgt_Rate4;	// OFDM MCS	high
+} REGIONAL_PWR_TARGET_A_32BIT;
+
+typedef struct ANNEX_TYPE_33_PWRTRGT_G20_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE			DeviceId;
+	BYTE			Reserved;
+	BYTE			BandId;
+	BYTE			Bw; 
+	REGIONAL_PWR_TARGET_G_32BIT	PwrTrgt[CHCNT_MAX_G_LEGACY];
+} ANNEX_TYPE_33_PWRTRGT_G20_VC;
+
+typedef struct ANNEX_TYPE_34_PWRTRGT_G40_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE			DeviceId;
+	BYTE			Reserved;
+	BYTE			BandId;
+	BYTE			Bw; 
+	REGIONAL_PWR_TARGET_G_32BIT	PwrTrgt[CHCNT_MAX_G_N];
+} ANNEX_TYPE_34_PWRTRGT_G40_VC;
+
+typedef struct ANNEX_TYPE_35_PWRTRGT_A20_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE			DeviceId;
+	BYTE			Reserved;
+	BYTE			BandId;
+	BYTE			Bw; 
+	BYTE			NumOfChInSubBand[NUM_SUBBAND_A];
+	BYTE			ReservedB[3];
+	REGIONAL_PWR_TARGET_A_32BIT	PwrTrgt[CHCNT_MAX_A_ONLY];
+} ANNEX_TYPE_35_PWRTRGT_A20_VC;
+
+typedef struct ANNEX_TYPE_36_PWRTRGT_A40_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE			DeviceId;
+	BYTE			Reserved;
+	BYTE			BandId;
+	BYTE			Bw; 
+	BYTE			NumOfChInSubBand[NUM_SUBBAND_A];
+	BYTE			ReservedB[3];
+	REGIONAL_PWR_TARGET_A_32BIT	PwrTrgt[CHCNT_MAX_A_N];
+} ANNEX_TYPE_36_PWRTRGT_A40_VC;
+
+
+typedef struct BT_PAOPTION_8BIT_VC
+{
+	BYTE	PaOption_ExtPaPolar:1;
+	BYTE	PaOption_ExtPpaPgaPriority:1;
+	BYTE	Reserved:6;
+}BT_PAOPTION_8BIT_VC;
+ 
+
+typedef struct BT_CLASSSUPPORTED_8BIT_VC
+{
+	BYTE			Class1_Pc:1;
+	BYTE			Class2_NoPc:1;
+	BYTE			Class2_Pc:1;
+	BYTE			Class3_NoPc:1;
+	BYTE			Class3_Pc:1;
+	BYTE			MrvlPc:1;
+	BYTE			Reserved:2;
+}BT_CLASSSUPPORTED_8BIT_VC;
+
+typedef struct BT_CALOPTION_8BIT_VC
+{
+	BYTE			MrvlMode_CalOption:1;
+	BYTE			BtMode_CalOption:1; 
+	BYTE			Reserved:6;
+}BT_CALOPTION_8BIT_VC;
+
+typedef struct BT_CALDATA_VC
+{
+	BYTE			InitGainPga:4;
+	BYTE			InitGainPpa:4;
+	BYTE			MaxMinPga;
+	BYTE			MaxMinPpa;
+	BYTE			ThHi;
+	BYTE			ThLo;
+//	BYTE			Reserved;
+}BT_CALDATA_VC;
+
+typedef struct MRVL_BT_PWRTBL_VC 
+{
+	BYTE			PowerLevel; 
+	BYTE			InitGainPga:4;
+	BYTE			InitGainPpa:4;
+	BYTE			ThHi;
+	BYTE			ThLo; 
+}MRVL_BT_PWRTBL_VC;
+
+
+
+typedef struct BT_CONFIG_FLAG_VC 
+{
+	BYTE			DeepSleep:4; 
+	BYTE			UseEncModeBrdcst:1;
+	BYTE			UseUnitKey:1;
+	BYTE			OnChipProfileEnable:1;
+	BYTE			Reserved:1; 
+}BT_CONFIG_FLAG_VC;
+
+typedef struct BT_BDADDR_LINKKEY_PAIR 
+{
+	BYTE					BdAddress[SIZE_BDADDRESS_INBYTE];
+	BYTE					LinkKey[SIZE_LINKKEY_INBYTE];
+ } BT_BDADDR_LINKKEY_PAIR;
+
+ 
+
+typedef struct PM_GOBLEINFO_VC 
+{
+	BYTE			NumOfRailAvalable:4; 
+	BYTE			Reserved:3;
+ 	BYTE			PrevRevSettingFlag:1; 
+}PM_GOBLEINFO_BYTE;
+
+ 
+typedef struct PM_SLEEPMODE_BYTE 
+{
+	BYTE			Setting:7; 
+	BYTE			Flag:1; 
+}PM_SLEEPMODE_BYTE;
+
+
+typedef struct ANNEX_TYPE_40_PM_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	WORD					VID;
+	WORD					PID;
+	BYTE					ChipId;
+	BYTE					ChipVersion;
+	PM_GOBLEINFO_BYTE		GlobleInfo;
+	BYTE					PowerDownMode;
+	BYTE					NormalModeSetting[MAX_PM_RAIL_PW886];
+	BYTE					Reserved;
+	PM_SLEEPMODE_BYTE		SleepMode[MAX_PM_RAIL_PW886];
+	BYTE					DPSLP;
+} ANNEX_TYPE_40_PM_VC;
+
+
+
+
+typedef struct ANNEX_TYPE_41_BTCFG_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	WORD					Mask;
+	WORD					reservedW;
+
+	BT_BDADDR_LINKKEY_PAIR	Partners[MAXPARTNER];
+	BYTE					SecurityKey[MAX_BYTE_SECURITYKEY];
+} ANNEX_TYPE_41_BTCFG_VC;
+
+#if defined(_W8787_)|| defined(_W8790_) || defined(_W8782_)
+typedef struct THERMALCALPARMS
+{
+	BYTE Band:4;
+	BYTE SubBand:4;
+	BYTE TempRefMinus40;
+	BYTE TempRef0;
+	BYTE TempRef65;
+	BYTE TempRef85;
+	BYTE Numerator;
+	BYTE Denom;
+	BYTE reserved[3];
+	BYTE PTargetDelta;
+	BYTE Numerator1;
+} PACK THERMALCALPARMS;
+
+#else
+typedef struct THERMALCALPARMS
+{
+	BYTE Band:4;
+	BYTE SubBand:4;
+	BYTE TempRefMinus40;
+	BYTE TempRef0;
+	BYTE TempRef65;
+	BYTE TempRef85;
+	BYTE Numerator;
+	BYTE Denom;
+	BYTE PPACoeff;
+	BYTE PACoeff;
+	BYTE reserved;
+	BYTE reserved1;
+	BYTE reserved2;
+} PACK THERMALCALPARMS;
+#endif
+typedef struct ANNEX_TYPE_42_THERMALCAL_VC
+{
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	THERMALCALPARMS ThermalCalParam[0];
+} PACK ANNEX_TYPE_42_THERMALCAL_VC;
+
+typedef struct BT_PWRGAIN_WORD_VC 
+{
+	WORD			BbGain:5; 
+	WORD			PgaGain:3; 
+	WORD			PpaGain:3; 
+ 	WORD			PwrIndBm:5;
+ }BT_PWRGAIN_WORD_VC;
+
+typedef struct BT_PWRCTRLFLAG_BYTE_VC 
+{
+	BYTE			Ppa6dBStepMode:1; 
+	BYTE			LimitPwrAsC2:1; 
+ 	BYTE			Reserved:6; 
+}BT_PWRCTRLFLAG_BYTE_VC;
+
+
+typedef struct ANNEX_TYPE_43_BTCAL_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BT_PWRGAIN_WORD_VC		Gain_C2[MAXSAVED_PWRLVL_C2];
+	BYTE					TempSlope_Gain;
+	BYTE					TempRd_Ref;
+	BT_PWRGAIN_WORD_VC		Gain_C1_5[MAXSAVED_PWRLVL_C1_5];
+	BYTE					FE_Loss;
+	BT_PWRCTRLFLAG_BYTE_VC	Flags;
+	BYTE					Xtal;
+	BYTE					PwrUpPwrLvl;
+} ANNEX_TYPE_43_BTCAL_VC;
+
+typedef struct ANNEX_TYPE_44_BTCFG_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+ 
+	BYTE					BdAddress[SIZE_BDADDRESS_INBYTE];
+ 	BYTE					Lmp_LocalVersion;
+	BYTE					Lmp_RemoteVersion;
+
+	BT_CONFIG_FLAG_VC		BtConfigFlag;
+	BYTE					RssiCorrection;
+	BYTE					RssiGldnRange_Low;
+	BYTE					RssiGldnRange_High;
+//	WORD					UartBaudRate_reservedW;
+	WORD					Jitter;
+	WORD					Drift;
+	WORD					EncKeyLmax;
+	WORD					EncKeyLmin;
+	WORD					MaxAcls;
+	WORD					MaxScos;
+	WORD					MaxAclPktLen;
+	WORD					MaxAclPkts;
+	BYTE					MaxScoPktLen;
+	BYTE					CompatMode;
+	WORD					MaxScoPkts;
+	WORD					LMP_PwrReqMsgInterval;
+	WORD					ReservedW;
+	BYTE					LMP_DecrPwrReqMsgIntervalRatio;
+	BYTE					NumOfPwrStep4Clss1p5;
+	BYTE					PwrStepSize4Clss1p5;
+	BYTE					PwrCtrlInClss2Device;
+	WORD					DynamicRssiLmpTimeInterval;
+	WORD					DynamicRssiLmpTimeIntervalThrhld;
+	WORD					SupportedFeature[NUM_WORD_SUPPORTFEATURE];
+	WORD					SupportedCommands[NUM_WORD_SUPPORTCOMMAND];
+//#ifndef SUPPORT_ANNEX41
+//	WORD					reservedW;
+//#endif //#ifndef SUPPORT_ANNEX41
+	WORD					ConnRxWindow;
+
+	DWORD					UartBaudRate;
+
+//#ifndef SUPPORT_ANNEX41
+//	WORD					Mask;
+//
+//	BT_BDADDR_LINKKEY_PAIR	Partners[MAXPARTNER];
+//#endif //#ifndef SUPPORT_ANNEX41
+	BYTE					LocalDeviceName[MAXSTRLEN_LOCALDEVICENAME];
+} ANNEX_TYPE_44_BTCFG_VC;
+
+typedef struct SLEEPMODE_FLAG_BYTE_VC 
+{
+	BYTE			XoscDrvnByGpio:1; 
+ 	BYTE			Reserved:7; 
+}SLEEPMODE_FLAG_BYTE_VC;
+
+typedef struct ANNEX_TYPE_45_SLEEPMODE_VC
+{ 
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	SLEEPMODE_FLAG_BYTE_VC	SleepFlag;
+	BYTE					XoscSettling;
+	BYTE					Reserved[2];
+	DWORD					PinOut_DrvLow_Low32;
+	DWORD					PinOut_DrvLow_High32;
+	DWORD					PinIn_PullDiable_Low32;
+	DWORD					PinIn_PullDiable_High32;
+} ANNEX_TYPE_45_SLEEPMODE_VC;
+
+#if defined(_CAL_REV_D_)
+///////////////////
+typedef struct LOLEAKAGE_VD 
+{
+	BYTE			CAL_Q; 
+ 	BYTE			CAL_I; 
+}LOLEAKAGEE_VC;
+
+typedef struct PWR_CALOPTIONBYTE_VD
+{
+ 	BYTE	Cal_Method:1;
+ 	BYTE	Close_TX_PW_Detection:1;
+ 	BYTE  	ExtPAPolarize:1; 
+    BYTE	RESERVE:5;
+} PWR_CALOPTIONBYTE_VD; 
+
+typedef struct CALOPTIONBYTE_VD
+{
+ 	BYTE	Cal_2G:1;
+ 	BYTE	Cal_5G:1;
+    BYTE	RESERVE:6;
+} CALOPTIONBYTE_VD; 
+
+typedef struct FreqBound_VD
+{ 
+ 	WORD			HighFreqBound;
+	WORD			LowFreqBound;
+} FreqBound_VD;
+
+typedef struct DevicePathId_VD
+{
+  BYTE				DeviceId:4;
+  BYTE				PathId:4;
+}DevicePathId_VD;
+
+
+typedef struct CALVALUE_M_0_WORD_VD
+{
+ 	BYTE		CorrInitPwrTrgt:4; 
+ 	BYTE		CorrPdetTh:4;  
+} CALVALUE_M_0_WORD_VD;   
+
+
+typedef struct PWRTBL_DWORD_REVD
+{ 
+BYTE powerLevel;
+BYTE PDETOFDM;
+BYTE PDETCCK;
+// bit fields are little endean
+#if defined(_W8787_)|| defined(_W8790_) || defined(_W8782_)
+BYTE ValInitTgrt:7;
+#else
+BYTE ValInitTgrt:6;
+BYTE Reserve:1;
+#endif
+BYTE ValDacX:1;
+}PWRTBL_DWORD_REVD;
+
+typedef struct THERMALCALPARMS_IN_DLL_VD
+{
+	BYTE BandID:4;
+	BYTE SubBand:4;
+	BYTE TempRefMinus40;
+	BYTE TempSlope;
+	BYTE TempCalTime;
+	BYTE TempRef85;
+	BYTE Numerator;
+	BYTE Denom;
+	BYTE PPAConefficient;
+	BYTE PAConefficient;
+	BYTE PTargetDelta;
+	BYTE XTAL;
+	BYTE Numerator1;
+} PACK THERMALCALPARMS_IN_DLL_VD;
+
+typedef struct ANNEX_TYPE_42_THERMALCAL_VD
+{
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	THERMALCALPARMS_IN_DLL_VD ThermalCalParam[];
+} PACK ANNEX_TYPE_42_THERMALCAL_VD;
+
+
+typedef struct ANNEX_TYPE_49_2G_POWERTABLE_VD
+{
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	DevicePathId_VD         AnnexDevicePath; 
+	BYTE                    RESERVE0;
+	BYTE					NumOfTxPowerLevelStore;
+	BYTE					NumOfSavedCh;
+	PWR_CALOPTIONBYTE_VD	CalOption; 
+	BYTE					CalXtal;
+	BYTE					PdetHiLoGap;
+	BYTE					RESERVE1;
+	BYTE					MCS20MPdetOffset;
+	BYTE					MCS20MInitPOffset;
+	BYTE					MCS40MPdetOffset;
+	BYTE					MCS40MInitPOffset;
+	BYTE					SavedChannelIndex[4]; 
+	CALVALUE_M_0_WORD_VC    PaCalCCK[RFPWRRANGE_NUM_REVD][MAXSAVEDCH_G_REVD];
+	CALVALUE_M_0_WORD_VC    PaCalOFDM[RFPWRRANGE_NUM_REVD][MAXSAVEDCH_G_REVD];
+	PWRTBL_DWORD_REVD		pwrTblLevel[4];	 
+}ANNEX_TYPE_49_2G_POWERTABLE_VD;
+
+typedef struct ANNEX_TYPE_50_5G_POWERTABLE_VD
+{
+		ANNEX_TYPE_HEADER_VC	typeHdr;
+	DevicePathId_VD			AnnexDevicePath;
+	BYTE					SubBandId; 
+	BYTE					NumOfTxPowerLevelStore;
+	BYTE					NumOfSavedChInSubBand; 
+
+	PWR_CALOPTIONBYTE_VD	CalOption;
+	BYTE					CalXtal;
+	BYTE					PdetHiLoGap; 
+	BYTE					RESERVE;
+	
+	BYTE					MCS20MPdetOffset;
+	BYTE					MCS20MInitPOffset;
+	BYTE					MCS40MPdetOffset;
+	BYTE					MCS40MInitPOffset;
+	
+	FreqBound_VD			FreqBound;
+	BYTE					SavedChannelIndex[MAXSAVEDCH_G_REVD];
+	 
+	CALVALUE_M_0_WORD_VC	PaCal[RFPWRRANGE_NUM_REVD][MAXSAVEDCH_G_REVD];
+
+	DWORD					RESERVE1;
+	PWRTBL_DWORD_REVD			pwrTblLevel[4];
+	
+}ANNEX_TYPE_50_5G_POWERTABLE_VD;
+
+typedef struct ANNEX_TYPE_51_SINGAL_CALDATA_ADDITION_VD
+{
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	DevicePathId_VD			AnnexDevicePath;
+	BYTE					RESERV0;
+	BYTE					BandID;
+	BYTE					RESERV2;
+	
+	BYTE					OFDM_TH_LO_Delta_40M;
+	BYTE					OFDM_InitP_Delta_40M;
+	BYTE					OFDM_TH_LO_Delta_20M;
+	BYTE					OFDM_InitP_Delta_20M;
+	
+	BYTE					MCS_TH_LO_Delta_40M;
+	BYTE					MCS_InitP_Delta_40M;
+	BYTE					MCS_TH_LO_Delta_20M;
+	BYTE					MCS_InitP_Delta_20M;
+		
+}ANNEX_TYPE_51_SINGAL_CALDATA_ADDITION_VD;
+
+typedef struct ANNEX_TYPE_52_LOLEAKAGE_VD
+{
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	DevicePathId_VD         AnnexDevicePath; 
+	CALOPTIONBYTE_VD		CalFlag;
+	LOLEAKAGE_VD			Cal2G;
+	LOLEAKAGE_VD	        Cal5G[NUM_SUBBAND_A_REVD];	 
+}ANNEX_TYPE_52_LOLEAKAGE_VD;
+
+typedef struct ANNEX_TYPE_53_TX_IQ_LOLEAKAGE_VD
+{
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	DevicePathId_VD         AnnexDevicePath; 
+	CALOPTIONBYTE_VD		CalFlag;
+	CALVALUE_IQMISMATCH_VC	CalTxIQ_2G;
+	CALVALUE_IQMISMATCH_VC	CalTxIQ_5G[NUM_SUBBAND_A_REVD];
+}ANNEX_TYPE_53_TX_IQ_LOLEAKAGE_VD;
+
+typedef struct ANNEX_TYPE_54_RX_IQ_LOLEAKAGE_VD
+{
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	DevicePathId_VD         AnnexDevicePath; 
+	CALOPTIONBYTE_VD		CalFlag;
+	CALVALUE_IQMISMATCH_VC	CalRxIQ_2G;
+	CALVALUE_IQMISMATCH_VC	CalRxIQ_5G[NUM_SUBBAND_A_REVD];
+}ANNEX_TYPE_54_RX_IQ_LOLEAKAGE_VD;
+
+typedef struct BT_OPTION
+{
+	BYTE	ForceClass2Op:1;
+	BYTE	DisablePwrControl:1;
+	BYTE	MiscFlag:1;
+	BYTE	UsedInternalSleepClock:1;
+	BYTE	RESERVE:4;
+}BT_OPTION;
+
+typedef struct ANNEX_TYPE_55_BT_CONFIGURE
+{
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE					Version;
+	BYTE					RFXtal;
+	BYTE					InitPwr;
+	BYTE					FELoss;
+	BT_OPTION			    BTOption;
+	BYTE					RESERVE0;
+	BYTE					Rssi_Golden_Lo;
+	BYTE					Rssi_Golden_Hi;
+	DWORD					BTBAUDRate;				
+	BYTE					BDAddr[SIZE_BDADDRESS_INBYTE];
+	BYTE					Encr_Key_Len_Min:4;
+	BYTE					Encr_Key_Len_Max:4;
+	BYTE					RESERVE1;
+		
+}ANNEX_TYPE_55_BT_CONFIGURE;
+
+typedef struct ANNEX_TYPE_56_BT_SECURITY_DATA
+{
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE					Lincense_Key[16];
+	WORD					Link_Key_Mask;
+	BYTE					Key_Value[3][22];
+											
+}ANNEX_TYPE_56_BT_SECURITY_DATA;
+
+typedef struct Sub_ConeffcicentData
+{
+	WORD			RealHi:8;
+	WORD			RealLo:4;
+	WORD			ImageHi:4;
+	WORD			ImageLo:8;
+	WORD			Reserved:8;
+}Sub_ConeffcicentData; 
+
+typedef struct DPD_Coneffcicent_Data
+{
+	BYTE			PowerTarget:4;
+	BYTE			PowerCode:4;
+	WORD			Reserved:8;
+	Sub_ConeffcicentData ConeffcicentData[DPD_COEFF_ENTRY_NUM];
+}DPD_Coneffcicent_Data;
+
+typedef struct ANNEX_TYPE_57_DPD_DATA
+{
+	ANNEX_TYPE_HEADER_VC	typeHdr;
+	BYTE			DeviceId:4;
+	BYTE			PathId:4;
+	BYTE			MEMRow;
+	BYTE			NUMOfEntries;
+	BYTE			BandId:4;
+	BYTE			SubBandId:4;
+	DPD_ConeffcicentData AnnexConeffcicentData[0];
+}ANNEX_TYPE_57_DPD_DATA;
+
+
+#endif //#if defined(_CAL_REV_D_)
+
+#if defined(_CAL_REV_D_)
+#define CardSpecData		CardSpecDataRev0D   
+#define STRUCTUREREV		STRUCTUREREV_D  
+#else
+#define CardSpecData		CardSpecDataRev0C   
+#define STRUCTUREREV		STRUCTUREREV_C
+#endif	//#if defined(_CAL_REV_D_)
+ 
+#pragma pack()
+
+#endif  // #ifndef _DUT_CAL_REVC_HD_ 
+

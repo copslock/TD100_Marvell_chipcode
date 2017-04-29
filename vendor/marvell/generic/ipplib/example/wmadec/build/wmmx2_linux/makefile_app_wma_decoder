@@ -1,0 +1,98 @@
+# makefile created by Linux Automake V1.0.0
+# This makefile will build a Linux application
+
+include ../../../../example/Rules.make
+
+# this is for codec release build
+
+
+#==============================================================================
+# GNU build options: all								(build engineer update)				
+#==============================================================================
+
+
+CFLAGS+= -O3 -Wall -mabi=aapcs-linux -fPIC -D_IPP_LINUX
+CXXFLAGS= $(CFLAGS)
+
+ASFLAGS+= --defsym _IPP_NONPRELINK=1  
+ARFLAGS=
+LNFLAGS+= -lpthread -ldl -lm
+
+#==============================================================================
+# User root path												(user update)
+#==============================================================================
+PATH_USR_ROOT=../../../..
+PATH_USR_OBJ=$(PATH_USR_ROOT)/example/wmadec/build/wmmx2_linux/obj
+#PATH_USR_BIN=$(PATH_USR_ROOT)/example/wmadec/build/wmmx2_linux/bin
+PATH_USR_BIN=$(PATH_USR_ROOT)/example/wmadec/bin
+PATH_USR_LOG=$(PATH_USR_ROOT)/example/wmadec/build/wmmx2_linux/log
+USR_LOG_TRACE=$(PATH_USR_LOG)/build_trace_app_wmadec_linux.log
+#==============================================================================
+# external include option 											(user update)
+#==============================================================================
+OPT_INC_EXT=\
+-I $(PATH_USR_ROOT)/include/\
+-I $(PATH_USR_ROOT)/example/wmadec/src/\
+
+#==============================================================================
+# usr libraries          										(user update)
+#==============================================================================
+ifeq ($(USE_STATICLIB), y)
+USR_LIBS=\
+$(PATH_USR_ROOT)/lib/libcodecwmadec.a\
+$(PATH_USR_ROOT)/lib/libmiscgen.a
+else
+USR_LIBS=\
+$(PATH_USR_ROOT)/lib/libcodecwmadec.so\
+$(PATH_USR_ROOT)/lib/libmiscgen.so
+endif
+
+#==============================================================================
+#  Compile File Definition         										(user update)
+#==============================================================================
+OBJS=\
+$(PATH_USR_ROOT)/example/wmadec/src/asfparser.o \
+$(PATH_USR_ROOT)/example/wmadec/src/wmaexample.o \
+$(PATH_USR_ROOT)/example/main/src/main.o  
+#==============================================================================
+# Target                                                          (user update)
+#==============================================================================
+OUTPUT_TARGET=$(PATH_USR_ROOT)/example/wmadec/bin/appWMADec.exe
+
+#==============================================================================
+# phonies
+#==============================================================================
+.PHONY : all partial_clean clean banner
+all: clean $(PATH_USR_OBJ) $(PATH_USR_BIN) $(PATH_USR_LOG) banner $(OUTPUT_TARGET)
+banner:
+	@echo ------------Build Log------------------------- >$(USR_LOG_TRACE)
+	@date >>$(USR_LOG_TRACE)
+clean:
+	-rm -f $(OUTPUT_TARGET)
+	-rm -f $(OBJS)
+	-rm -f $(USR_LOG_TRACE)
+#==============================================================================
+# directories
+#==============================================================================
+$(PATH_USR_OBJ):
+	-mkdir $(PATH_USR_OBJ)
+$(PATH_USR_BIN):
+	-mkdir $(PATH_USR_BIN)
+$(PATH_USR_LOG):
+	-mkdir $(PATH_USR_LOG)
+
+
+#==============================================================================
+# Compile                                                         (user update)
+#==============================================================================
+$(OBJS):%.o:%.c
+	-$(CC) -c $< -o $@ $(CFLAGS) $(OPT_INC_EXT) 1>>$(USR_LOG_TRACE) 2>>$(USR_LOG_TRACE)
+	@if [ -e $@ ]; then echo [success] C Compile [$<] to [$@] 1>>$(USR_LOG_TRACE); else echo [failed] C Compile [$<] to [$@] 1>>$(USR_LOG_TRACE); fi
+
+#==============================================================================
+# link                                                            (user update)
+#==============================================================================
+
+$(OUTPUT_TARGET):$(OBJS) $(USR_LIBS)
+	$(LN) -o $@ $(OBJS) $(USR_LIBS) $(LNFLAGS) 1>>$(USR_LOG_TRACE) 2>>$(USR_LOG_TRACE)
+	@if [ -e $(OUTPUT_TARGET) ]; then echo [success] Link [$@] 1>>$(USR_LOG_TRACE); else echo [failed] Link [$@] 1>>$(USR_LOG_TRACE); fi

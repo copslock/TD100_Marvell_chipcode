@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.marvell.organ">
+        
+	<PreferenceCategory android:title="@string/playback">
+
+        <PreferenceScreen
+	            android:title="@string/speaker">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.Speaker" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/headset">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.Headset" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/bluetooth">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.Bluetooth" />
+	    </PreferenceScreen>
+            <PreferenceScreen
+                    android:title="@string/earpiece">
+                <intent android:action="android.intent.action.MAIN"
+                        android:targetPackage="com.marvell.organ"
+                        android:targetClass="com.marvell.organ.Earpiece" />
+            </PreferenceScreen>
+            <PreferenceScreen
+                    android:title="@string/headset_forcedSpeaker">
+                <intent android:action="android.intent.action.MAIN"
+                        android:targetPackage="com.marvell.organ"
+                        android:targetClass="com.marvell.organ.HeadsetForcedSpeaker" />
+            </PreferenceScreen>
+            <PreferenceScreen
+                    android:title="@string/speaker_forcedSpeaker">
+                <intent android:action="android.intent.action.MAIN"
+                        android:targetPackage="com.marvell.organ"
+                        android:targetClass="com.marvell.organ.SpeakerForcedSpeaker" />
+            </PreferenceScreen>
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/record">
+
+       <PreferenceScreen
+	            android:title="@string/board_mic1">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.BoardMic1" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/board_mic2">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.BoardMic2" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/headset_mic">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.organ"
+	                android:targetClass="com.marvell.organ.HeadsetMic" />
+	    </PreferenceScreen>
+        
+	</PreferenceCategory>
+
+</PreferenceScreen>
+

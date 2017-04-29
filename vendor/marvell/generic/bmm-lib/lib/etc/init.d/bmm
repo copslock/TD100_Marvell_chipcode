@@ -1,0 +1,49 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          bmm
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Loads the bmm_drv on dove
+# Description:       This is required for libbmm and HW acclerated codecs
+### END INIT INFO
+
+# Minimal initscript for modprobing bmm_drv
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+NAME=bmm
+
+set -e
+
+
+#!/bin/sh
+if [ -f /lib/modules/bmm.ko ]; then
+	insmod /lib/modules/bmm.ko bmm_size_mb=96
+else
+	#bmm_drv in Dove kernel is a bit different
+	modprobe bmm_drv bmm_size_mb=96
+fi
+
+case "$1" in
+  start)
+        ;;
+  stop)
+        ;;
+  force-stop)
+        ;;
+  force-reload)
+        ;;
+  restart)
+        ;;
+  status)
+    ;;
+  *)
+    N=/etc/init.d/$NAME
+    # echo "Usage: $N {start|stop|restart|reload|force-reload}" >&2
+    echo "Usage: $N {start|stop|restart|force-reload|status|force-stop}" >&2
+    exit 1
+    ;;
+esac
+
+exit 0

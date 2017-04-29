@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--(C) Copyright 2010 Marvell International Ltd.
+	All Rights Reserved
+
+	MARVELL CONFIDENTIAL
+	Copyright 2008 ~ 2010 Marvell International Ltd All Rights Reserved.
+	The source code contained or described herein and all documents related to
+	the source code ("Material") are owned by Marvell International Ltd or its
+	suppliers or licensors. Title to the Material remains with Marvell International Ltd
+	or its suppliers and licensors. The Material contains trade secrets and
+	proprietary and confidential information of Marvell or its suppliers and
+	licensors. The Material is protected by worldwide copyright and trade secret
+	laws and treaty provisions. No part of the Material may be used, copied,
+	reproduced, modified, published, uploaded, posted, transmitted, distributed,
+	or disclosed in any way without Marvell's prior express written permission.
+
+	No license under any patent, copyright, trade secret or other intellectual
+	property right is granted to or conferred upon you by disclosure or delivery
+	of the Materials, either expressly, by implication, inducement, estoppel or
+	otherwise. Any license under such intellectual property rights must be
+	express and approved by Marvell in writing.-->
+	
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"   
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content">     
+	<ImageView
+		android:id="@+id/iv_crypt"
+		android:layout_width="25px"
+		android:layout_height="wrap_content" 
+		android:layout_marginTop="25px"		
+		android:layout_marginLeft="5px"
+		android:src="@drawable/icon_encrpt">
+    </ImageView>
+      
+	<TextView
+		android:id="@+id/tv_channel"
+		android:layout_toRightOf="@+id/iv_crypt"
+		android:layout_width="wrap_content"		
+		android:layout_height="35px" 
+		android:paddingTop="5px"  
+		android:gravity="center"
+		android:layout_marginLeft="10px"
+		android:textColor="#FFFFFF"
+		android:textSize="19px">
+	</TextView>
+	
+	<TextView
+		android:id="@+id/tv_time"
+		android:layout_below="@+id/tv_channel"
+		android:layout_toRightOf="@+id/iv_crypt"
+		android:layout_width="wrap_content"
+		android:layout_height="30px"
+		android:layout_marginLeft="10px"
+		android:gravity="center"> 
+	</TextView> 
+            
+	<TextView
+		android:id="@+id/tv_program" 
+		android:layout_toRightOf="@+id/tv_time" 
+		android:layout_below="@+id/tv_channel"  
+		android:layout_width="wrap_content"
+		android:layout_height="30px"
+		android:layout_marginLeft="25px"
+		android:gravity="center_vertical"> 
+	</TextView> 
+	
+	<ImageView
+		android:id="@+id/iv_playing"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:layout_centerVertical="true"
+		android:layout_alignParentRight="true"		
+		android:layout_marginRight="5px"
+		android:src="@drawable/state_play"
+		android:visibility="gone">
+    </ImageView>
+</RelativeLayout>

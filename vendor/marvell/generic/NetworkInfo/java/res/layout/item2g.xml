@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.marvell.networkinfo">
+	   <PreferenceScreen
+	            android:title="@string/item2g_sub0"
+	            android:summary="@string/item2g_sub0_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.Item2gSub0" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/item2g_sub1"
+	            android:summary="@string/item2g_sub1_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.Item2gSub1" />
+	    </PreferenceScreen>
+	   <PreferenceScreen
+	            android:title="@string/item2g_sub2"
+	            android:summary="@string/item2g_sub2_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.Item2gSub2" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/item2g_sub3"
+	            android:summary="@string/item2g_sub3_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.Item2gSub3" />
+	    </PreferenceScreen>
+	    <PreferenceScreen
+	            android:title="@string/item2g_sub4"
+	            android:summary="@string/item2g_sub4_sum">
+	        <intent android:action="android.intent.action.MAIN"
+	                android:targetPackage="com.marvell.networkinfo"
+	                android:targetClass="com.marvell.networkinfo.Item2gSub4" />
+	    </PreferenceScreen>
+
+</PreferenceScreen>

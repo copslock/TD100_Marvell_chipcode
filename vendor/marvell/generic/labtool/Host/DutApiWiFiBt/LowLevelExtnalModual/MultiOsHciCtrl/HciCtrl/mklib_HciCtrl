@@ -1,0 +1,29 @@
+BACKUP= 	/root
+KERNELDIR=	/Developer/SDKs/MacOSX10.4u.sdk/usr
+CC=		g++
+EXEC_NAME = 	lib_HciCtrl.dylib
+
+CFLAGS=		-O2 -g -D_REENTRANT -D_LINUX_ -D_CLIENT_BG_ -D_BT_ -D_HCI_UART_ -DSTATIC_OBJ -I$(KERNELDIR)/include -I.
+LABTOOL_OBJS	= HciCtrl.o UartIf.o
+LOWLEVEL_FILES = .
+		
+$(EXEC_NAME):	$(LABTOOL_OBJS)		
+		$(CC) $(CFLAGS) -dynamiclib -install_name $(EXEC_NAME) -o $(EXEC_NAME) $(LABTOOL_OBJS)
+		cp $(EXEC_NAME) ..
+		cp $(EXEC_NAME) ../../../
+		cp $(EXEC_NAME) ../../../DutBtApi86xxDll/
+		cp ../Common/*.h ..
+		cp ../Common/*.h ../../../
+		cp ../Common/*.h ../../../DutBtApi86xxDll/
+
+ 
+  
+HciCtrl.o:	$(LOWLEVEL_FILES)/HciCtrl.cpp
+		$(CC) $(CFLAGS) -c $(LOWLEVEL_FILES)/HciCtrl.cpp
+
+UartIf.o:	$(LOWLEVEL_FILES)/uartIf.cpp
+		$(CC) $(CFLAGS) -c $(LOWLEVEL_FILES)/uartIf.cpp
+
+clean:		
+		rm -f $(EXEC_NAME) *.o core
+

@@ -1,0 +1,83 @@
+[Version]
+Signature	= "$Chicago$"
+Class		= Ports
+ClassGuid	= {4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider	= %TUX%
+DriverVer	= 06/17/2007,3.1.0.2
+; Copyright (C) 2004 Al Borchers (alborchers@steinerpoint.com)
+; Copyright (C) 2007 Ioannis Barkas (risc4all@yahoo.com)
+; Copyright (C) 2007 Nikos Barkas (doubl3nuts@yahoo.com) 
+ 
+
+[Manufacturer]
+%LINUX%=GSerialDeviceList, NTx86, NTamd64, NTia64
+
+[GSerialDeviceList]
+%GSERIAL%=GSerialInstall, USB\VID_1286&PID_00cf
+%GSERIAL%=GSerialInstall, USB\VID_0525&PID_a4a6
+%GSERIAL%=GSerialInstall, USB\Class_02&SubClass_02&Prot_00
+; %GSERIAL%=GSerialInstall, USB\Class_02&SubClass_00&Prot_00
+
+[GSerialDeviceList.NTx86]
+%GSERIAL%=GSerialInstall, USB\VID_1286&PID_00cf
+%GSERIAL%=GSerialInstall, USB\VID_0525&PID_a4a6
+%GSERIAL%=GSerialInstall, USB\Class_0a&SubClass_00&Prot_ff
+%GSERIAL%=GSerialInstall, USB\Class_02&SubClass_02&Prot_00
+
+[GSerialDeviceList.NTamd64]
+;%GSERIAL%=GSerialInstall, USB\VID_1286&PID_8002
+%GSERIAL%=GSerialInstall, USB\Class_0a&SubClass_00&Prot_ff
+
+[GSerialDeviceList.NTia64]
+;%GSERIAL%=GSerialInstall, USB\VID_1286&PID_8002
+%GSERIAL%=GSerialInstall, USB\Class_0a&SubClass_00&Prot_ff
+
+[DestinationDirs]
+DefaultDestDir=10,System32\Drivers
+
+[GSerialInstall]
+CopyFiles=GSerialCopyFiles
+AddReg=GSerialAddReg
+
+[GSerialCopyFiles]
+usbser.sys
+
+[SourceDisksFiles]
+usbser.sys=1
+
+[SourceDisksNames]
+1=%Linux_Gadget_Rocks%,,,
+
+[DestinationDirs]
+DefaultDestDir           = 10
+GSerialCopyFiles         = 12
+
+[GSerialAddReg]
+HKLM,"SYSTEM\CurrentControlSet\Control\COM Name Arbiter", ComDB, 0x00000001, FF,FF,1
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,usbser.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[GSerialInstall.HW]
+AddReg=DriverHwPortReg
+
+[DriverHwPortReg]
+HKLM,"SYSTEM\CurrentControlSet\Control\COM Name Arbiter", ComDB, 0x00000001, FF,FF,3
+
+[GSerialInstall.Services]
+AddService = usbser,0x0002,GSerialService
+
+[GSerialService]
+DisplayName = %GSERIAL_DISPLAY_NAME%
+ServiceType = 1                  ; SERVICE_KERNEL_DRIVER
+StartType = 3                    ; SERVICE_DEMAND_START
+ErrorControl = 1                 ; SERVICE_ERROR_NORMAL
+ServiceBinary = %10%\System32\Drivers\usbser.sys
+LoadOrderGroup = Base
+
+[Strings]
+TUX 			= "Linux"
+GSERIAL 		= "Gadget Serial"
+GSERIAL_DISPLAY_NAME 	= "USB Gadget Serial Driver"
+LINUX_GADGET_ROCKS   	= "Linux USB Gadget Serial Driver"
+

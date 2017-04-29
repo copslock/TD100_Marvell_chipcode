@@ -1,0 +1,91 @@
+LOCAL_PATH:= $(call my-dir)
+include $(CLEAR_VARS)
+LOCAL_MODULE:=libwsc
+
+CONFIG_STDOUT_DEBUG=y
+CONFIG_UAP_SUPPORT=y
+CONFIG_RESTART_SM_SUPPORT=y
+CONFIG_PKCS_PADDING=y
+CONFIG_WPS_IE_NEEDED=n
+CONFIG_BIG_ENDIAN=n
+CONFIG_WIFIDIR_SUPPORT=y
+CONFIG_WSC2_SUPPORT=y
+CONFIG_WSC2_PF_BUILD=y
+CONFIG_OS_LINUX=y
+CONFIG_OPENSSL=y
+
+ifeq ($(CONFIG_STDOUT_DEBUG), y)
+LOCAL_CFLAGS += -g -Wall -DSTDOUT_DEBUG
+endif
+
+ifeq ($(CONFIG_UAP_SUPPORT), y)
+LOCAL_CFLAGS += -DUAP_SUPPORT
+endif
+
+ifeq ($(CONFIG_WSC2_SUPPORT), y)
+LOCAL_CFLAGS += -DWSC2
+LOCAL_CFLAGS += -DEAP_FRAG
+
+ifeq ($(CONFIG_WSC2_PF_BUILD), y)
+LOCAL_CFLAGS += -DWSC2_PF
+endif
+
+endif
+
+ifeq ($(CONFIG_WPSE_SUPPORT), y)
+LOCAL_CFLAGS += -DWPSE_SUPPORT
+endif
+
+ifeq ($(CONFIG_RESTART_SM_SUPPORT),y)
+LOCAL_CFLAGS += -DRESTART_SM_SUPPORT
+endif
+
+ifeq ($(CONFIG_WIFIDIR_SUPPORT), y)
+LOCAL_CFLAGS += -DWIFIDIR_SUPPORT
+endif
+
+ifeq ($(CONFIG_WIFIDIR_SIGMA_SUPPORT), y)
+LOCAL_CFLAGS += -DWIFIDIR_SIGMA_CAPI
+endif
+
+ifeq ($(CONFIG_WPS_IE_NEEDED), y)
+LOCAL_CFLAGS += -DWPS_IE_NEEDED
+endif
+
+ifeq ($(CONFIG_BIG_ENDIAN), y)
+LOCAL_CFLAGS += -DBIG_ENDIAN
+endif
+
+
+ifeq ($(CONFIG_PKCS_PADDING), y)
+LOCAL_CFLAGS += -DPKCS_PADDING
+endif
+
+ifeq ($(CONFIG_OS_LINUX), y)
+LOCAL_CFLAGS += -DOS_LINUX
+endif
+
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../os/include \
+        $(LOCAL_PATH)/.. \
+        $(LOCAL_PATH)/../mwu \
+        $(LOCAL_PATH)/encrypt_src
+
+LOCAL_SRC_FILES := \
+	wps_state.c \
+	wps_eapol.c \
+	wps_msg.c \
+	wps_start.c
+
+ifeq ($(CONFIG_OPENSSL), y)
+LOCAL_CFLAGS += -DOPENSSL
+LOCAL_CFLAGS += -Iexternal/openssl/include
+LOCAL_SRC_FILES += crypto.c
+endif
+
+ifeq ($(CONFIG_OS_LINUX), y)
+LOCAL_SRC_FILES += ../os/linux/mwu_timer.c
+endif
+
+include $(BUILD_STATIC_LIBRARY)
+
+include $(call all-makefiles-under,$(LOCAL_PATH))

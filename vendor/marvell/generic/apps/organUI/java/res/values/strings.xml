@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="app_name">Organ</string>
+    <string name="record">Record</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="headset">Headset</string>
+    <string name="playback">Playback</string>
+    <string name="speaker">Speaker</string>
+    <string name="earpiece">Earpiece</string>
+    <string name="headset_forcedSpeaker">Headset_forcedSpeaker</string>
+    <string name="speaker_forcedSpeaker">Speaker_forcedSpeaker</string>
+
+    <string name="headset_mic">Headset MIC</string>
+    <string name="stream_ring">RING</string>
+    <string name="stream_system">SYSTEM</string>
+    <string name="stream_music">MUSIC</string>
+    <string name="stream_alarm">ALARM</string>
+    <string name="stream_notification">NOTIFICATION</string>
+    <string name="stream_enforced_audible">ENDORCED_AUDIBLE</string>
+    <string name="stream_voip_call">VOIP</string>
+    <string name="aac">AAC</string>
+    <string name="mp4">MP4</string>
+    <string name="mp3">MP3</string>
+    <string name="midi">MIDI</string>
+    <string name="ogg">OGG</string>
+    <string name="avi">AVI</string>
+    <string name="amr">AMR</string>
+    <string name="amr_nb">AMR-NB</string>
+    <string name="pcm">PCM</string>
+    
+    <string name="index1">Step1</string>
+    <string name="index0">Step0</string>
+    <string name="index10">Step10</string>
+    <string name="index4">Step4</string>
+    <string name="index5">Step5</string>
+    <string name="index12">Step12</string>
+    <string name="index2">Step2</string>
+    <string name="index11">Step11</string>
+    <string name="index3">Step3</string>
+    <string name="index14">Step14</string>
+    <string name="index8">Step8</string>
+    <string name="index13">Step13</string>
+    <string name="index9">Step9</string>
+    <string name="index6">Step6</string>
+    <string name="index15">Step15</string>
+    <string name="index7">Step7</string>
+	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	
+<string name="rmvb">RMVB</string>
+    <string name="stream_tts">TTS</string>
+    <string name="application_camcorder">Camcorder</string>
+    <string name="wav">WAV</string>
+    <string name="tone">TONE</string>
+    <string name="stream_dtmf">DTMF</string>
+    <string name="application_asr">ASR</string>
+    <string name="application_voice_recorder">Voice Recorder</string>
+    <string name="application_voip_recorder">Voip Recorder</string>
+    <string name="stream_voice_call">VOICE CALL</string>
+    <string name="stream_voip">VOIP</string>
+    <string name="stream_fm_radio">FM RADIO</string>
+    <string name="stream_bluetooth_sco">BLUETOOTH SCO</string>
+
+    <string name="board_mic2">Board MIC2</string>
+<string name="board_mic1">Board MIC1</string>
+<string name="index_record">Step</string>
+</resources>

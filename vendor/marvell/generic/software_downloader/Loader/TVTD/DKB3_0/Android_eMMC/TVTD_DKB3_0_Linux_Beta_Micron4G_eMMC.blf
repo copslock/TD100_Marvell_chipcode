@@ -1,0 +1,226 @@
+[Tavor Flasher Properties]
+Flash Configuration File Path = Tavor_eMMC.ini
+FlasherLoadAddress = 0xD100B000
+MEP File Path = ReliableData\IMEI_Generator\MEP.bin
+IMEI File Path = ReliableData\IMEI_Generator\IMEI.bin
+Flasher Path = Flasher\TavorFlasher_eMMC_B000.bin
+[TIM Configuration]
+Number of Images = 15
+Size of Reserved in bytes = 28
+Erase All Flash = 0
+Boot Flash Signature = 0x4D4D4309
+Processor Type = PXA92x
+OEM UniqueID = 0x736B7920
+Issue Date = 0x06102009
+Version = 0x00030201
+Trusted = 0
+[Extended Reserved Data]
+Configure Memory Control:
+CMCC_CONFIG_ENA_ID:0x00000001
+CMCC_MEMTEST_ENA_ID:0x00000001
+CMCC_CONSUMER_ID:0x4F424D49
+End Configure Memory Control:
+DDR Custom:
+TTC_PHYCTLREG14_ID:0x80000000 
+TTC_SDRCFGREG0_ID:0x00001430
+TTC_SDRCFGREG1_ID:0x00801430
+TTC_PHYCTLREG3_ID:0x00004411
+TTC_ADRMAPREG0_ID:0x000C0001
+TTC_ADRMAPREG1_ID:0x100C0001
+TTC_SDRTMGREG1_ID:0x490B00CB
+TTC_SDRTMGREG2_ID:0x33330122
+TTC_SDRTMGREG4_ID:0x1282A000
+TTC_SDRTMGREG5_ID:0x000A0022
+TTC_PHYCTLREG7_ID:0x27700779
+TTC_PHYCTLREG8_ID:0x07700770
+TTC_PHYCTLREG9_ID:0xC0000077
+TTC_PHYCTLREG10_ID:0x00102008
+TTC_SDRCTLREG4_ID:0x2080C011
+TTC_SDRCTLREG2_ID:0x00080000
+TTC_PHYCTLREG13_ID:0xF0480101
+TTC_DLLCTLREG1_ID:0x00480101
+TTC_DLLCTLREG2_ID:0x00480101 
+TTC_DLLCTLREG3_ID:0x00480101
+TTC_PHYCTLREG14_ID:0x20000000
+TTC_MCBCTLREG4_ID:0x0200EE0E
+TTC_USRCMDREG0_ID:0x00000001
+TTC_PHYCTLREG14_ID:0x40000000
+End DDR Custom:
+End Extended Reserved Data:
+[Skip Block Configuration]
+Skip Block Number = 
+[Reserved Data]
+0x4F505448
+0x00000002
+0x45534353
+0x0000000C
+0x00000900
+0x5465726D
+0x00000008
+End Reserved Data
+[Image List]
+15 Image Image Size To CRC in bytes = 0
+15 Image Partition Number = 0
+15 Image Erase Size = 0x00020000
+15 Image ID Name = RBLI
+15 Image Type = RND
+15 Image Load Address = 0x07EE0000
+15 Image Flash Entry Address = 0x00140000
+15 Image Path = ReliableData.bin
+15 Image Next Image ID = 0xFFFFFFFF
+15 Image Image ID = 0x52424C49
+15 Image Enable = 1
+14 Image Image Size To CRC in bytes = 0
+14 Image Partition Number = 0
+14 Image Erase Size = 0x00080000
+14 Image ID Name = OSLO
+14 Image Type = RAW
+14 Image Load Address = 0x06800000
+14 Image Flash Entry Address = 0x00080000
+14 Image Path = u-boot.bin
+14 Image Next Image ID = 0x52424C49
+14 Image Image ID = 0x4F534C4F
+14 Image Enable = 1
+13 Image Image Size To CRC in bytes = 0
+13 Image Partition Number = 0
+13 Image Erase Size = 0x004E0000
+13 Image ID Name = ARBI
+13 Image Type = RAW
+13 Image Load Address = 0x07A00000
+13 Image Flash Entry Address = 0x00180000
+13 Image Path = Arbel_DKB_SKWS.bin
+13 Image Next Image ID = 0x4F534C4F
+13 Image Image ID = 0x41524249
+13 Image Enable = 1
+12 Image Image Size To CRC in bytes = 0
+12 Image Partition Number = 0
+12 Image Erase Size = 0x00100000
+12 Image ID Name = GRBI
+12 Image Type = RAW
+12 Image Load Address = 0x07F00000
+12 Image Flash Entry Address = 0x00880000
+12 Image Path = TTD_M06_AI_A1_Flash.bin
+12 Image Next Image ID = 0x41524249
+12 Image Image ID = 0x47524249
+12 Image Enable = 1
+11 Image Image Size To CRC in bytes = 0
+11 Image Partition Number = 0
+11 Image Erase Size = 
+11 Image ID Name = RAMD
+11 Image Type = RAW
+11 Image Load Address = 0xFFFFFFFF
+11 Image Flash Entry Address = 0x00100000
+11 Image Path = ramdisk.img
+11 Image Next Image ID = 0x47524249
+11 Image Image ID = 0x52414D44
+11 Image Enable = 1
+10 Image Image Size To CRC in bytes = 0
+10 Image Partition Number = 0
+10 Image Erase Size = 
+10 Image ID Name = ZIMG
+10 Image Type = RAW
+10 Image Load Address = 0xFFFFFFFF
+10 Image Flash Entry Address = 0x00980000
+10 Image Path = uImage
+10 Image Next Image ID = 0x52414D44
+10 Image Image ID = 0x5A494D47
+10 Image Enable = 1
+9 Image Image Size To CRC in bytes = 0
+9 Image Partition Number = 0
+9 Image Erase Size = 
+9 Image ID Name = MNTN
+9 Image Type = RAW
+9 Image Load Address = 0xFFFFFFFF
+9 Image Flash Entry Address = 0x00d80000
+9 Image Path = uImage-mt
+9 Image Next Image ID = 0x5A494D47
+9 Image Image ID = 0x4D4E544E
+9 Image Enable = 1
+8 Image Image Size To CRC in bytes = 0
+8 Image Partition Number = 0
+8 Image Erase Size = 
+8 Image ID Name = RCOV
+8 Image Type = RAW
+8 Image Load Address = 0xFFFFFFFF
+8 Image Flash Entry Address = 0x01180000
+8 Image Path = ramdisk-recovery.img
+8 Image Next Image ID = 0x4D4E544E
+8 Image Image ID = 0x52434F56
+8 Image Enable = 1
+7 Image Image Size To CRC in bytes = 0
+7 Image Partition Number = 0
+7 Image Erase Size = 
+7 Image ID Name = SYSY
+7 Image Type = RAW
+7 Image Load Address = 0xFFFFFFFF
+7 Image Flash Entry Address = 0x06800000
+7 Image Path = system_ext4.img
+7 Image Next Image ID = 0x52434F56
+7 Image Image ID = 0x53595359
+7 Image Enable = 1
+6 Image Image Size To CRC in bytes = 0
+6 Image Partition Number = 0
+6 Image Erase Size = 
+6 Image ID Name = USRY
+6 Image Type = RAW
+6 Image Load Address = 0xFFFFFFFF
+6 Image Flash Entry Address = 0x10800000
+6 Image Path = userdata_ext4.img
+6 Image Next Image ID = 0x53595359
+6 Image Image ID = 0x55535259
+6 Image Enable = 1
+5 Image Image Size To CRC in bytes = 0
+5 Image Partition Number = 0
+5 Image Erase Size = 
+5 Image ID Name = PXAY
+5 Image Type = RAW
+5 Image Load Address = 0xFFFFFFFF
+5 Image Flash Entry Address = 0x1ec00000
+5 Image Path = pxafs_ext4.img
+5 Image Next Image ID = 0x55535259
+5 Image Image ID = 0x50584159
+5 Image Enable = 1
+4 Image Image Size To CRC in bytes = 0
+4 Image Partition Number = 0
+4 Image Erase Size = 
+4 Image ID Name = SMBR
+4 Image Type = RAW
+4 Image Load Address = 0xFFFFFFFF
+4 Image Flash Entry Address = 0xEBFFBE00
+4 Image Path = second_mbr
+4 Image Next Image ID = 0x50584159
+4 Image Image ID = 0x534D4252
+4 Image Enable = 1
+3 Image Image Size To CRC in bytes = 0
+3 Image Partition Number = 0
+3 Image Erase Size = 
+3 Image ID Name = PMBR
+3 Image Type = RAW
+3 Image Load Address = 0xFFFFFFFF
+3 Image Flash Entry Address = 0x00000000
+3 Image Path = primary_mbr
+3 Image Next Image ID = 0x534D4252
+3 Image Image ID = 0x504D4252
+3 Image Enable = 1
+2 Image Image Size To CRC in bytes = 0
+2 Image Partition Number = 2
+2 Image Erase Size = 
+2 Image ID Name = OBMI
+2 Image Type = RAW
+2 Image Load Address = 0xD100B000
+2 Image Flash Entry Address = 0x00040000
+2 Image Path = TVTD_DKB3_0_Loader_3_2_13_LINUX_eMMC.bin
+2 Image Next Image ID = 0x50524947
+2 Image Image ID = 0x4F424D49
+2 Image Enable = 1
+1 Image Image Size To CRC in bytes = 0
+1 Image Partition Number = 2
+1 Image Erase Size = 
+1 Image ID Name = TIMH
+1 Image Type = RAW
+1 Image Load Address = 0xD100A000
+1 Image Flash Entry Address = 0x00000000
+1 Image Path = ntim_DKB3_0_OBMI_TVTD_LINUX.bin
+1 Image Next Image ID = 0x4F424D49
+1 Image Image ID = 0x54494D48
+1 Image Enable = 1

@@ -1,0 +1,22 @@
+Source: marvell-libbmm
+Priority: extra
+Maintainer: Michael Casadevall <mcasadevall@ubuntu.com>
+XSBC-Original-Maintainer: Li Li <lea.li@marvell.com>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.9.1
+Section: libs
+Vcs-Bzr: https://code.launchpad.net/~adana-team/adana/marvell-libbmm
+
+Package: libbmm-dev
+Section: libdevel
+Architecture: armel
+Depends: libbmm0u (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Block/buffer memory management
+ Header files, static library and unit test case for BMM
+
+Package: libbmm0u
+Section: libs
+Architecture: armel
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Block/buffer memory management
+ Allocate, manage and share large block of physical continuous memory

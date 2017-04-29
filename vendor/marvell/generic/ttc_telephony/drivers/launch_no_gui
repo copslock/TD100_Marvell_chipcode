@@ -1,0 +1,69 @@
+#!/system/bin/sh
+
+export NVM_ROOT_DIR="/data/Linux/Marvell/NVM"
+
+#file_name="$NVM_ROOT_DIR/COMCfg.csv"
+#file_exist=`ls $file_name`
+#case "$file_exist" in
+#    $file_name)
+#    echo "$NVM_ROOT_DIR/COMCfg.csv";
+#    ;;
+#    *) 
+#	cat /marvell/tel/configuration/COMCfg.csv > $NVM_ROOT_DIR/COMCfg.csv;
+#	cat /marvell/tel/configuration/platform.nvm > $NVM_ROOT_DIR/platform.nvm;
+#	cat /marvell/tel/configuration/afcDacTable.nvm > $NVM_ROOT_DIR/afcDacTable.nvm;
+#    ;;
+#esac
+
+#check NVM partition for PXA920H
+mk_ext4_fs="/system/bin/make_ext4fs"
+nvm_partition="mmcblk0p13"
+nvm_partition_dev="/dev/block/$nvm_partition"
+nvm_partition_fs="/sys/fs/ext4/$nvm_partition"
+emmc_boot_flag="emmc_boot"
+kernel_cmd_line="/proc/cmdline"
+
+is_pxa920h()
+{
+	case "`cat $kernel_cmd_line | busybox grep $emmc_boot_flag`" in
+		"") return 1;;
+		 *) return 0;;
+	esac
+}
+
+if is_pxa920h
+then
+	case "`cd $nvm_partition_fs; pwd`" in
+		"$nvm_partition_fs")
+			#already have file system, nothing need to do
+			;;
+		*)
+			#format it as ext4 then mount it
+			$mk_ext4_fs $nvm_partition_dev;
+			sync;
+			mount -o nosuid -o nodev -t ext4 $nvm_partition_dev $NVM_ROOT_DIR;
+			;;
+	esac
+fi
+
+cd /marvell/tel
+insmod cploaddev.ko
+echo 1 > /sys/devices/system/cpu/cpu0/cp 
+
+
+insmod citty.ko
+insmod msocketk.ko
+insmod cci_datastub.ko
+insmod ccinetdev.ko
+insmod gs_modem.ko
+insmod diag.ko
+insmod gs_diag.ko
+insmod seh.ko
+insmod cidatattydev.ko
+
+./sm -M yes -D yes &
+./atcmdsrv -M yes &
+./audioserver &
+
+sleep 1
+echo acm,diag,usb_mass_storage,adb > /sys/devices/platform/pxa-u2o/composite

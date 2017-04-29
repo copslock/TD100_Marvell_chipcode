@@ -1,0 +1,66 @@
+# makefile created by Linux Automake V1.0.0
+# This makefile will build a Linux application
+
+#==============================================================================
+# Codec Name												(user update)
+#==============================================================================
+CODEC_NAME=cnmenc
+
+#==============================================================================
+# Rules.make												(user update)
+#==============================================================================
+include ../../../../example/Rules.make
+
+ifeq ($(OP_USESO), y)
+dl=y
+else
+dl=n
+endif
+
+#==============================================================================
+# Codec Specific Flags											(user update)
+#==============================================================================
+CFLAGS+=
+
+
+#==============================================================================
+# Log file          										(user update)
+#==============================================================================
+PATH_USR_LOG=$(PATH_USR_BUILD)/wmmx2_linux/log
+USR_LOG_TRACE=$(PATH_USR_LOG)/build_trace_app_$(CODEC_NAME)_linux.log
+
+#==============================================================================
+# More External include option											(user update)
+#==============================================================================
+OPT_INC_EXT+=
+
+#==============================================================================
+# usr libraries          										(user update)
+#==============================================================================
+ifeq ($(dl), y)
+USR_LIBS = -L$(PATH_USR_LIB) -lmiscgen -lcnm -lcodeccnmenc -Wl,-rpath-link $(PATH_USR_LIB)
+else
+ifeq ($(USEBMM_USERSPACE), y)
+USR_LIBS= $(PATH_USR_LIB)/libmiscgen.a $(PATH_USR_LIB)/libcodeccnmenc.a $(PATH_USR_LIB)/libcnmhal.a $(PATH_USR_LIB)/libcnm.a $(PATH_USR_LIB)/libbmm.a 
+else
+USR_LIBS= $(PATH_USR_LIB)/libmiscgen.a $(PATH_USR_LIB)/libcodeccnmenc.a $(PATH_USR_LIB)/libcnmhal.a $(PATH_USR_LIB)/libcnm.a $(PATH_USR_LIB)/libpmemhelper.a 
+endif
+endif
+
+
+#==============================================================================
+# Target                                                          (user update)
+#==============================================================================
+OUTPUT_TARGET=$(PATH_USR_BIN)/appCnmEnc.exe
+
+#==============================================================================
+# Object files                                                         (user update)
+#==============================================================================
+OBJS_C=\
+$(PATH_USR_SRC)/appCMEnc.o\
+$(PATH_USR_ROOT)/example/main/src/main.o
+
+#==============================================================================
+# AppTemplate.make												(user update)
+#==============================================================================
+include ../../../../example/AppTemplate.make	

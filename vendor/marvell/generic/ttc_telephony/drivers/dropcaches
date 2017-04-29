@@ -1,0 +1,4 @@
+#!/system/bin/sh
+# drop the caches every 120 second
+sleep 120
+echo 1 > /proc/sys/vm/drop_caches 

@@ -1,0 +1,62 @@
+ifeq ($(MAKERULES),)
+include ../Rules.make
+else
+include $(MAKERULES)
+endif
+
+BUILDROOT=..
+
+CFLAGS+=-I$(BUILDROOT)/include\
+	-I$(BUILDROOT)/osa/inc\
+	-I./ci/inc\
+	-I$(BUILDROOT)/pca_components/inc\
+	-I$(BUILDROOT)/shmem/wrapper\
+	
+
+CFLAGS+=-DOSA_LINUX\
+	-DENV_LINUX\
+	-DOSA_MSG_QUEUE\
+	-DOSA_QUEUE_NAMES\
+	-DOSA_USE_ASSERT\
+	-D_FDI_USE_OSA_\
+	-DUSE_OSA_SEMA\
+	-DMSL_TAVOR_LINUX\
+	-DCI_STUB_CLIENT_INCLUDE\
+	-DCCI_POSITION_LOCATION\
+	-DCCI_CMN_CONTIGUOUS\
+	-DCCI_CC_CONTIGUOUS\
+	-DCCI_MSG_CONTIGUOUS\
+        -DCCI_PB_CONTIGUOUS\
+        -DCCI_MM_CONTIGUOUS\
+        -DCCI_SIM_CONTIGUOUS\
+        -DCCI_PS_CONTIGUOUS\
+        -DCCI_DAT_CONTIGUOUS\
+        -DCCI_SS_CONTIGUOUS\
+        -DCCI_DEV_CONTIGUOUS\
+	-DCCI_TRACE_ON\
+	-DCI_TRACE_LEVEL=0x5\
+	-DDEBUG_BUILD
+
+
+ifeq "$(CONFIG_GEN_DEBUG)" "y"
+CFLAGS+= -DDEBUG_BUILD \
+	-DDEBUG_MSL_LINUX \
+	-DMSL_TRACE_ON \
+	-DCCI_TRACE_ON \
+	-DOSA_LINUX_DEBUG 
+endif
+
+
+CCIOBJS=ci_stub/src/ci_api.o ci_stub/src/ci_client_task_ttc.o \
+	ci_stub/src/ci_client_ttc.o ci_stub/src/ci_mem_ttc.o
+
+.PHONY:libcci.a
+
+$(BUILDROOT)/libcci.a:$(CCIOBJS)
+	$(AR) $(ARFLAGS) $@ $(CCIOBJS)
+	echo $(RANLIB)
+	$(RANLIB) $@
+
+clean:
+	-rm $(CCIOBJS)
+	-rm $(BUILDROOT)/libcci.a

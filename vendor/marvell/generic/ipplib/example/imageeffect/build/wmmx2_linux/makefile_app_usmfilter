@@ -1,0 +1,56 @@
+# Makefile created by Linux Automake V1.0.0
+# This makefile will build a Linux application
+
+#==============================================================================
+# Codec Name												(user update)
+#==============================================================================
+CODEC_NAME=imageeffect
+
+#==============================================================================
+# Rules.make												(user update)
+#==============================================================================
+include ../../../../example/Rules.make
+
+#==============================================================================
+# Codec Specific Flags											(user update)
+#==============================================================================
+CFLAGS+= -D_LINUX -D_DEBUG
+CXXFLAGS=$(CFLAGS)
+ASFLAGS+= -mcpu=iwmmxt2  
+
+ifeq ($(USE_STATICLIB), y)
+USR_LIBS=\
+$(PATH_USR_LIB)/libmiscgen.a \
+$(PATH_USR_LIB)/libbmm.a \
+$(PATH_USR_LIB)/libGAL.so \
+$(PATH_USR_LIB)/libgcu.so \
+$(PATH_USR_LIB)/libippie.a 
+else
+USR_LIBS= \
+-L$(PATH_USR_LIB) -lGAL -lgcu -lbmm -lmiscgen -lippie
+endif
+
+
+#==============================================================================
+# Log file          										(user update)
+#==============================================================================
+PATH_USR_LOG=$(PATH_USR_BUILD)/wmmx2_linux/log
+USR_LOG_TRACE=$(PATH_USR_LOG)/build_trace_app_$(CODEC_NAME)_linux.log
+
+#==============================================================================
+# Target                                                          (user update)
+#==============================================================================
+OUTPUT_TARGET=$(PATH_USR_BIN)/appSharpening.exe
+
+#==============================================================================
+# Object files                                                    (user update)
+#==============================================================================
+OBJS_C=\
+$(PATH_USR_SRC)/dib.o\
+$(PATH_USR_SRC)/usmfilter.o\
+$(PATH_USR_ROOT)/example/main/src/main.o
+
+#==============================================================================
+# AppTemplate.make												(user update)
+#==============================================================================
+include ../../../../example/AppTemplate.make

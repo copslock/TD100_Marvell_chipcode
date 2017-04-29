@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/CPFinalActionSetting">
+    <ListPreference android:key="CpFinalActionList" 
+        android:entryValues="@array/cpFinalAct_values" 
+        android:entries="@array/cpFinalAct_entries" 
+        android:title="@string/CpFinalActionList">
+    </ListPreference>
+</PreferenceScreen>

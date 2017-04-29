@@ -1,0 +1,28 @@
+#!/system/bin/sh
+insmod cploaddev.ko
+#echo 0 > /sys/devices/system/cpu/cpu0/cp 
+#cat Arbel.bin > /dev/arbel_bin
+#cat TTC1_M05_A0_AI_Flash.bin > /dev/m05_flash
+#cat TTC1_M05_A0_AI_DDR.bin > /dev/m05_ddr
+echo 1 > /sys/devices/system/cpu/cpu0/cp 
+
+export NVM_ROOT_DIR="/data/Linux/Marvell/NVM"
+if [ ! -e $NVM_ROOT_DIR ]; then
+	mkdir -p $NVM_ROOT_DIR
+fi
+
+insmod citty.ko
+insmod msocketk.ko
+insmod cci_datastub.ko
+insmod ccinetdev.ko
+insmod diag.ko
+#insmod gs_diag.ko
+setprop persist.service.adb.enable 0
+insmod g_android.ko
+setprop persist.service.adb.enable 1
+insmod seh.ko
+insmod cidatattydev.ko
+
+./sm -M yes &
+./atcmdsrv &
+./audioserver &

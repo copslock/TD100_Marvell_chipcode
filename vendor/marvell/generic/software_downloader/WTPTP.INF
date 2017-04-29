@@ -1,0 +1,88 @@
+;
+; WTPTP.INF
+; This file contains a Firmware Upgrade device
+;
+; Copyright (c) Marvell International Ltd.
+;
+
+[Version]
+Signature="$CHICAGO$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+provider=%MfgName%
+
+[Manufacturer]
+%MfgName%=Marvell
+
+[Marvell]
+%USB\VID_8086&PID_e001.DeviceDesc%=WTPTP.Dev, USB\VID_8086&PID_e001
+%USB\VID_8086&PID_c001.DeviceDesc%=WTPTP.Dev, USB\VID_8086&PID_c001
+%USB\VID_8086&PID_d001.DeviceDesc%=WTPTP.Dev, USB\VID_8086&PID_d001
+%USB\VID_1286&PID_8100.DeviceDesc%=WTPTP.Dev, USB\VID_1286&PID_8100
+%USB\VID_1286&PID_8101.DeviceDesc%=WTPTP.Dev, USB\VID_1286&PID_8101
+%USB\VID_1286&PID_8102.DeviceDesc%=WTPTP.Dev, USB\VID_1286&PID_8102
+%USB\VID_1286&PID_8103.DeviceDesc%=WTPTP.Dev, USB\VID_1286&PID_8103
+%USB\VID_1286&PID_8104.DeviceDesc%=WTPTP.Dev, USB\VID_1286&PID_8104
+%USB\VID_1286&PID_8105.DeviceDesc%=WTPTP.Dev, USB\VID_1286&PID_8105
+%USB\VID_1286&PID_8105.DeviceDesc%=WTPTP.Dev, USB\VID_1286&PID_8106
+%USB\VID_1286&PID_8111.DeviceDesc%=WTPTP.Dev, USB\VID_1286&PID_8111
+%USB\VID_1286&PID_8112.DeviceDesc%=WTPTP.Dev, USB\VID_1286&PID_8112
+%USB\VID_1286&PID_8113.DeviceDesc%=WTPTP.Dev, USB\VID_1286&PID_8113
+
+[SourceDisksNames]
+1 = "WTPTP USB Host Driver",WTPTP.inf,,
+
+[SourceDisksFiles]
+WTPTP.SYS = 1
+
+[PreCopySection]
+HKR,,NoSetupUI,,1
+
+[DestinationDirs]
+DefaultDestDir = 10
+WTPTP.Files.Ext = 10,System32\Drivers
+
+[WTPTP.Dev]
+CopyFiles=WTPTP.Files.Ext
+AddReg=WTPTP.AddReg
+
+[WTPTP.Dev.NT]
+CopyFiles=WTPTP.Files.Ext
+AddReg=WTPTP.AddReg
+
+[WTPTP.Dev.NT.Services]
+Addservice = MHJTAG, 0x00000002, WTPTP.AddService
+
+[WTPTP.AddService]
+DisplayName    = %MHJTAG.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\WTPTP.sys
+LoadOrderGroup = Base
+
+[WTPTP.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,WTPTP.sys
+
+[WTPTP.Files.Ext]
+WTPTP.SYS
+
+;---------------------------------------------------------------;
+
+[Strings]
+MfgName="Marvell"
+USB\VID_8086&PID_e001.DeviceDesc="Marvell(R) WTP: Tools package USB Driver for Monahans P"
+USB\VID_8086&PID_c001.DeviceDesc="Marvell(R) WTP: Tools package USB Driver for Monahans L"
+USB\VID_8086&PID_d001.DeviceDesc="Marvell(R) WTP: Tools package USB Driver for Tavor"
+USB\VID_1286&PID_8100.DeviceDesc="Marvell(R) WTP: Tools package USB Driver for Monahans P"
+USB\VID_1286&PID_8101.DeviceDesc="Marvell(R) WTP: Tools package USB Driver for Monahans L"
+USB\VID_1286&PID_8102.DeviceDesc="Marvell(R) WTP: Tools package USB Driver for Monahans LV"
+USB\VID_1286&PID_8103.DeviceDesc="Marvell(R) WTP: Tools package USB Driver for Tavor"
+USB\VID_1286&PID_8104.DeviceDesc="Marvell(R) WTP: Tools package USB Driver for Tavor PV"
+USB\VID_1286&PID_8105.DeviceDesc="Marvell(R) WTP: Tools package USB Driver for Tavor L"
+USB\VID_1286&PID_8106.DeviceDesc="Marvell(R) WTP: Tools package USB Driver for PXA168"
+USB\VID_1286&PID_8111.DeviceDesc="Marvell(R) WTP: Tools package USB Driver for PXA920"
+USB\VID_1286&PID_8112.DeviceDesc="Marvell(R) WTP: Tools package USB Driver for MMP2"
+USB\VID_1286&PID_8113.DeviceDesc="Marvell(R) WTP: Tools package USB Driver for 88AP001"
+WTPTP.SvcDesc="Marvell(R) WTP: USB Host Driver"

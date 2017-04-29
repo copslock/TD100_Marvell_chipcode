@@ -1,0 +1,198 @@
+-*- Text -*-
+This is the file .../info/dir, which contains the topmost node of
+the Info hierarchy.  The first time you invoke Info you start off
+looking at that node, which is (dir)Top.
+
+File: dir	Node: Top	This is the top of the INFO tree
+  This (the Directory node) gives a menu of major topics.
+  Typing "q" exits, "?" lists all Info commands, "d" returns here,
+  "mCoreutils<Return>" visits Coreutils topic, etc.
+  Or click mouse button 2 on a menu item or cross reference to select
+  it.
+  --- PLEASE ADD DOCUMENTATION TO THIS TREE. (See INFO topic first.) ---
+
+In Ubuntu, Info `dir' entries are added with the command
+`install-info'.  Please refer to install-info(8) for usage details.
+
+* Menu: The list of major topics begins on the next line.
+
+Basics
+* Coreutils: (coreutils).		Core GNU (file, text, shell)
+					utilities.
+* Common options: (coreutils)Common options.
+					Common options.
+* File permissions: (coreutils)File permissions.
+					Access modes.
+* Date input formats: (coreutils)Date input formats.
+* Finding files: (find).		Operating on files matching certain
+					criteria.
+
+Development
+* CVS: (cvs).				Concurrent Versions System
+* CVS client/server: (cvsclient).	Describes the client/server protocol
+					used by CVS.
+* Flex: (flex). 			A fast scanner generator
+* Ipc: (ipc).				System V interprocess communication
+					facilities
+* M4: (m4).				The GNU m4 macro preprocessor.
+
+Disk Management
+* Fdutils: (fdutils).			Linux floppy utilities
+
+Emacs Snapshot
+* Ada mode (emacs-snapshot): (emacs-snapshot/ada-mode).
+					Emacs mode for editing and compiling
+					Ada code.
+* Autotype (emacs-snapshot): (emacs-snapshot/autotype).
+					Convenient features for text that you
+					enter frequently in Emacs.
+* Calc (emacs-snapshot): (emacs-snapshot/calc).
+					Advanced desk calculator and
+					mathematical tool.
+* CC Mode (emacs-snapshot): (emacs-snapshot/ccmode).
+					Emacs mode for editing C, C++,
+					Objective-C, Java, Pike, AWK, and
+					CORBA IDL code.
+* CL (emacs-snapshot): (emacs-snapshot/cl).
+					Partial Common Lisp support for Emacs
+					Lisp.
+* D-Bus (emacs-snapshot): (emacs-snapshot/dbus).
+					Using D-Bus in Emacs.
+* Dired-X (emacs-snapshot): (emacs-snapshot/dired-x).
+					Dired Extra Features.
+* EasyPG Assistant (emacs-snapshot): (emacs-snapshot/epa).
+					An Emacs user interface to GNU Privacy
+					Guard.
+* Ebrowse (emacs-snapshot): (emacs-snapshot/ebrowse).
+					A C++ class browser for Emacs.
+* Ediff (emacs-snapshot): (emacs-snapshot/ediff).
+					A visual interface for comparing and
+					merging programs.
+* Elisp (emacs-snapshot): (emacs-snapshot/elisp).
+					The Emacs Lisp Reference Manual.
+* Emacs (emacs-snapshot): (emacs-snapshot/emacs).
+					The extensible self-documenting text
+					editor.
+* Emacs FAQ (emacs-snapshot): (emacs-snapshot/efaq).
+					Frequently Asked Questions about
+					Emacs.
+* Emacs Lisp Intro (emacs-snapshot): (emacs-snapshot/eintr).
+					A simple introduction to Emacs Lisp
+					programming.
+* Emacs MIME (emacs-snapshot): (emacs-snapshot/emacs-mime).
+					Emacs MIME de/composition library.
+* ERC (emacs-snapshot): (emacs-snapshot/erc).
+					Powerful, modular, and extensible IRC
+					client for Emacs.
+* Eshell (emacs-snapshot): (emacs-snapshot/eshell).
+					A command shell implemented in Emacs
+					Lisp.
+* EUDC (emacs-snapshot): (emacs-snapshot/eudc).
+					An Emacs client for directory servers
+					(LDAP, PH).
+* Flymake (emacs-snapshot): (emacs-snapshot/flymake).
+					A universal on-the-fly syntax checker.
+* Forms (emacs-snapshot): (emacs-snapshot/forms).
+					Emacs package for editing data bases
+					by filling in forms.
+* Gnus (emacs-snapshot): (emacs-snapshot/gnus).
+					The newsreader Gnus.
+* IDLWAVE (emacs-snapshot): (emacs-snapshot/idlwave).
+					Major mode and shell for IDL files.
+* Info (emacs-snapshot): (emacs-snapshot/info).
+					How to use the documentation browsing
+					system.
+* Ispell: (ispell).			Using ISPELL, an interactive spelling
+					corrector, inside Emacs.
+* Message (emacs-snapshot): (emacs-snapshot/message).
+					Mail and news composition mode that
+					goes with Gnus.
+* MH-E (emacs-snapshot): (emacs-snapshot/mh-e).
+					Emacs interface to the MH mail system.
+* Newsticker (emacs-snapshot): (emacs-snapshot/newsticker).
+					A Newsticker for Emacs.
+* nXML Mode (emacs-snapshot): (emacs-snapshot/nxml-mode).
+					XML editing mode with RELAX NG
+					support.
+* Org Mode (emacs-snapshot): (emacs-snapshot/org).
+					Outline-based notes management and
+					organizer
+* PCL-CVS (emacs-snapshot): (emacs-snapshot/pcl-cvs).
+					Emacs front-end to CVS.
+* PGG (emacs-snapshot): (emacs-snapshot/pgg).
+					Emacs interface to various PGP
+					implementations.
+* Rcirc (emacs-snapshot): (emacs-snapshot/rcirc).
+					Internet Relay Chat (IRC) client.
+* RefTeX (emacs-snapshot): (emacs-snapshot/reftex).
+					Emacs support for LaTeX
+					cross-references and citations.
+* Remember (emacs-snapshot): (emacs-snapshot/remember).
+					Simple information manager for Emacs
+* SC (emacs-snapshot): (emacs-snapshot/sc).
+					Supercite lets you cite parts of
+					messages you're replying to, in
+					flexible ways.
+* SES (emacs-snapshot): (emacs-snapshot/ses).
+					Simple Emacs Spreadsheet
+* Sieve (emacs-snapshot): (emacs-snapshot/sieve).
+					Managing Sieve scripts in Emacs.
+* SMTP (emacs-snapshot): (emacs-snapshot/smtpmail).
+					Emacs library for sending mail via
+					SMTP.
+* Speedbar (emacs-snapshot): (emacs-snapshot/speedbar).
+					File/Tag summarizing utility.
+* TRAMP (emacs-snapshot): (emacs-snapshot/tramp).
+					Transparent Remote Access, Multiple
+					Protocol GNU Emacs remote file access
+					via rsh and rcp.
+* URL (emacs-snapshot): (emacs-snapshot/url).
+					URL loading package.
+* VIP (emacs-snapshot): (emacs-snapshot/vip).
+					An older VI-emulation for Emacs.
+* VIPER (emacs-snapshot): (emacs-snapshot/viper).
+					The newest Emacs VI-emulation mode.
+					(also, A VI Plan for Emacs Rescue or
+					the VI PERil.)
+* Widget (emacs-snapshot): (emacs-snapshot/widget).
+					The "widget" package used by the Emacs
+					Customization facility.
+* WoMan (emacs-snapshot): (emacs-snapshot/woman).
+					Browse UN*X Manual Pages "W.O.
+					(without) Man".
+* XEmacs: (xemacs21/xemacs).		XEmacs Editor.
+
+Miscellaneous
+* Rluserman: (rluserman).		GNU Readline Library API
+
+Utilities
+* Gzip: (gzip). 			The gzip command for compressing
+					files.
+
+Network Applications
+* Wget: (wget). 			The non-interactive network
+					downloader.
+
+Editors
+* nano: (nano). 			Small and friendly text editor.
+
+Software development
+* Automake: (automake-1.10).		Making GNU standards-compliant
+					Makefiles.
+
+Texinfo documentation system
+* Texi2HTML: (texi2html).		Texinfo to HTML Converter.
+
+Programming
+* gccinstall: (gccinstall).		Installing the GNU Compiler
+					Collection.
+
+General Commands
+* Cpio: (cpio). 			A program to manage archives of files.
+* dc: (dc).				Arbitrary precision RPN "Desktop
+					Calculator".
+* Ed: (ed).				The GNU line editor.
+* Screen: (screen).			Full-screen window manager.
+* sed: (sed).				Stream EDitor.
+* Time: (time). 			A utility to time the execution of a
+					command

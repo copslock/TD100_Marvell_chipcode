@@ -1,0 +1,33 @@
+#
+# (C) Copyright 2006 Marvell International Ltd.  
+# All Rights Reserved 
+#
+ifeq "$(CONFIG_BIONIC)" "y"
+include ../../Rules.make
+endif
+BUILDROOT=../../
+
+#Fill  special CFLAGS
+CFLAGS	+= -I./ \
+     -I$(BUILDROOT)/include\
+	-I../diag_kernel\
+
+
+OBJECTS = diag_usb_test diag_thp_test
+all: $(OBJECTS)
+diag_usb_test: diag_test.o 
+ifeq "$(CONFIG_BIONIC)" "y"
+	$(CC) $(BIONIC_LINK) $(CFLAGS) -o $@ diag_test.o $(BIONIC_POSTLINK)
+else
+	$(CC) $(CFLAGS) -o $@ diag_test.o
+endif
+diag_thp_test: diag_thp_test.o 
+ifeq "$(CONFIG_BIONIC)" "y"
+	$(CC) $(BIONIC_LINK) $(CFLAGS) -o $@ diag_thp_test.o $(BIONIC_POSTLINK)
+else
+	$(CC) $(CFLAGS) -o $@ diag_thp_test.o
+endif
+clean:
+	rm -f $(OBJECTS)
+	rm -f *.o
+

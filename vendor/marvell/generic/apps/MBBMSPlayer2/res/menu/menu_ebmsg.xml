@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/menu_delall" android:title="@string/menu_delall" android:icon="@drawable/icon_deleteall" />
+	<item android:id="@+id/menu_fake1"  />
+	<item android:id="@+id/menu_fake2" />
+</menu>

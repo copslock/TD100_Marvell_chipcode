@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.marvell.updater"
+      android:versionCode="1"
+      android:versionName="1.0">
+      
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".UpdaterActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.settings.SYSTEM_UPDATE_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".ConfirmActivity"
+            android:theme="@android:style/Theme.Dialog">
+            <intent-filter>
+                <action android:name="com.marvell.intent.UPDATE_CONFIRM" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".ModelListActivity" android:label="@string/model">
+        </activity>
+        
+        <activity android:name=".DetailListActivity" android:label="@string/branch">
+        </activity>
+        
+        <activity android:name=".DownloadActivity"></activity>
+        
+        <service android:name=".DownloadService"></service>
+    </application>
+    
+    <supports-screens android:largeScreens="true"/>
+	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
+</manifest> 

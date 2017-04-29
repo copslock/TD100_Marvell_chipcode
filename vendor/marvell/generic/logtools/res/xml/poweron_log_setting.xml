@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory android:title="@string/MainLogEnable" android:key="MainLogSetting"></PreferenceCategory>
+    <CheckBoxPreference android:key="MainLogBox" android:title="@string/MainLogEnable" android:summary="@string/MainLogSummary"></CheckBoxPreference>
+    <PreferenceCategory android:title="@string/RadioLogEnable" android:key="RadioLogSetting"></PreferenceCategory>
+    <CheckBoxPreference android:key="RadioLogBox" android:title="@string/RadioLogEnable" android:summary="@string/RadioLogSummary"></CheckBoxPreference>
+</PreferenceScreen>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest android:sharedUserId="android.uid.system"
+    android:versionCode="1" android:versionName="1.0"
+    package="com.marvell.networkinfo" xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES"/>
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <receiver android:name="NetworkInfoReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SECRET_CODE"/>
+                <data android:host="6201" android:scheme="android_secret_code"/>
+            </intent-filter>
+        </receiver>
+        <service android:name=".NetworkInfoService"/>
+        <activity android:label="@string/app_name" android:name=".MainItem">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/item_2g" android:name=".Item2G">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/item_3g" android:name=".Item3G">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/item_nw" android:name=".ItemNW">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/item2g_sub0" android:name=".Item2gSub0">
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+             </intent-filter>
+        </activity>
+        <activity android:label="@string/item2g_sub1" android:name=".Item2gSub1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/item2g_sub2" android:name=".Item2gSub2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/item2g_sub3" android:name=".Item2gSub3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/item2g_sub4" android:name=".Item2gSub4">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/item3g_sub0" android:name=".Item3gSub0">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/item3g_sub1" android:name=".Item3gSub1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/item3g_sub2" android:name=".Item3gSub2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/itemnw_sub0" android:name=".ItemnwSub0">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/itemnw_sub1" android:name=".ItemnwSub1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/itemnw_sub2" android:name=".ItemnwSub2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/cell_lock_pref" android:name=".CellLock">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

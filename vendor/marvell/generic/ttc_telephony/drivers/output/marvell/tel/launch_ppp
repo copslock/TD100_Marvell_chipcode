@@ -1,0 +1,23 @@
+#!/system/bin/sh
+
+#move NVM_ROOT_DIR to init.rc so other applications and services also use it.
+#export  NVM_ROOT_DIR="/data/Linux/Marvell/NVM"
+
+#backup log files
+/marvell/tel/backup_log.sh
+
+cd /marvell/tel;
+/marvell/tel/run_composite.sh;
+
+sleep 1
+
+file_name="/data/data/com.marvell.usbsetting/usbmode.sh"
+file_exist=`ls $file_name`
+case "$file_exist" in
+    $file_name)
+	sh /data/data/com.marvell.usbsetting/usbmode.sh;
+    ;;
+    *)
+	echo acm,diag,usb_mass_storage,adb > /sys/devices/platform/pxa-u2o/composite;
+    ;;
+esac

@@ -1,0 +1,59 @@
+# makefile created by Linux Automake V1.0.0
+# This makefile will build a Linux application
+
+#==============================================================================
+# Codec Name												(user update)
+#==============================================================================
+CODEC_NAME=voicepath
+
+#==============================================================================
+# Rules.make												(user update)
+#==============================================================================
+include ../../../../example/Rules.make
+
+#==============================================================================
+# Codec Specific Flags											(user update)
+#==============================================================================
+CFLAGS+= -D_IPP_LINUX
+CXXFLAGS= $(CFLAGS) 
+ASFLAGS+= -mcpu=iwmmxt2
+
+#==============================================================================
+# Log file          										(user update)
+#==============================================================================
+PATH_USR_LOG=$(PATH_USR_BUILD)/wmmx2_linux/log
+USR_LOG_TRACE=$(PATH_USR_LOG)/build_trace_app_$(CODEC_NAME)_linux.log
+
+
+#==============================================================================
+# User libraries          										(user update)
+#==============================================================================
+ifeq ($(USE_STATICLIB), y)
+USR_LIB_SUFFIX=a
+USR_LIBS=\
+$(PATH_USR_LIB)/libippvp.$(USR_LIB_SUFFIX)\
+$(PATH_USR_LIB)/libippsp.$(USR_LIB_SUFFIX)\
+$(PATH_USR_LIB)/libmiscgen.$(USR_LIB_SUFFIX)
+else
+USR_LIB_SUFFIX=so
+USR_LIBS= \
+ -L$(PATH_USR_LIB) -lippvp -lippsp -lmiscgen
+endif            
+
+
+#==============================================================================
+# Target                                                          (user update)
+#==============================================================================
+OUTPUT_TARGET=$(PATH_USR_BIN)/appVoicepath.exe
+
+#==============================================================================
+# Object files                                                         (user update)
+#==============================================================================
+OBJS_C=\
+$(PATH_USR_SRC)/voicepathexample.o\
+
+#==============================================================================
+# AppTemplate.make												(user update)
+#==============================================================================
+include ../../../../example/AppTemplate.make
+

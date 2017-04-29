@@ -1,0 +1,33 @@
+AT Parser Readme notes
+
+======
+V3.0.0
+======
+Date: Sept 14, 2006
+File Changes: atparser.c
+Details:
+- correcting comments
+- final version before leaving Calgary
+
+
+======
+V2.1.1
+======
+Date: August 4, 2006
+File Changes: atparser.c
+Details:
+- elimiated outputing <cr><lf> for the utlAT_COMMAND_RESPONSE_TYPE_CUSTOM
+
+======
+V2.1.0
+======
+Date: June 26, 2006
+File Changes: atparser.c
+                utlAtParser.h
+Details:
+- Fixes the timeout problem.  Note that the timeout is currently
+hard-coded to 150 seconds.
+- Adds unsolicitied text handling:
+    utlAtDriverEvent(parser_p,
+    utlAT_DRIVER_EVENT_UNSOLICITIED_INFO_TEXT, "my text message");
+(the AT parser will add leading and trailing <cr><lf>'s as necessary)

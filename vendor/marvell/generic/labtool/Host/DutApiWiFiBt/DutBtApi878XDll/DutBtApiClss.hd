@@ -1,0 +1,287 @@
+
+#ifndef _DUTAPICLSS_HD_
+#define _DUTAPICLSS_HD_
+
+ 
+//#include "CondorMacReg.hd"
+//#include "CondorConf.hd"
+//#include "DutApiClss_Caldata.hd"
+
+
+#define EAGLE_MAX_CHANNEL_NUMBER 14
+//#define EAGLE_MAX_BSS_DESCRIPTS 20
+#define EAGLE_TX_POWER_LEVEL_TOTAL 21
+
+
+//extern DWORD vg_dwSpiSleep; 
+ 
+#define REGBASE_RF	0
+#define REGBASE_BB	0
+//#define REGBASE_MAC	0xA000
+#define REGBASE_GPIO	0x80000000
+
+#define EAGLE_MAX_CHANNEL_NUMBER	14
+#define EAGLE_TX_POWER_LEVEL_TOTAL	21
+
+
+#define VMR_HEADER_LENGTH			0x80  // this is helping to figure out the MAC address location of SPI mode
+#define VMR_SPIVERSION_OFFSET		0x10  // this is helping to figure out the MAC address location of SPI mode
+
+#define VMR_MACADDR_OFFSET			0x08  // this is helping to figure out the MAC address location of SPI mode
+#define VMR_MACADDR_LOW				0x0C
+#define VMR_MACADDR_HIGH			(VMR_MACADDR_LOW+4)  // the same DWORD as Version it is like [Versuin][MAC Address High]
+
+#define VMR_OFFSET_CIS_LENGTH		0x14
+#define VMR_OFFSET_CIS_OFFSET		0x18
+#define VMR_OFFSET_CIS_BASE_SQ		0x1C
+#define VMR_OFFSET_PIU_OFFSET		0x20
+#define VMR_PIU_LENGTH				7  // in DWORD
+
+#define VMR_OFFSET_CAL_LENGTH		0x48
+#define VMR_OFFSET_CAL_OFFSET		0x4c
+
+
+//BASE Band processor registers
+#define REGOFFSET_BB_RXANTSEL		(REGBASE_BB+0x37)
+#define REGMASK_BB_RXANTSEL			(0xC0)
+
+#define REGOFFSET_BB_TXANTSEL		(REGBASE_BB+0x38)
+#define REGMASK_BB_TXANTSEL			(0xC0)
+
+#define REGOFFSET_BB_DATARATE		(REGBASE_BB+0x1C)
+
+#define REGOFFSET_BB_RX22EN			(REGBASE_BB+0x0A)
+#define REGMASK_BB_RX22EN			(0x80)
+
+#define REGOFFSET_BB_TX22EN			(REGBASE_BB+0x1F)
+ 	
+#define REGMASK_BB_TX22EN			(0x10)	// E0P
+//#define REGMASK_BB_TX22EN			(0x20)	// A2P
+ 
+#define REGOFFSET_BB_PREAMBLE			(REGBASE_BB+0x20)
+#define REGMASK_BB_PREAMBLE				(0x20)
+
+#define REGOFFSET_BB_TXCW				(REGBASE_BB+0x20)
+#define REGMASK_BB_TXCW					(0x04)
+#define REGMASK_BB_CARRIERSUPPRESSION	(0x08)
+
+#define REGOFFSET_BB_TXCW				(REGBASE_BB+0x20)
+#define REGMASK_BB_TXCW					(0x04)
+
+#define REGOFFSET_BB_CCA0				(REGBASE_BB+0x2C)
+#define REGMASK_BB_CCA0_DEF				(0x58)
+#define REGMASK_BB_CCA0_MODE1			(0x38)
+ 
+
+#define REGOFFSET_BB_RSSIPWROPT			(REGBASE_BB+0x2D)
+#define REGMASK_BB_RSSIPWROPT			(0x80)
+#define REGMASK_BB_RXEDTRHRS			(0x3F)
+
+#define REGOFFSET_BB_CCA2			(REGBASE_BB+0x2E) 
+#define REGOFFSET_BB_CCA3			(REGBASE_BB+0x2F) 
+#define REGOFFSET_BB_CCA4			(REGBASE_BB+0x30) 
+
+#define REGMASK_BB_CCA1				0x00 
+#define REGMASK_BB_CCA2				0x80 
+#define REGMASK_BB_CCA3				0x98 
+#define REGMASK_BB_CCA4				0x98 
+
+#define REGOFFSET_BB_RSSIANT			(REGBASE_BB+0x32)
+#define REGMASK_BB_RSSIANT				(0xC0)
+
+#define REGOFFSET_BB_RSSIREAD			(REGBASE_BB+0x33) 
+
+#define REGOFFSET_BB_CHIPID			(REGBASE_BB+0x00) 
+#define REGOFFSET_BB_CHIPVERS			(REGBASE_BB+0x01) 
+
+ 
+
+// General for MAC and BBP
+const BYTE DataRate[]= {0x0A, 0x14, 0x37, 0x6E, 0xDC};
+
+ 
+#define NUMOFILTERREF 16
+
+const BYTE BBFltReg[NUMOFILTERREF ]={	(REGBASE_BB+0x59),
+							(REGBASE_BB+0x5A),
+							(REGBASE_BB+0x5B), 
+							(REGBASE_BB+0x5C),
+							(REGBASE_BB+0x5D),
+							(REGBASE_BB+0x5E),
+							(REGBASE_BB+0x61),(REGBASE_BB+0x62),(REGBASE_BB+0x63),
+							(REGBASE_BB+0x64),(REGBASE_BB+0x65),(REGBASE_BB+0x66),
+							(REGBASE_BB+0x67),(REGBASE_BB+0x68),(REGBASE_BB+0x6A),
+							(REGBASE_BB+0x6B) 
+							};
+const BYTE BbFltTbl[2][NUMOFILTERREF ]= {
+	{0x80, 0xBE, 0xBB,  
+	 0xB8, 0xB4, 0xB3,
+	 0xB6, 0x80, 0x84, 
+	 0x8B, 0x93, 0x9B, 
+	 0xA4, 0xAB, 0x70, 
+	 0x72}, // Default values for ch 1 to 13
+
+	 {0xBB, 0x87, 0x8E,  
+	 0x94, 0x8E, 0x83,
+	 0xB0, 0xA0, 0xB5, 
+	 0xB7, 0xBD, 0x88, 
+	 0x95, 0xA2, 0x6B, 
+	 0x6F}  // values for ch 14 MKK
+	 }; 
+
+ 
+///////////////////////
+
+/*
+#pragma pack(1)
+
+#define STRUCTUREREV4 4
+#define STRUCTUREREV5 5
+// VA enum {SPISIZE_KBIT, SPISIZE_MBIT};
+
+typedef struct EXTPABYTE
+{
+ 	BYTE ExterPA_ReserveBit:4;
+	BYTE ExterPA_partId:4;
+} EXTPABYTE; 
+
+typedef struct PAOPTIONBYTE
+{
+	BYTE PaOption_DataOption:1;
+	BYTE PaOption_Ant2notCal:1;
+	BYTE PaOption_ExtPAPolar:1;
+	BYTE PaOption_IntExtPa:2;
+	BYTE PaOption_ReserveBits:3;
+
+} PAOPTIONBYTE; 
+
+
+typedef struct PA1A1DCONFBYTE
+{
+	BYTE Pa1a1dConf_1AValue:6;
+	BYTE Pa1a1dConf_1D0PrimVal:1;
+	BYTE Pa1a1dConf_2CalVal:1;
+} PA1A1DCONFBYTE; 
+
+typedef struct PACONFDWORD
+{
+	BYTE			PaConfig1Eh;
+	BYTE			PaConfig1Fh;
+	BYTE			PaConfig20h;
+	PA1A1DCONFBYTE	PaConfig1A1Dh;
+} PACONFDWORD; 
+
+typedef struct ASNDWORD
+{
+ 	DWORD		SN:24; 
+ 	DWORD		AssemblyHouse:8; 
+} ASNDWORD; 
+
+typedef struct TOOLVERDWORD
+{
+	WORD			TestToolVersion;
+	WORD			TestDllVersion;
+} TOOLVERDWORD; 
+
+typedef struct SPISIZEBYTE
+{
+ 	BYTE		size:7; 
+ 	BYTE		unit:1; 
+} SPISIZEBYTE; 
+
+typedef struct LCCAPBYTE
+{
+ 	BYTE		LCCapChH:3; 
+ 	BYTE		LCCapChL:3; 
+ 	BYTE		LCCapCaled:1;   
+ 	BYTE		LCCapCaledInv:1;   
+} LCCAPBYTE;  
+
+typedef struct CardSpecDataRev4
+{
+	BYTE			PcbRev[8];
+	BYTE			StructureRevision;
+	PAOPTIONBYTE	PaOption; 
+	EXTPABYTE		ExterPA;
+	BYTE			AntCfg;
+	WORD			PaCal[14];
+	PACONFDWORD		PaConfigs;
+ 	ASNDWORD		Asn; 
+	BYTE			CountryCode[2];
+	BYTE			Customer[2];
+	BYTE			SocVers;
+	BYTE			RfVers;
+ 	SPISIZEBYTE		SpiSize;
+	BYTE			AntPartInfo;
+	TOOLVERDWORD	ToolVersion; 
+ 	WORD			Xosc;
+	WORD			Cs;
+}CardSpecDataRev4; 
+
+
+typedef struct CardSpecDataRev5
+{
+	BYTE			PcbRev[8];
+	BYTE			StructureRevision;
+	PAOPTIONBYTE	PaOption; 
+	EXTPABYTE		ExterPA;
+	BYTE			AntCfg;
+	WORD			PaCal[14];
+	PACONFDWORD		PaConfigs;
+ 	ASNDWORD		Asn; 
+	BYTE			CountryCode[2];
+	BYTE			ECO;
+	LCCAPBYTE		LCCap;
+	BYTE			SocVers;
+	BYTE			RfVers;
+ 	SPISIZEBYTE		SpiSize;
+	BYTE			AntPartInfo;
+	TOOLVERDWORD	ToolVersion; 
+ 	WORD			Xosc;
+	WORD			Cs;
+}CardSpecDataRev5; 
+
+typedef union CardSpecData 
+{
+CardSpecDataRev4 CardSpecData4;
+CardSpecDataRev5 CardSpecData5;
+  
+}CardSpecData ; 
+
+#define PcbRev				CardSpecData4.PcbRev
+#define StructureRevision CardSpecData4.StructureRevision
+#define PaOption		CardSpecData4.PaOption
+#define ExterPA			CardSpecData4.ExterPA
+#define AntCfg			CardSpecData4.AntCfg
+#define PaCal			CardSpecData4.PaCal
+#define PaConfigs		CardSpecData4.PaConfigs
+#define Asn				CardSpecData4.Asn
+#define CountryCode		CardSpecData4.CountryCode
+#define Customer		CardSpecData4.Customer
+#define SocVers			CardSpecData4.SocVers
+#define RfVers			CardSpecData4.RfVers
+#define SpiSize			CardSpecData4.SpiSize
+#define AntPartInfo		CardSpecData4.AntPartInfo
+#define ToolVersion		CardSpecData4.ToolVersion
+#define Xosc			CardSpecData4.Xosc
+#define Cs				CardSpecData4.Cs
+#define ECO				CardSpecData5.ECO
+#define LCCap			CardSpecData5.LCCap 
+
+
+#pragma pack()
+
+#define MASK_PAOPTION_TBLOPTION		0x1
+enum {PAOPTION_TBLOPTION_0, PAOPTION_TBLOPTION_1};
+
+#define MASK_PAOPTION_ANT2NCALSEP	0x02
+#define MASK_PAOPTION_EXPAPOLAR_NEG	0x04
+#define MASK_PAOPTION_PA_EXT		0x08
+ */
+
+//===============================================================================
+//								INCLUDE FILES
+//===============================================================================
+
+#endif
+

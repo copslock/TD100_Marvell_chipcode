@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/other_setting_app">
+    <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+        android:title="@string/StkRelatedSetting" 
+        android:key="StkRelatedSetting_pref">
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.marvell.logtools"
+                android:targetClass="com.marvell.logtools.StkSetting"/>
+     </PreferenceScreen>
+     <PreferenceScreen android:title="@string/CPFinalActionSetting" android:key="CpFinalActionSetting" android:enabled="false">
+         <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.marvell.logtools"
+                android:targetClass="com.marvell.logtools.CpFinalActionSetting"/>
+    </PreferenceScreen>
+</PreferenceScreen>

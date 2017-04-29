@@ -1,0 +1,9 @@
+../diag/diag_al/diag_al.i
+../diag/diag_al/diag_API.i
+../diag/diag_al/diag_API_var.i
+../diag/diag_al/diag_comm_EXTif.i
+../diag/diag_al/diag_comm_EXTif_OSA_LINUX.i
+../diag/diag_al/diag_organ.i
+../diag/diag_al/diag_osif.i
+../diag/diag_al/diag_tx.i
+../linux_telephony/atcmdsrv/src/atcmdsvr_audio.i

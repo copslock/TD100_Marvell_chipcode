@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/menu_fullscreen" android:title="@string/normalscreen" android:icon="@drawable/icon_fullscreen" />
+	<item android:id="@+id/menu_ebmsg" android:title="@string/emergency" android:icon="@drawable/icon_emergency" />
+	<item android:id="@+id/menu_program" android:title="@string/programlist" android:icon="@drawable/icon_program" />
+	<item android:id="@+id/menu_speaker" android:title="@string/headphone" android:icon="@drawable/icon_headphone"/>
+</menu>

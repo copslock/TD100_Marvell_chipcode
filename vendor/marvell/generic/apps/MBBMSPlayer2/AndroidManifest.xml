@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+		(C) Copyright 2010 Marvell International Ltd. All Rights Reserved
+
+		MARVELL CONFIDENTIAL Copyright 2008 ~ 2010 Marvell International Ltd
+		All Rights Reserved. The source code contained or described herein and
+		all documents related to the source code ("Material") are owned by
+		Marvell International Ltd or its suppliers or licensors. Title to the
+		Material remains with Marvell International Ltd or its suppliers and
+		licensors. The Material contains trade secrets and proprietary and
+		confidential information of Marvell or its suppliers and licensors.
+		The Material is protected by worldwide copyright and trade secret laws
+		and treaty provisions. No part of the Material may be used, copied,
+		reproduced, modified, published, uploaded, posted, transmitted,
+		distributed, or disclosed in any way without Marvell's prior express
+		written permission. No license under any patent, copyright, trade
+		secret or other intellectual property right is granted to or conferred
+		upon you by disclosure or delivery of the Materials, either expressly,
+		by implication, inducement, estoppel or otherwise. Any license under
+		such intellectual property rights must be express and approved by
+		Marvell in writing.
+	-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.marvell.cmmb">
+
+	 <uses-library android:name="com.marvell.cmmb.aidl" /> 
+	<application android:icon="@drawable/icon_tvplayer" android:label="@string/app_name">
+		<service android:name=".service.MBBMSService" />		
+		<provider android:name="com.marvell.cmmb.provider.MBBMSProvider" android:authorities="com.marvell.cmmb"
+			android:multiprocess="true"/>	
+				
+		<receiver android:name=".receiver.NetworkOperationReceiver">
+			<intent-filter>
+				<action android:name="com.marvell.cmmb.SG_UPDATING"/>
+				<action android:name="com.marvell.cmmb.ESG_UPDATED"/>
+				<action android:name="com.marvell.cmmb.PARSESG_FINISHED"/>
+				<action android:name="com.marvell.cmmb.PARSEST_FINISHED"/>
+				<action android:name="com.marvell.cmmb.SG_UPDATED"/>
+				<action android:name="com.marvell.cmmb.ST_UPDATED"/>
+				<action android:name="com.marvell.cmmb.GBA_INIT"/>
+				<action android:name="com.marvell.cmmb.INQUIRIED"/>
+				<action android:name="com.marvell.cmmb.NETWORKCONNECT_FAILED"/>				  				  
+           </intent-filter>
+		</receiver>
+		<activity android:name=".activity.LoadActivity" android:label="@string/app_name"
+		  android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.MainActivity"
+			android:label="@string/app_name"
+			android:configChanges="mcc|mnc|orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.ProgramActivity"
+			android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.MBBMSSettingActivity"
+			android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.ProgramDetailActivity"
+			android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="com.marvell.cmmb.VIEW_SEARCH_DETAIL" />
+				<action android:name="com.marvell.cmmb.VIEW_PROGRAM_DETAIL" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.SearchProgramActivity"
+			android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.SearchResultActivity"
+			android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.RefreshManageActivity" android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.ManualRefreshActivity"
+			android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.HelpInfoActivity" android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.PlayingActivity"
+			android:label="@string/app_name"
+			android:launchMode="singleTask"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+			    <action android:name="android.intent.action.MAIN" />
+			    <action android:name="com.marvell.cmmb.VIEW_SCHEDULE_ACTION" />
+				<action android:name="com.marvell.cmmb.VIEW_PROGRAM_ACTION" />
+				<action android:name="com.marvell.cmmb.VIEW_SEARCH_ACTION" />
+				<action android:name="com.marvell.cmmb.VIEW_DETAIL_ACTION" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="com.marvell.cmmb.VIEW_PROGRAME_BY_ID_FREQ"/>
+				<data android:scheme="cmmb"/>
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.PurchaseManageActivity"
+			android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.EbMsgManageActivity"
+			android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.EbMsgDetailActivity"
+			android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".activity.CMMBSettingActivity"
+			android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+		
+		<activity android:name=".interfacetest.MBBMSInterfaceTestActivity"
+			android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+		
+		<activity android:name=".view.dialog.EbMessageDialog"
+			android:theme="@style/ThemeCustomDialog"
+			android:excludeFromRecents="true"
+			android:launchMode="singleTask"
+			android:configChanges="orientation|keyboardHidden|keyboard|navigation">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<action android:name="com.marvell.cmmb.VIEW_EBMESSAGE" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+		
+		<activity android:name=".view.dialog.ChangeToMBBMSDialog"
+            android:theme="@style/ThemeCustomDialog"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+        
+        <activity android:name=".view.dialog.BinderDiedDialog"
+			android:theme="@style/ThemeCustomDialog"
+			android:excludeFromRecents="true"
+			android:launchMode="singleTask"
+			android:configChanges="orientation|keyboardHidden|keyboard|navigation">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+		
+		<activity android:name=".activity.PlaybackSetting"
+			android:label="@string/app_name"
+			android:configChanges="orientation|keyboardHidden">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+		
+       <activity android:name=".view.dialog.NoHeadPhoneDialog"
+           android:theme="@style/ThemeCustomDialog"
+           android:excludeFromRecents="true"
+           android:launchMode="singleTask"
+           android:configChanges="orientation|keyboardHidden|keyboard|navigation">
+
+           <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+             <category android:name="android.intent.category.DEFAULT" />
+          </intent-filter>
+          
+        </activity>
+		
+	</application>
+
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+<uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+<uses-permission android:name="android.permission.DEVICE_POWER"></uses-permission>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"></uses-permission>
+<uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+<uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER"></uses-permission>
+<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+</manifest> 
