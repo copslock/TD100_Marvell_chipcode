@@ -1,0 +1,4 @@
+kernel/drivers/rtc/rtc-lib.ko
+kernel/drivers/rtc/rtc-core.ko
+kernel/drivers/rtc/rtc-mmp.ko
+kernel/drivers/rtc/rtc-88pm860x.ko

@@ -1,0 +1,19 @@
+if PLAT_PXA
+
+config PXA_SSP
+	tristate
+	help
+	  Enable support for PXA2xx SSP ports
+
+config PXA_VBUS
+	tristate
+	help
+	  Enable support for PXA VBUS
+
+config PXA_32KTIMER
+	bool "PXA 32K Timer"
+	depends on (ARCH_PXA || ARCH_MMP)
+	help
+	  32KHz timer support for PXA27x and PXA3xx/9xx Processor
+
+endif

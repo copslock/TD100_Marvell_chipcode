@@ -1,0 +1,5 @@
+kernel/drivers/usb/core/usbcore.ko
+kernel/drivers/usb/host/ehci-hcd.ko
+kernel/drivers/usb/misc/88pm860x_vbus.ko
+kernel/drivers/usb/misc/u2o_vbus.ko
+kernel/drivers/usb/storage/usb-storage.ko

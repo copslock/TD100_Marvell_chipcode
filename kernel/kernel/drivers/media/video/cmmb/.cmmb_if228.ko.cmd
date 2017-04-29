@@ -1,0 +1,1 @@
+cmd_drivers/media/video/cmmb/cmmb_if228.ko := /home/yanl/marvell.sp6/kernel/../prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /home/yanl/marvell.sp6/kernel/kernel/scripts/module-common.lds --build-id -o drivers/media/video/cmmb/cmmb_if228.ko drivers/media/video/cmmb/cmmb_if228.o drivers/media/video/cmmb/cmmb_if228.mod.o

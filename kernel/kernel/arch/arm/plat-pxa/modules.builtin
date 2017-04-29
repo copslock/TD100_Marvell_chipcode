@@ -1,0 +1,2 @@
+kernel/arch/arm/plat-pxa/ssp.ko
+kernel/arch/arm/plat-pxa/vbus.ko

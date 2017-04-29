@@ -1,0 +1,3 @@
+kernel/drivers/mfd/pxa-w1.ko
+kernel/drivers/mfd/tps61050.ko
+kernel/drivers/mfd/mfd-core.ko

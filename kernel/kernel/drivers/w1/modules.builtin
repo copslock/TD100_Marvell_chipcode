@@ -1,0 +1,3 @@
+kernel/drivers/w1/wire.ko
+kernel/drivers/w1/masters/ds1wm.ko
+kernel/drivers/w1/slaves/w1_ds278x.ko

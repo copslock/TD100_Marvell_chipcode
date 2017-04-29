@@ -1,0 +1,1 @@
+cmd_drivers/media/dvb/siano/smsmdtv.ko := /home/yanl/marvell.sp6/kernel/../prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /home/yanl/marvell.sp6/kernel/kernel/scripts/module-common.lds --build-id -o drivers/media/dvb/siano/smsmdtv.ko drivers/media/dvb/siano/smsmdtv.o drivers/media/dvb/siano/smsmdtv.mod.o

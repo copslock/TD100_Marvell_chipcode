@@ -1,0 +1,7 @@
+kernel/drivers/hwmon/hwmon.ko
+kernel/drivers/hwmon/lis3dh_acc.ko
+kernel/drivers/hwmon/l3g4200.ko
+kernel/drivers/hwmon/mag3110.ko
+kernel/drivers/hwmon/sfh7773_core.ko
+kernel/drivers/hwmon/sfh7773_als.ko
+kernel/drivers/hwmon/sfh7773_ps.ko

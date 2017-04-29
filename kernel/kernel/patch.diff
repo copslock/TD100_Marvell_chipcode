@@ -1,0 +1,43 @@
+diff --git a/drivers/switch/88pm860x_headset.c b/drivers/switch/88pm860x_headset.c
+index 25e64fe..a4d0460 100644
+--- a/drivers/switch/88pm860x_headset.c
++++ b/drivers/switch/88pm860x_headset.c
+@@ -360,6 +360,8 @@ static int headset_switch_probe(struct platform_device *pdev)
+ 	/* Perform initial detection */
+ 	headset_switch_work(&info->work_headset);
+ 	hook_switch_work(&info->work_hook);
++	/* enable wakeup interrupt */
++	device_init_wakeup(&pdev->dev, 1);
+ 
+ 	return 0;
+ 
+@@ -403,6 +405,14 @@ static int headset_switch_suspend(struct platform_device *pdev, pm_message_t sta
+ {
+ 	struct pm860x_headset_info *info = platform_get_drvdata(pdev);
+ 	struct headset_switch_data *switch_data = info->psw_data_headset;
++	struct pm860x_chip *chip = dev_get_drvdata(pdev->dev.parent);
++	int irq;
++
++	irq = platform_get_irq(pdev, 0) + chip->irq_base;
++	if (device_may_wakeup(&pdev->dev)) {
++		enable_irq_wake(chip->core_irq);
++		enable_irq_wake(irq);
++	}
+ 
+ 	/*  enable HOOK detection when headset is connected, thus hook press
+ 	 *  can wake up core from suspend mode */
+@@ -418,6 +428,14 @@ static int headset_switch_resume(struct platform_device *pdev)
+ {
+ 	struct pm860x_headset_info *info = platform_get_drvdata(pdev);
+ 	struct headset_switch_data *switch_data = info->psw_data_headset;
++	struct pm860x_chip *chip = dev_get_drvdata(pdev->dev.parent);
++	int irq;
++
++	irq = platform_get_irq(pdev, 0) + chip->irq_base;
++	if (device_may_wakeup(&pdev->dev)) {
++		disable_irq_wake(chip->core_irq);
++		disable_irq_wake(irq);
++	}
+ 
+ 	/* enable MIC/HOOK detection when headset is connected. */
+ 	if (switch_data->state == PM860X_HEADSET_ADD) {

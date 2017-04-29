@@ -1,0 +1,1 @@
+cmd_arch/arm/boot/uImage := /bin/bash /home/yanl/marvell.sp6/kernel/kernel/scripts/mkuboot.sh -A arm -O linux -T kernel -C none -a 0x00008000 -e 0x00008000 -n 'Linux-2.6.35.7+' -d arch/arm/boot/zImage arch/arm/boot/uImage

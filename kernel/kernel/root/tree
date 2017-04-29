@@ -1,0 +1,68 @@
+busybox/
+|-- bin
+|   |-- android.mountall
+|   |-- ash -> busybox
+|   |-- busybox
+|   |-- cat -> busybox
+|   |-- chmod -> busybox
+|   |-- chown -> busybox
+|   |-- cp -> busybox
+|   |-- cpio -> busybox
+|   |-- cttyhack -> busybox
+|   |-- date -> busybox
+|   |-- dd -> busybox
+|   |-- dmesg -> busybox
+|   |-- echo -> busybox
+|   |-- gunzip -> busybox
+|   |-- gzip -> busybox
+|   |-- hush -> busybox
+|   |-- kill -> busybox
+|   |-- ln -> busybox
+|   |-- ls -> busybox
+|   |-- mkdir -> busybox
+|   |-- mknod -> busybox
+|   |-- mount -> busybox
+|   |-- mv -> busybox
+|   |-- ping -> busybox
+|   |-- ps -> busybox
+|   |-- pwd -> busybox
+|   |-- rm -> busybox
+|   |-- rmdir -> busybox
+|   |-- sh -> busybox
+|   |-- sleep -> busybox
+|   |-- stty -> busybox
+|   |-- touch -> busybox
+|   |-- umount -> busybox
+|   `-- zcat -> busybox
+|-- dev
+|-- etc
+|   |-- fstab
+|   |-- init.d
+|   |   `-- rcS
+|   `-- inittab
+|-- linuxrc -> bin/busybox
+|-- proc
+|-- rdinit
+|-- sbin
+|   |-- ifconfig -> ../bin/busybox
+|   |-- init -> ../bin/busybox
+|   |-- insmod -> ../bin/busybox
+|   |-- lsmod -> ../bin/busybox
+|   |-- mdev -> ../bin/busybox
+|   |-- rmmod -> ../bin/busybox
+|   `-- switch_root -> ../bin/busybox
+|-- sys
+|-- tmp
+`-- usr
+    |-- bin
+    |   |-- cut -> ../../bin/busybox
+    |   |-- free -> ../../bin/busybox
+    |   |-- killall -> ../../bin/busybox
+    |   |-- tftp -> ../../bin/busybox
+    |   |-- top -> ../../bin/busybox
+    |   `-- whoami -> ../../bin/busybox
+    `-- sbin
+        |-- chroot -> ../../bin/busybox
+        `-- telnetd -> ../../bin/busybox
+
+11 directories, 54 files

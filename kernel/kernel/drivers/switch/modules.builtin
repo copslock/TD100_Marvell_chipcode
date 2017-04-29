@@ -1,0 +1,3 @@
+kernel/drivers/switch/switch_class.ko
+kernel/drivers/switch/switch_gpio.ko
+kernel/drivers/switch/88pm860x_headset.ko

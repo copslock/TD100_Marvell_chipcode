@@ -1,0 +1,8 @@
+kernel/drivers/usb/gadget/mv/mvUsbDevMain.ko
+kernel/drivers/usb/gadget/mv/mvUsbDevCh9.ko
+kernel/drivers/usb/gadget/mv/mvUsbDevUtl.ko
+kernel/drivers/usb/gadget/mv/mvUsbHsDevMain.ko
+kernel/drivers/usb/gadget/mv/mvUsbDevSend.ko
+kernel/drivers/usb/gadget/mv/mvUsbDevRecv.ko
+kernel/drivers/usb/gadget/mv/mvUsbHsDevCncl.ko
+kernel/drivers/usb/gadget/mv/mvUsbHsDevUtl.ko

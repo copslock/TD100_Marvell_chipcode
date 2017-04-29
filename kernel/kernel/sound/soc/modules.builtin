@@ -1,0 +1,4 @@
+kernel/sound/soc/snd-soc-core.ko
+kernel/sound/soc/codecs/snd-soc-88pm860x-audio.ko
+kernel/sound/soc/pxa/snd-soc-pxa910.ko
+kernel/sound/soc/pxa/snd-soc-pxa910-platform.ko

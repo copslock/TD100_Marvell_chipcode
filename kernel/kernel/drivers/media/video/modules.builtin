@@ -1,0 +1,8 @@
+kernel/drivers/media/video/videodev.ko
+kernel/drivers/media/video/v4l2-int-device.ko
+kernel/drivers/media/video/v4l2-common.ko
+kernel/drivers/media/video/v4l1-compat.ko
+kernel/drivers/media/video/ov5640_mipi.ko
+kernel/drivers/media/video/ov5642_mipi.ko
+kernel/drivers/media/video/mt9v113.ko
+kernel/drivers/media/video/pxa910_camera.ko

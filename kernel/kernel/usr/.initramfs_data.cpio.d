@@ -1,0 +1,26 @@
+deps_initramfs := /home/yanl/marvell.sp6/kernel/kernel/scripts/gen_initramfs_list.sh \
+./root \
+./root/dev \
+./root/led_blink.sh \
+./root/dcmd_ko \
+./root/rootfs \
+./root/tmp \
+./root/tree \
+./root/busybox \
+./root/busybox/dev \
+./root/busybox/bin \
+./root/busybox/bin/android.mountall \
+./root/busybox/bin/busybox \
+./root/busybox/sbin \
+./root/busybox/proc \
+./root/busybox/usr \
+./root/busybox/usr/bin \
+./root/busybox/usr/sbin \
+./root/busybox/rdinit \
+./root/busybox/etc \
+./root/busybox/etc/inittab \
+./root/busybox/etc/init.d \
+./root/busybox/etc/init.d/rcS \
+./root/busybox/etc/fstab \
+./root/busybox/tmp \
+./root/busybox/sys \

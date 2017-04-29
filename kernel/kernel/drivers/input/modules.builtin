@@ -1,0 +1,8 @@
+kernel/drivers/input/input-core.ko
+kernel/drivers/input/input-polldev.ko
+kernel/drivers/input/mousedev.ko
+kernel/drivers/input/evdev.ko
+kernel/drivers/input/keyboard/atkbd.ko
+kernel/drivers/input/keyboard/pxa27x_keypad.ko
+kernel/drivers/input/misc/88pm860x_onkey.ko
+kernel/drivers/input/misc/uinput.ko
